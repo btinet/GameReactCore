@@ -1,4 +1,4 @@
-package com.ivision.engine;
+package org.engine;
 
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
@@ -6,7 +6,7 @@ import javafx.scene.input.KeyCode;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.ivision.gamereact.ReactApplication.verbose;
+import static org.gamereact.gamereactcore.CoreApplication.verbose;
 
 public class KeyPolling {
     private static Scene scene;
