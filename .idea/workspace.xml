@@ -4,52 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/illposed/osc/OSCBundle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/illposed/osc/OSCCanNotListenException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/illposed/osc/OSCListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/illposed/osc/OSCMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/illposed/osc/OSCPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/illposed/osc/OSCPort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/illposed/osc/OSCPortIn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/illposed/osc/OSCPortOut.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/illposed/osc/utility/OSCByteArrayToJavaConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/illposed/osc/utility/OSCJavaToByteArrayConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/illposed/osc/utility/OSCPacketDispatcher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tuio/TuioBlob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tuio/TuioClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tuio/TuioContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tuio/TuioCursor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tuio/TuioListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tuio/TuioObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tuio/TuioPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tuio/TuioTime.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/AppTimer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/ButtonConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/KeyPolling.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/Transitions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/gamereactcore/CoreApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/gamereact/gamereactcore/index.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/icons/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/icons/tk.png" afterDir="false" />
+    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="update files">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="28fa37c8-6e0b-4a8d-b323-cbc526b37982" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -95,9 +60,19 @@
       <option name="presentableId" value="Default" />
       <updated>1689398919242</updated>
     </task>
+    <task id="LOCAL-00001" summary="update files">
+      <created>1689428851921</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1689428851921</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="update files" />
+    <option name="LAST_COMMIT_MESSAGE" value="update files" />
   </component>
 </project>
