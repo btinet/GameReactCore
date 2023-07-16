@@ -1,6 +1,7 @@
 package org.gamereact.controller;
 
 import com.tuio.*;
+import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
@@ -12,14 +13,17 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import org.engine.AppTimer;
-import org.engine.ButtonConfig;
-import org.engine.KeyPolling;
-import org.engine.Transitions;
+import javafx.scene.transform.Transform;
+import org.engine.*;
+import org.engine.Module;
+import org.gamereact.component.ReactButton;
 import org.gamereact.gamereactcore.CoreApplication;
+import org.gamereact.module.AudioPlayerModule;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -33,11 +37,10 @@ public class AppController extends AppTimer implements Initializable, TuioListen
     private final KeyPolling keys = KeyPolling.getInstance();
     private double xOffset = 0;
     private double yOffset = 0;
-    private final Text infoText = new Text();
     private final Circle middleCircle = new Circle(20, Color.WHITE);
     private final Circle transitionCircle = new Circle(10);
     private final Circle cursor = new Circle(20,Color.WHITE);
-    private final ScaleTransition st = Transitions.createScaleTransition(1000,transitionCircle,1,120);
+    private final ScaleTransition st = Transitions.createScaleTransition(4000,transitionCircle,1,140);
     private final FadeTransition ft = Transitions.createFadeTransition(2000,middleCircle,0,.5);
     private final TuioClient client = new TuioClient();
 
@@ -67,12 +70,9 @@ public class AppController extends AppTimer implements Initializable, TuioListen
 
 
         this.transitionCircle.setFill(Color.TRANSPARENT);
-        this.transitionCircle.setStroke(new Color(1,1,1,.4));
+        this.transitionCircle.setStroke(new Color(1,1,1,.2));
         this.transitionCircle.setStrokeWidth(.1);
 
-        this.infoText.setTranslateX(10);
-
-        this.layoutGroup.getChildren().add(this.infoText);
         this.layoutGroup.getChildren().add(this.transitionCircle);
         this.layoutGroup.getChildren().add(this.middleCircle);
 
@@ -103,9 +103,6 @@ public class AppController extends AppTimer implements Initializable, TuioListen
      */
     @Override
     public void tick(float secondsSinceLastFrame) {
-        this.infoText.setText("abgelaufene Zeit: " + Math.round(animationDurationProperty().get()) + "s");
-
-        this.infoText.setTranslateY(root.getHeight()-10);
         middleCircle.setTranslateX(root.getWidth()/2);
         middleCircle.setTranslateY(root.getHeight()/2);
         transitionCircle.setTranslateX(root.getWidth()/2);
@@ -144,7 +141,13 @@ public class AppController extends AppTimer implements Initializable, TuioListen
             int cy = object.getKey().getScreenY((int) this.root.getHeight());
             object.getValue().setTranslateX(cx);
             object.getValue().setTranslateY(cy);
-            object.getValue().getChildren().get(0).setRotate(object.getKey().getAngleDegrees());
+
+            Group group = object.getValue();
+
+            group.getTransforms().clear();
+            group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), 0,0));
+
+            //group.getChildren().get(0).setRotate(object.getKey().getAngleDegrees());
         }
         this.objectGroup.getChildren().retainAll(this.objectList.values());
 
@@ -155,6 +158,51 @@ public class AppController extends AppTimer implements Initializable, TuioListen
             int cy = cursor.getKey().getScreenY((int) this.root.getHeight());
             cursor.getValue().setTranslateX(cx);
             cursor.getValue().setTranslateY(cy);
+            Circle fingerTouch = cursor.getValue();
+
+            for ( Map.Entry<TuioObject,Group> object:
+                    this.objectList.entrySet()) {
+                ArrayList<ReactButton> buttons = ((TangibleObject) object.getValue()).getModule().getButtonList();
+                Module module = ((TangibleObject) object.getValue()).getModule();
+                for (ReactButton button:
+                     buttons) {
+                    if (button.localToScene(button.getBoundsInLocal()).intersects(fingerTouch.getBoundsInParent())) {
+                        if(CoreApplication.verbose) {
+                            System.out.printf("Hit auf %s%n",button.getName());
+                        }
+
+
+                        if(button.isEnabled()) {
+                            ((Rectangle) button.getChildren().get(0)).setFill(new Color(1, 1, 1, .9));
+                            ((FontIcon)button.getChildren().get(1)).setFill(new Color(0.4,0.6,0.8,1));
+
+                            if(module instanceof AudioPlayerModule) {
+                                switch (button.getName()) {
+                                    case "play":
+                                        ((AudioPlayerModule) module).play();
+                                        break;
+                                    case "pause":
+                                        ((AudioPlayerModule) module).pause();
+                                        break;
+                                    case "back":
+                                        ((AudioPlayerModule) module).rewind();
+                                        break;
+                                    case "next":
+                                        ((AudioPlayerModule) module).forward();
+                                        break;
+                                }
+                            }
+
+                        }
+                    } else {
+                        if(button.isEnabled()) {
+                            ((Rectangle) button.getChildren().get(0)).setFill(new Color(0.4,0.6,0.8,1));
+                            ((FontIcon) button.getChildren().get(1)).setFill(new Color(1, 1, 1, .9));
+                        }
+                    }
+                }
+            }
+
         }
         this.cursorGroup.getChildren().retainAll(this.cursorList.values());
 
@@ -187,29 +235,11 @@ public class AppController extends AppTimer implements Initializable, TuioListen
 
     @Override
     public void addTuioObject(TuioObject tobj) {
-        System.out.println("Object added!");
-        Group group = new Group();
-        Rectangle rectangle = new Rectangle(80,80,new Color(0.4,0.6,0.8,1));
-        Circle circle = new Circle(20,new Color(0.3,0.8,0.9,1));
-        Text idText = new Text(String.valueOf(tobj.getSymbolID()));
-        idText.setTranslateX(70);
-        rectangle.setArcWidth(20);
-        rectangle.setArcHeight(20);
-        rectangle.setTranslateX(-40);
-        rectangle.setTranslateY(-40);
-        group.getChildren().add(rectangle);
-        group.getChildren().add(circle);
-        group.getChildren().add(idText);
+        if(CoreApplication.verbose) {
+            System.out.println("Object added!");
+        }
 
-
-        ScaleTransition cst = Transitions.createScaleTransition(50,group,.5,1);
-        ScaleTransition cst2 = Transitions.createScaleTransition(100,circle,0,3);
-        FadeTransition cft2 = Transitions.createFadeTransition(200,circle,1,0,1);
-        this.objectList.put(tobj,group);
-        cst.play();
-        cst2.play();
-        cft2.play();
-        cft2.setOnFinished(e -> group.getChildren().remove(circle));
+        this.objectList.put(tobj,new TangibleObject(tobj));
     }
 
     @Override
@@ -219,14 +249,14 @@ public class AppController extends AppTimer implements Initializable, TuioListen
 
     @Override
     public void removeTuioObject(TuioObject tobj) {
-        System.out.println("Object removed!");
+        if(CoreApplication.verbose) System.out.println("Object removed!");
         this.objectList.remove(tobj);
     }
 
     @Override
     public void addTuioCursor(TuioCursor tcur) {
-        System.out.println("Cursor added!");
-        Circle circle = new Circle(15,Color.YELLOW);
+        if(CoreApplication.verbose) System.out.println("Cursor added!");
+        Circle circle = new Circle(15,Color.WHITE);
         ScaleTransition cst = Transitions.createScaleTransition(50,circle,.5,1);
         this.cursorList.put(tcur,circle);
         cst.play();
@@ -239,7 +269,7 @@ public class AppController extends AppTimer implements Initializable, TuioListen
 
     @Override
     public void removeTuioCursor(TuioCursor tcur) {
-        System.out.println("Cursor removed!");
+        if(CoreApplication.verbose) System.out.println("Cursor removed!");
         this.cursorList.remove(tcur);
     }
 
