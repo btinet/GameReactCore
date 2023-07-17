@@ -193,6 +193,10 @@ public class AudioPlayerModule extends Module {
             if (!slTime.isValueChanging()) {
                 setTime();
             }
+            for (Track track:
+                 tracks) {
+                track.setActive(player.getMediaPlayer().getCurrentTime());
+            }
             updateButtons();
         });
 

@@ -1,7 +1,6 @@
 package org.gamereact.controller;
 
 import com.tuio.*;
-import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
@@ -10,18 +9,16 @@ import javafx.scene.Group;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.scene.transform.Transform;
 import org.engine.*;
 import org.engine.Module;
+import org.gamereact.component.MenuBar;
 import org.gamereact.component.ReactButton;
 import org.gamereact.gamereactcore.CoreApplication;
 import org.gamereact.module.AudioPlayerModule;
 import org.kordamp.ikonli.javafx.FontIcon;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,6 +44,7 @@ public class AppController extends AppTimer implements Initializable, TuioListen
     private final Group layoutGroup = new Group();
     private final Group objectGroup = new Group();
     private final Group cursorGroup = new Group();
+    private final MenuBar menuBar = new MenuBar();
 
     private final HashMap<TuioCursor, Circle> cursorList = new HashMap<>();
     private final HashMap<TuioObject, Group> objectList = new HashMap<>();
@@ -73,8 +71,10 @@ public class AppController extends AppTimer implements Initializable, TuioListen
         this.transitionCircle.setStroke(new Color(1,1,1,.2));
         this.transitionCircle.setStrokeWidth(.1);
 
+
         this.layoutGroup.getChildren().add(this.transitionCircle);
         this.layoutGroup.getChildren().add(this.middleCircle);
+        this.layoutGroup.getChildren().add(this.menuBar);
 
         this.root.getChildren().add(layoutGroup);
         this.root.getChildren().add(objectGroup);
@@ -107,6 +107,8 @@ public class AppController extends AppTimer implements Initializable, TuioListen
         middleCircle.setTranslateY(root.getHeight()/2);
         transitionCircle.setTranslateX(root.getWidth()/2);
         transitionCircle.setTranslateY(root.getHeight()/2);
+        menuBar.setTranslateX(root.getWidth()/2);
+        menuBar.setTranslateY(root.getHeight()-50);
 
         if(!this.isPaused() && Math.round(this.animationDurationProperty().get()) % 4 == 0) {
             st.playFromStart();
@@ -185,8 +187,7 @@ public class AppController extends AppTimer implements Initializable, TuioListen
 
 
                         if(button.isEnabled()) {
-                            ((Rectangle) button.getChildren().get(0)).setFill(new Color(1, 1, 1, .9));
-                            ((FontIcon)button.getChildren().get(1)).setFill(new Color(0.4,0.6,0.8,1));
+                            ((FontIcon)button.getChildren().get(1)).setFill(new Color(0.4,0.6,0.8,.6));
 
                             if(module instanceof AudioPlayerModule) {
                                 switch (button.getName()) {
@@ -211,7 +212,6 @@ public class AppController extends AppTimer implements Initializable, TuioListen
                         }
                     } else {
                         if(button.isEnabled()) {
-                            ((Rectangle) button.getChildren().get(0)).setFill(new Color(0.4,0.6,0.8,1));
                             ((FontIcon) button.getChildren().get(1)).setFill(new Color(1, 1, 1, .9));
                         }
                     }

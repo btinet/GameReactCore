@@ -1,6 +1,7 @@
 package org.engine;
 
 import javafx.scene.Group;
+import javafx.scene.effect.Bloom;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -32,6 +33,7 @@ public class Track extends Group {
         this.background.setArcHeight(20);
         this.background.setArcWidth(20);
         this.background.setTranslateY(-25);
+        this.background.setEffect(new Bloom());
 
         getChildren().addAll(this.background,this.title,this.playButton);
     }
@@ -42,6 +44,14 @@ public class Track extends Group {
 
     public Text getTitle() {
         return title;
+    }
+
+    public void setActive(Duration currentDuration) {
+        if(currentDuration.greaterThanOrEqualTo(startDuration) && currentDuration.lessThan(endDuration)) {
+            background.setFill(new Color(0.4,0.9,0.5,.4));
+        } else {
+            background.setFill(new Color(0.4,0.6,0.8,.2));
+        }
     }
 
     public Duration getStartDuration() {

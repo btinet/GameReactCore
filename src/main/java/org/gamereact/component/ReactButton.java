@@ -1,6 +1,7 @@
 package org.gamereact.component;
 
 import javafx.scene.Group;
+import javafx.scene.effect.Bloom;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -12,7 +13,7 @@ public class ReactButton extends Group {
 
     protected String name;
     protected FontIcon icon;
-    protected Rectangle background = new Rectangle(40,40,new Color(0.4,0.6,0.8,1));
+    protected Rectangle background = new Rectangle(40,40,new Color(0.4,0.6,0.8,.4));
     private Boolean enabled = true;
     public ReactButton(String name, String iconCode) {
         this.name = name;
@@ -25,6 +26,7 @@ public class ReactButton extends Group {
         background.setTranslateY(-20);
         background.setArcWidth(12);
         background.setArcHeight(12);
+        background.setEffect(new Bloom());
         getChildren().addAll(background,icon);
     }
 
@@ -47,6 +49,9 @@ public class ReactButton extends Group {
         } else {
             icon.setIconColor(new Color(1,1,1,.2));
         }
-        background.setFill(new Color(0.4,0.6,0.8,1));
+    }
+
+    public void setBackground(Color color) {
+        background.setFill(color);
     }
 }

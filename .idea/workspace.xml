@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="add mediaplayer">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/Track.java" afterDir="false" />
+    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="update module">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/component/MenuBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Fonts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/Fonts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/MusicFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/MusicFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Track.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/Track.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/component/ReactButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/component/ReactButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModule.java" afterDir="false" />
     </list>
@@ -92,13 +92,21 @@
       <option name="project" value="LOCAL" />
       <updated>1689519674103</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="update module">
+      <created>1689579988587</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1689579988587</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="update files" />
     <MESSAGE value="add mediaplayer" />
-    <option name="LAST_COMMIT_MESSAGE" value="add mediaplayer" />
+    <MESSAGE value="update module" />
+    <option name="LAST_COMMIT_MESSAGE" value="update module" />
   </component>
 </project>
