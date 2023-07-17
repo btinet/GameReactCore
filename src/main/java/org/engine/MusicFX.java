@@ -9,7 +9,8 @@ import java.util.Objects;
 public enum MusicFX {
 
     SOLAR_SAILOR ("/music/solar_sailor.mp3"),
-    CANT_GET_OUTTA_THE_RAIN ("/music/cant_get_outta_the_rain.mp3");
+    CANT_GET_OUTTA_THE_RAIN ("/music/cant_get_outta_the_rain.mp3"),
+    GOETHE_EINS_UND_ALLES ("/music/goethe-eins_und_alles.mp3");
 
     private final MediaPlayer mediaPlayer;
 

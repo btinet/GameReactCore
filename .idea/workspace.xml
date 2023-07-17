@@ -4,70 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="update files">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/Fonts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/Module.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/MusicFX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/component/ReactButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro Block Border Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro Block Gradient Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro Block Innerline Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro Block Shadow-black Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro Inline Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro Letterpress Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro Light Italic Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro Light Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro Outlined Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro Regular Italic Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro Regular Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro SemiLight Italic Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro SemiLight Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro Thin Italic Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro Thin Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro Ultralight Italic Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Cocogoose Pro Ultralight Trial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/E1234-Italic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/E1234.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/ErbosDraco1StOpenNbpRegular-l5wX.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/EsquireGenericGamepdFont_CL.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/EsquireGenericGamepdFont_CS.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Good-Game.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Good-Game.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/IconMapping.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/OpenSans-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/OpenSans-BoldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/OpenSans-ExtraBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/OpenSans-ExtraBoldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/OpenSans-Italic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/OpenSans-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/OpenSans-LightItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/OpenSans-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/OpenSans-Semibold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/OpenSans-SemiboldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/OvercameDemoBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/OvercameDemoBoldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/OvercameDemoItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/OvercameDemoOutline.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/OvercameDemoRegular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/SnesItalic-1G9Be.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Tr2n.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/space-game.regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/steelfish bd it.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/steelfish bd.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/steelfish eb it.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/steelfish eb.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/steelfish outline.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/steelfish rg it.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/steelfish rg.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/stormfaze.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/music/cant_get_outta_the_rain.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/music/solar_sailor.mp3" afterDir="false" />
+    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="add mediaplayer">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/Track.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Fonts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/Fonts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/MusicFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/MusicFX.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModule.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,12 +85,20 @@
       <option name="project" value="LOCAL" />
       <updated>1689433775336</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add mediaplayer">
+      <created>1689519674103</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1689519674103</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="update files" />
-    <option name="LAST_COMMIT_MESSAGE" value="update files" />
+    <MESSAGE value="add mediaplayer" />
+    <option name="LAST_COMMIT_MESSAGE" value="add mediaplayer" />
   </component>
 </project>

@@ -9,6 +9,8 @@ public enum Fonts {
     BOLD_18 ("/fonts/OpenSans-Bold.ttf",18),
     BOLD_16 ("/fonts/OpenSans-Bold.ttf",16),
     REGULAR_16 ("/fonts/OpenSans-Regular.ttf",16),
+    REGULAR_14 ("/fonts/OpenSans-Regular.ttf",14),
+    REGULAR_12 ("/fonts/OpenSans-Regular.ttf",12),
     BOLD_12 ("/fonts/OpenSans-Bold.ttf",12);
 
 

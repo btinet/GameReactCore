@@ -164,6 +164,18 @@ public class AppController extends AppTimer implements Initializable, TuioListen
                     this.objectList.entrySet()) {
                 ArrayList<ReactButton> buttons = ((TangibleObject) object.getValue()).getModule().getButtonList();
                 Module module = ((TangibleObject) object.getValue()).getModule();
+
+                if(module instanceof AudioPlayerModule) {
+                    for (Track track:
+                         ((AudioPlayerModule) module).getTracks()) {
+                        if(track.getPlayButton().isEnabled()) {
+                            if(track.getPlayButton().localToScene(track.getPlayButton().getBoundsInLocal()).intersects(fingerTouch.getBoundsInParent())) {
+                                ((AudioPlayerModule) module).gotoAndPlay(track.getStartDuration());
+                            }
+                        }
+                    }
+                }
+
                 for (ReactButton button:
                      buttons) {
                     if (button.localToScene(button.getBoundsInLocal()).intersects(fingerTouch.getBoundsInParent())) {
@@ -189,6 +201,9 @@ public class AppController extends AppTimer implements Initializable, TuioListen
                                         break;
                                     case "next":
                                         ((AudioPlayerModule) module).forward();
+                                        break;
+                                    case "toggleTrackView":
+                                        ((AudioPlayerModule) module).toggleTrackView();
                                         break;
                                 }
                             }
