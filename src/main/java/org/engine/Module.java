@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class Module extends Group {
 
+    public static final String slash = System.getProperty("file.separator");
+    public static final String resources = "."+slash+"music"+slash;
     protected TangibleObject tangibleObject;
     protected ArrayList<ReactButton> buttonList = new ArrayList<>();
 

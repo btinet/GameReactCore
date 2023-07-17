@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+
+<marker>
+    <!-- Marker zuweisen -->
+    <object id="0" class="AUDIO_PLAYER_MODULE" file="goethe-eins_und_alles.mp3" title="Eins und Alles">
+        <!-- Abschnitte zuweisen, Start und Ende in ms -->
+        <part name="Strophe 1" start="12160" end="36592" />
+        <part name="Strophe 2" start="37708" end="63814" />
+        <part name="Strophe 3" start="64372" end="89139" />
+        <part name="Strophe 4" start="89197" end="117961" />
+    </object>
+    <object id="4" class="AUDIO_PLAYER_MODULE" file="goethe-eins_und_alles.mp3" title="Etepetete">
+        <!-- Abschnitte zuweisen, Start und Ende in ms -->
+        <part name="Intro" start="12160" end="36592" />
+        <part name="Strophe 1" start="37708" end="63814" />
+        <part name="Refrain" start="64372" end="89139" />
+        <part name="Strophe 2" start="89197" end="117961" />
+        <part name="Refrain" start="89197" end="117961" />
+        <part name="Break" start="89197" end="117961" />
+        <part name="Outro" start="89197" end="117961" />
+    </object>
+</marker>

@@ -253,7 +253,6 @@ public class AppController extends AppTimer implements Initializable, TuioListen
         if(CoreApplication.verbose) {
             System.out.println("Object added!");
         }
-
         this.objectList.put(tobj,new TangibleObject(tobj));
     }
 
@@ -265,6 +264,11 @@ public class AppController extends AppTimer implements Initializable, TuioListen
     @Override
     public void removeTuioObject(TuioObject tobj) {
         if(CoreApplication.verbose) System.out.println("Object removed!");
+        TangibleObject disposedObject = (TangibleObject) this.objectList.get(tobj);
+        if(disposedObject.getModule() instanceof AudioPlayerModule) {
+            ((AudioPlayerModule) disposedObject.getModule()).getMediaPlayer().dispose();
+        }
+
         this.objectList.remove(tobj);
     }
 

@@ -6,6 +6,7 @@ module org.gamereact.gamereactcore {
     requires org.kordamp.ikonli.javafx;
     requires com.almasb.fxgl.all;
     requires javafx.media;
+    requires java.xml;
 
     opens org.gamereact.gamereactcore to javafx.fxml;
     exports org.gamereact.gamereactcore;

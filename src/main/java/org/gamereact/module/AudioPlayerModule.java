@@ -6,6 +6,8 @@ import javafx.animation.TranslateTransition;
 import javafx.scene.Group;
 import javafx.scene.control.Slider;
 import javafx.scene.effect.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -17,7 +19,12 @@ import org.engine.MusicFX;
 import org.engine.Track;
 import org.gamereact.component.ReactButton;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class AudioPlayerModule extends Module {
@@ -36,184 +43,43 @@ public class AudioPlayerModule extends Module {
     Boolean trackView = false;
     Text title = new Text("Eins und Alles");
     Text time = new Text("23:45 | 24:14");
-    MusicFX player = MusicFX.GOETHE_EINS_UND_ALLES;
-    ArrayList<Track> tracks = new ArrayList<>();
+    MediaPlayer mediaPlayer;
+    ArrayList<Track> tracks;
     Group trackGroup = new Group();
 
-    public void rewind() {
-        player.backward();
-        updateButtons();
-    }
+    Media music = null;
 
-    public void forward() {
-        player.forward();
-        updateButtons();
-    }
+    public AudioPlayerModule(String title, String file, ArrayList<Track> tracks) {
+        this.title.setText(title);
+        File mediaFile = new File(resources+file);
+        music = new Media(mediaFile.toURI().toString());
 
-    public void play() {
-        player.play();
-        updateButtons();
-    }
+        this.mediaPlayer = new MediaPlayer(music);
 
-    public void gotoAndPlay(Duration startDuration) {
-        player.play();
-        player.getMediaPlayer().seek(startDuration);
-        updateButtons();
-    }
+        this.tracks = tracks;
 
-    public void pause() {
-        player.pause();
-        updateButtons();
-    }
-
-    public void stop() {
-        player.stop();
-        updateButtons();
-    }
-
-    public ArrayList<Track> getTracks() {
-        return tracks;
-    }
-
-    private void updateButtons() {
-        if(player.isPlaying()) {
-            playButton.setEnabled(false);
-            stopButton.setEnabled(true);
-        } else {
-            playButton.setEnabled(true);
-            stopButton.setEnabled(false);
-        }
-        prevButton.setEnabled(
-                player.getMediaPlayer().getCurrentTime().greaterThan(new Duration(0))
-        );
-        nextButton.setEnabled(
-                !player.getMediaPlayer().getCurrentTime().greaterThanOrEqualTo(player.getMediaPlayer().getTotalDuration())
-        );
-    }
-
-    public static String getTimeString(double millis) {
-        millis /= 1000;
-        String s = formatTime(millis % 60);
-        millis /= 60;
-        String m = formatTime(millis % 60);
-        millis /= 60;
-        String h = formatTime(millis % 24);
-        return h + ":" + m + ":" + s;
-    }
-
-    public static String formatTime(double time) {
-        int t = (int)time;
-        if (t > 9) { return String.valueOf(t); }
-        return "0" + t;
-    }
-
-    private void setTime() {
-        double total = this.player.getMediaPlayer().getTotalDuration().toMillis();
-        double current = this.player.getMediaPlayer().getCurrentTime().toMillis();
-        slTime.setMax(total);
-        slTime.setValue(current);
-        time.setText(getTimeString(current) + "/" + getTimeString(total));
-    }
-
-    private void enableToggleTrackViewButton() {
-        toggleTrackViewButton.setEnabled(true);
-        updateButtons();
-    }
-
-    private void toggleTrackButtons() {
-        for (Track track:
-             this.tracks) {
-            track.getPlayButton().setEnabled(!track.getPlayButton().isEnabled());
-        }
-    }
-
-    public void toggleTrackView() {
-
-        int trackCount = this.tracks.size();
-
-        toggleTrackViewButton.setEnabled(false);
-        updateButtons();
-        if(trackView) {
-            FadeTransition ft = new FadeTransition();
-            ft.setNode(this.trackGroup);
-            ft.setAutoReverse(false);
-            ft.setCycleCount(1);
-            ft.setDuration(new Duration(500));
-            ft.setFromValue(1);
-            ft.setToValue(0);
-
-            TranslateTransition tt = new TranslateTransition();
-            tt.setFromX(statusField.getTranslateX());
-            tt.setFromY(statusField.getTranslateY());
-            tt.setToX(statusField.getTranslateX());
-            tt.setToY(statusField.getTranslateY()+65*trackCount);
-            tt.setCycleCount(1);
-            tt.setAutoReverse(false);
-            tt.setDuration(new Duration(500));
-            tt.setNode(statusField);
-            tt.setOnFinished(e -> enableToggleTrackViewButton());
-            ft.setOnFinished(e -> toggleTrackButtons());
-            tt.play();
-            ft.play();
-        } else {
-            FadeTransition ft = new FadeTransition();
-            ft.setNode(this.trackGroup);
-            ft.setAutoReverse(false);
-            ft.setCycleCount(1);
-            ft.setDuration(new Duration(500));
-            ft.setFromValue(0);
-            ft.setToValue(1);
-
-            TranslateTransition tt = new TranslateTransition();
-            tt.setFromX(statusField.getTranslateX());
-            tt.setFromY(statusField.getTranslateY());
-            tt.setToX(statusField.getTranslateX());
-            tt.setToY(statusField.getTranslateY()-65*trackCount);
-            tt.setCycleCount(1);
-            tt.setAutoReverse(false);
-            tt.setDuration(new Duration(500));
-            tt.setNode(statusField);
-            tt.setOnFinished(e -> enableToggleTrackViewButton());
-            ft.setOnFinished(e -> toggleTrackButtons());
-            tt.play();
-            ft.play();
-        }
-
-        trackView = !trackView;
-    }
-
-
-    public AudioPlayerModule() {
         setTime();
 
-        this.player.getMediaPlayer().setOnEndOfMedia(this::stop);
-        this.player.getMediaPlayer().setOnStopped(this::updateButtons);
+        this.mediaPlayer.setOnEndOfMedia(this::stop);
+        this.mediaPlayer.setOnStopped(this::updateButtons);
 
-        this.player.getMediaPlayer().currentTimeProperty().addListener(ov -> {
+        this.mediaPlayer.currentTimeProperty().addListener(ov -> {
             if (!slTime.isValueChanging()) {
                 setTime();
             }
             for (Track track:
-                 tracks) {
-                track.setActive(player.getMediaPlayer().getCurrentTime());
+                    tracks) {
+                track.setActive(mediaPlayer.getCurrentTime());
             }
             updateButtons();
         });
 
         slTime.valueProperty().addListener(ov -> {
             if (slTime.isValueChanging()) {
-                this.player.getMediaPlayer().seek(new Duration(slTime.getValue()));
+                this.mediaPlayer.seek(new Duration(slTime.getValue()));
             }
         });
 
-        Track track1 = new Track("Strophe 1",new Duration(12160),new Duration(36592));
-        Track track2 = new Track("Strophe 2",new Duration(37708),new Duration(63814));
-        Track track3 = new Track("Strophe 3",new Duration(64372),new Duration(89139));
-        Track track4 = new Track("Strophe 4",new Duration(89197),new Duration(117961));
-        this.tracks.add(track1);
-        this.tracks.add(track2);
-        this.tracks.add(track3);
-        this.tracks.add(track4);
         this.trackGroup.getChildren().addAll(this.tracks);
         this.trackGroup.setTranslateX(-140);
         this.trackGroup.setTranslateY(-80);
@@ -299,6 +165,162 @@ public class AudioPlayerModule extends Module {
         getChildren().add(this.slTime);
         getChildren().addAll(this.buttonList);
 
+    }
+
+    public void play() {
+        mediaPlayer.play();
+        updateButtons();
+    }
+
+    public MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
+    }
+
+    public boolean isPlaying() {
+        return mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING;
+    }
+
+    public boolean isStopped() {
+        return mediaPlayer.getStatus() == MediaPlayer.Status.STOPPED;
+    }
+
+    public void pause() {
+        mediaPlayer.pause();
+        updateButtons();
+    }
+
+    public void stop() {
+        mediaPlayer.pause();
+        mediaPlayer.seek(new Duration(0));
+        mediaPlayer.stop();
+        updateButtons();
+
+    }
+
+    public void rewind() {
+        mediaPlayer.seek(mediaPlayer.getCurrentTime().subtract(Duration.seconds(1)));
+        updateButtons();
+    }
+    public void forward() {
+        mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(1)));
+        updateButtons();
+    }
+
+    public void gotoAndPlay(Duration startDuration) {
+        play();
+        mediaPlayer.seek(startDuration);
+        updateButtons();
+    }
+
+    public ArrayList<Track> getTracks() {
+        return tracks;
+    }
+
+    private void updateButtons() {
+        if(isPlaying()) {
+            playButton.setEnabled(false);
+            stopButton.setEnabled(true);
+        } else {
+            playButton.setEnabled(true);
+            stopButton.setEnabled(false);
+        }
+        prevButton.setEnabled(
+                mediaPlayer.getCurrentTime().greaterThan(new Duration(0))
+        );
+        nextButton.setEnabled(
+                !mediaPlayer.getCurrentTime().greaterThanOrEqualTo(mediaPlayer.getTotalDuration())
+        );
+    }
+
+    public static String getTimeString(double millis) {
+        millis /= 1000;
+        String s = formatTime(millis % 60);
+        millis /= 60;
+        String m = formatTime(millis % 60);
+        millis /= 60;
+        String h = formatTime(millis % 24);
+        return h + ":" + m + ":" + s;
+    }
+
+    public static String formatTime(double time) {
+        int t = (int)time;
+        if (t > 9) { return String.valueOf(t); }
+        return "0" + t;
+    }
+
+    private void setTime() {
+        double total = this.mediaPlayer.getTotalDuration().toMillis();
+        double current = this.mediaPlayer.getCurrentTime().toMillis();
+        slTime.setMax(total);
+        slTime.setValue(current);
+        time.setText(getTimeString(current) + "/" + getTimeString(total));
+    }
+
+    private void enableToggleTrackViewButton() {
+        toggleTrackViewButton.setEnabled(true);
+        updateButtons();
+    }
+
+    private void toggleTrackButtons() {
+        for (Track track:
+             this.tracks) {
+            track.getPlayButton().setEnabled(!track.getPlayButton().isEnabled());
+        }
+    }
+
+    public void toggleTrackView() {
+
+        int trackCount = this.tracks.size();
+
+        toggleTrackViewButton.setEnabled(false);
+        updateButtons();
+        if(trackView) {
+            FadeTransition ft = new FadeTransition();
+            ft.setNode(this.trackGroup);
+            ft.setAutoReverse(false);
+            ft.setCycleCount(1);
+            ft.setDuration(new Duration(500));
+            ft.setFromValue(1);
+            ft.setToValue(0);
+
+            TranslateTransition tt = new TranslateTransition();
+            tt.setFromX(statusField.getTranslateX());
+            tt.setFromY(statusField.getTranslateY());
+            tt.setToX(statusField.getTranslateX());
+            tt.setToY(statusField.getTranslateY()+65*trackCount);
+            tt.setCycleCount(1);
+            tt.setAutoReverse(false);
+            tt.setDuration(new Duration(500));
+            tt.setNode(statusField);
+            tt.setOnFinished(e -> enableToggleTrackViewButton());
+            ft.setOnFinished(e -> toggleTrackButtons());
+            tt.play();
+            ft.play();
+        } else {
+            FadeTransition ft = new FadeTransition();
+            ft.setNode(this.trackGroup);
+            ft.setAutoReverse(false);
+            ft.setCycleCount(1);
+            ft.setDuration(new Duration(500));
+            ft.setFromValue(0);
+            ft.setToValue(1);
+
+            TranslateTransition tt = new TranslateTransition();
+            tt.setFromX(statusField.getTranslateX());
+            tt.setFromY(statusField.getTranslateY());
+            tt.setToX(statusField.getTranslateX());
+            tt.setToY(statusField.getTranslateY()-65*trackCount);
+            tt.setCycleCount(1);
+            tt.setAutoReverse(false);
+            tt.setDuration(new Duration(500));
+            tt.setNode(statusField);
+            tt.setOnFinished(e -> enableToggleTrackViewButton());
+            ft.setOnFinished(e -> toggleTrackButtons());
+            tt.play();
+            ft.play();
+        }
+
+        trackView = !trackView;
     }
 
 }
