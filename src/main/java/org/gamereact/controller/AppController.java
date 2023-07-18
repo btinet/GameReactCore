@@ -16,6 +16,7 @@ import org.gamereact.component.MenuBar;
 import org.gamereact.component.ReactButton;
 import org.gamereact.gamereactcore.CoreApplication;
 import org.gamereact.module.AudioPlayerModule;
+import org.gamereact.module.VolumeControlModule;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.net.URL;
@@ -137,6 +138,9 @@ public class AppController extends AppTimer implements Initializable, TuioListen
                     case "fullscreen":
                         toggleFullscreen();
                         break;
+                    case "exit":
+                        System.exit(0);
+                        break;
                     default:
                 }
             }
@@ -159,6 +163,21 @@ public class AppController extends AppTimer implements Initializable, TuioListen
             group.getTransforms().clear();
             group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), 0, 0));
 
+            Module module = ((TangibleObject) object.getValue()).getModule();
+
+            if(module instanceof VolumeControlModule) {
+
+                VolumeControlModule volumeControlModule = (VolumeControlModule) module;
+                Circle v = volumeControlModule.getIntersectPane();
+
+                for (Map.Entry<TuioObject, Group> otherObject :
+                        this.objectList.entrySet()) {
+                    Module otherModule = ((TangibleObject) otherObject.getValue()).getModule();
+                    volumeControlModule.connect(otherModule);
+
+                }
+            }
+
             //group.getChildren().get(0).setRotate(object.getKey().getAngleDegrees());
         }
         this.objectGroup.getChildren().retainAll(this.objectList.values());
@@ -177,7 +196,6 @@ public class AppController extends AppTimer implements Initializable, TuioListen
 
             for (Map.Entry<TuioObject, Group> object :
                     this.objectList.entrySet()) {
-
 
                 try {
 
@@ -288,6 +306,9 @@ public class AppController extends AppTimer implements Initializable, TuioListen
         TangibleObject disposedObject = (TangibleObject) this.objectList.get(tobj);
         if (disposedObject.getModule() instanceof AudioPlayerModule) {
             ((AudioPlayerModule) disposedObject.getModule()).getMediaPlayer().dispose();
+        }
+        if (disposedObject.getModule() instanceof VolumeControlModule) {
+            ((VolumeControlModule) disposedObject.getModule()).disconnectAll();
         }
 
         this.objectList.remove(tobj);

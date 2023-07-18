@@ -18,8 +18,12 @@ public class MenuBar extends Group {
         ReactButton toggleFullscreenButton = new ReactButton("fullscreen", "jam-arrows-fullscreen");
         toggleFullscreenButton.setBackground(new Color(0.2,0.2,0.2,.2));
 
+        ReactButton exitApplication = new ReactButton("exit", "jam-log-out");
+        exitApplication.setBackground(new Color(0.2,0.2,0.2,.2));
+
         buttonList.add(startButton);
         buttonList.add(toggleFullscreenButton);
+        buttonList.add(exitApplication);
 
         Group buttonGroup = new Group();
         buttonGroup.setTranslateX(-360);
@@ -27,6 +31,7 @@ public class MenuBar extends Group {
 
         startButton.setTranslateX(0);
         toggleFullscreenButton.setTranslateX(60);
+        exitApplication.setTranslateX(120);
 
         Rectangle background = new Rectangle(800, 50, new Color(0, 0, 0, .6));
         background.setArcHeight(50);

@@ -1,13 +1,20 @@
 package org.gamereact.module;
 
+import org.engine.TangibleObject;
 import org.engine.Track;
 
 import java.util.ArrayList;
 
 public class AudioPlayerModuleBuilder {
+
+    private TangibleObject tangibleObject;
     private String title;
     private String file;
     private ArrayList<Track> tracks = new ArrayList<>();
+
+    public AudioPlayerModuleBuilder(TangibleObject tangibleObject) {
+        this.tangibleObject = tangibleObject;
+    }
 
     public AudioPlayerModuleBuilder setTitle(String title) {
         this.title = title;
@@ -30,6 +37,6 @@ public class AudioPlayerModuleBuilder {
     }
 
     public AudioPlayerModule createAudioPlayerModule() {
-        return new AudioPlayerModule(title, file, tracks);
+        return new AudioPlayerModule(tangibleObject,title, file, tracks);
     }
 }

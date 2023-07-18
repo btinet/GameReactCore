@@ -15,6 +15,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 import org.engine.Fonts;
 import org.engine.Module;
+import org.engine.TangibleObject;
 import org.engine.Track;
 import org.gamereact.component.ReactButton;
 
@@ -43,7 +44,9 @@ public class AudioPlayerModule extends Module {
     Group trackGroup = new Group();
     Media music = null;
 
-    public AudioPlayerModule(String title, String file, ArrayList<Track> tracks) {
+    public AudioPlayerModule(TangibleObject tangibleObject,String title, String file, ArrayList<Track> tracks) {
+        super(tangibleObject);
+        this.setConnectable(true);
         this.title.setText(title);
         File mediaFile = new File(resources+file);
         music = new Media(mediaFile.toURI().toString());

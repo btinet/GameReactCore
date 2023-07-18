@@ -21,6 +21,12 @@ public class Resource {
     public static final String resources = "."+slash;
     private String config_file = resources+"marker.xml";
 
+    private final TangibleObject tangibleObject;
+
+    public Resource(TangibleObject tangibleObject) {
+        this.tangibleObject = tangibleObject;
+    }
+
     public Module readConfig(int id) {
         Document doc = null;
         try {
@@ -40,7 +46,7 @@ public class Resource {
         assert doc != null;
         NodeList objectNodes = doc.getElementsByTagName("object");
         for (int i=0;i<objectNodes.getLength();i++) {
-            AudioPlayerModuleBuilder moduleBuilder = new AudioPlayerModuleBuilder();
+            AudioPlayerModuleBuilder moduleBuilder = new AudioPlayerModuleBuilder(tangibleObject);
             Node objectNode = objectNodes.item(i);
             int markerId = Integer.parseInt(((Element) objectNode).getAttribute("id"));
             String modelClassName = ((Element) objectNode).getAttribute("class");
@@ -60,7 +66,6 @@ public class Resource {
                                 .setTitle(title)
                                 .setFile(fileName)
                         ;
-
                         for (int k=0;k<parts.getLength();k++) {
                             Node part = parts.item(k);
                             String partName = ((Element) part).getAttribute("name");
@@ -70,15 +75,13 @@ public class Resource {
                         }
                         return moduleBuilder.createAudioPlayerModule();
                     case "VOLUME_CONTROL_MODULE":
-                        return new VolumeControlModule();
-                    default:
-                        break;
+                        return new VolumeControlModule(tangibleObject);
                 }
 
             }
 
         }
-        return new EmptyModule();
+        return new EmptyModule(tangibleObject);
     }
 
 }

@@ -9,7 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="update module" />
+    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="update module">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/Module.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Modules.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/Resource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/component/MenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/component/MenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModuleBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModuleBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/EmptyModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/EmptyModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
