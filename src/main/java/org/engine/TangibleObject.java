@@ -13,6 +13,7 @@ import org.gamereact.module.AudioPlayerModule;
 public class TangibleObject extends Group {
 
     private final Rectangle objectPane = new Rectangle(80,80,new Color(0.894,0.007,0.454,1));
+    private final Circle intersectPane = new Circle(160,new Color(0.894,0.507,0.454,.3));
     private final Circle dashPane = new Circle(20,new Color(0.3,0.8,0.9,1));
     private final Text idText = new Text();
     private Module module;
@@ -30,6 +31,7 @@ public class TangibleObject extends Group {
             objectPane.setTranslateY(-40);
             idText.setTranslateX(70);
             idText.setText(String.valueOf(tuioObject.getSymbolID()));
+            getChildren().add(intersectPane);
             getChildren().add(objectPane);
             getChildren().add(dashPane);
             getChildren().add(module);

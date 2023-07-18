@@ -15,16 +15,11 @@ import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 import org.engine.Fonts;
 import org.engine.Module;
-import org.engine.MusicFX;
 import org.engine.Track;
 import org.gamereact.component.ReactButton;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 
 public class AudioPlayerModule extends Module {
@@ -46,7 +41,6 @@ public class AudioPlayerModule extends Module {
     MediaPlayer mediaPlayer;
     ArrayList<Track> tracks;
     Group trackGroup = new Group();
-
     Media music = null;
 
     public AudioPlayerModule(String title, String file, ArrayList<Track> tracks) {

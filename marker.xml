@@ -15,8 +15,8 @@
         <part name="Strophe 1" start="37708" end="63814" />
         <part name="Refrain" start="64372" end="89139" />
         <part name="Strophe 2" start="89197" end="117961" />
-        <part name="Refrain" start="89197" end="117961" />
-        <part name="Break" start="89197" end="117961" />
         <part name="Outro" start="89197" end="117961" />
+    </object>
+	<object id="11" class="VOLUME_CONTROL_MODULE" file="" title="Volume">
     </object>
 </marker>

@@ -3,6 +3,8 @@ package org.engine;
 import javafx.util.Duration;
 import org.gamereact.module.AudioPlayerModule;
 import org.gamereact.module.AudioPlayerModuleBuilder;
+import org.gamereact.module.EmptyModule;
+import org.gamereact.module.VolumeControlModule;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -65,22 +67,18 @@ public class Resource {
                             int startDuration = Integer.parseInt(((Element) part).getAttribute("start"));
                             int endDuration = Integer.parseInt(((Element) part).getAttribute("end"));
                             moduleBuilder.addTrack(new Track(partName,new Duration(startDuration),new Duration(endDuration)));
-                            System.out.println("Track added!");
                         }
-                        System.out.println("Hallo Audio!");
                         return moduleBuilder.createAudioPlayerModule();
-
-                    case "VIDEO_PLAYER_MODULE":
-                        System.out.println("hallo");
-                        return null;
+                    case "VOLUME_CONTROL_MODULE":
+                        return new VolumeControlModule();
+                    default:
+                        break;
                 }
 
-            } else {
-                System.out.printf("Marker %s wurden keine Module zugewiesen!%n",id);
             }
 
         }
-        return null;
+        return new EmptyModule();
     }
 
 }

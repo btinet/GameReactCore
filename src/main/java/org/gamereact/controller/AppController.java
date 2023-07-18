@@ -9,7 +9,6 @@ import javafx.scene.Group;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Transform;
 import org.engine.*;
 import org.engine.Module;
@@ -29,35 +28,31 @@ import static org.gamereact.gamereactcore.CoreApplication.stage;
 
 public class AppController extends AppTimer implements Initializable, TuioListener {
 
-    @FXML
-    public BorderPane root;
     private final KeyPolling keys = KeyPolling.getInstance();
-    private double xOffset = 0;
-    private double yOffset = 0;
     private final Circle middleCircle = new Circle(20, Color.WHITE);
     private final Circle transitionCircle = new Circle(10);
-    private final Circle cursor = new Circle(20,Color.WHITE);
-    private final ScaleTransition st = Transitions.createScaleTransition(4000,transitionCircle,1,140);
-    private final FadeTransition ft = Transitions.createFadeTransition(2000,middleCircle,0,.5);
+    private final Circle cursor = new Circle(20, Color.WHITE);
+    private final ScaleTransition st = Transitions.createScaleTransition(4000, transitionCircle, 1, 140);
+    private final FadeTransition ft = Transitions.createFadeTransition(2000, middleCircle, 0, .5);
     private final TuioClient client = new TuioClient();
-
     private final Group layoutGroup = new Group();
     private final Group objectGroup = new Group();
     private final Group cursorGroup = new Group();
     private final MenuBar menuBar = new MenuBar();
-
     private final HashMap<TuioCursor, Circle> cursorList = new HashMap<>();
     private final HashMap<TuioObject, Group> objectList = new HashMap<>();
+    @FXML
+    public BorderPane root;
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     /**
      * Setup des Controllers, sobald die Stage vollständig verarbeitet wurde.
-     * @param location
-     * The location used to resolve relative paths for the root object, or
-     * {@code null} if the location is not known.
      *
-     * @param resources
-     * The resources used to localize the root object, or {@code null} if
-     * the root object was not localized.
+     * @param location  The location used to resolve relative paths for the root object, or
+     *                  {@code null} if the location is not known.
+     * @param resources The resources used to localize the root object, or {@code null} if
+     *                  the root object was not localized.
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -66,18 +61,16 @@ public class AppController extends AppTimer implements Initializable, TuioListen
         client.connect();
 
 
-
         this.transitionCircle.setFill(Color.TRANSPARENT);
-        this.transitionCircle.setStroke(new Color(1,1,1,.2));
+        this.transitionCircle.setStroke(new Color(1, 1, 1, .2));
         this.transitionCircle.setStrokeWidth(.1);
 
 
         this.layoutGroup.getChildren().add(this.transitionCircle);
-        this.layoutGroup.getChildren().add(this.middleCircle);
-        this.layoutGroup.getChildren().add(this.menuBar);
 
         this.root.getChildren().add(layoutGroup);
         this.root.getChildren().add(objectGroup);
+        this.root.getChildren().add(menuBar);
         this.root.getChildren().add(cursorGroup);
 
 
@@ -103,14 +96,14 @@ public class AppController extends AppTimer implements Initializable, TuioListen
      */
     @Override
     public void tick(float secondsSinceLastFrame) {
-        middleCircle.setTranslateX(root.getWidth()/2);
-        middleCircle.setTranslateY(root.getHeight()/2);
-        transitionCircle.setTranslateX(root.getWidth()/2);
-        transitionCircle.setTranslateY(root.getHeight()/2);
-        menuBar.setTranslateX(root.getWidth()/2);
-        menuBar.setTranslateY(root.getHeight()-50);
+        middleCircle.setTranslateX(root.getWidth() / 2);
+        middleCircle.setTranslateY(root.getHeight() / 2);
+        transitionCircle.setTranslateX(root.getWidth() / 2);
+        transitionCircle.setTranslateY(root.getHeight() / 2);
+        menuBar.setTranslateX(root.getWidth() / 2);
+        menuBar.setTranslateY(root.getHeight() - 50);
 
-        if(!this.isPaused() && Math.round(this.animationDurationProperty().get()) % 4 == 0) {
+        if (!this.isPaused() && Math.round(this.animationDurationProperty().get()) % 4 == 0) {
             st.playFromStart();
         }
 
@@ -124,7 +117,7 @@ public class AppController extends AppTimer implements Initializable, TuioListen
     BEGINN: Methoden, die während des gestarteten Timers aufgerufen werden.
      */
 
-    public void getKeyboardInput () {
+    public void getKeyboardInput() {
         // Periodische Tastenabfragen
         // z.B. keys.isDown(KeyCode)
 
@@ -134,11 +127,28 @@ public class AppController extends AppTimer implements Initializable, TuioListen
         if (keys.isPressed(ButtonConfig.exit)) System.exit(0);
     }
 
+    private void getMenuBarInput(Circle fingerTouch) {
+        for (ReactButton menuBarButton :
+                this.menuBar.getButtonList()) {
+            if (menuBarButton.localToScene(menuBarButton.getBoundsInLocal()).intersects(fingerTouch.getBoundsInParent())) {
+                switch (menuBarButton.getName()) {
+                    case "start":
+                        break;
+                    case "fullscreen":
+                        toggleFullscreen();
+                        break;
+                    default:
+                }
+            }
+        }
+    }
+
     private void getTangibleInput() {
 
-        for ( Map.Entry<TuioObject,Group> object:
+        for (Map.Entry<TuioObject, Group> object :
                 this.objectList.entrySet()) {
-            if(!this.objectGroup.getChildren().contains(object.getValue())) this.objectGroup.getChildren().add(object.getValue());
+            if (!this.objectGroup.getChildren().contains(object.getValue()))
+                this.objectGroup.getChildren().add(object.getValue());
             int cx = object.getKey().getScreenX((int) this.root.getWidth());
             int cy = object.getKey().getScreenY((int) this.root.getHeight());
             object.getValue().setTranslateX(cx);
@@ -147,76 +157,87 @@ public class AppController extends AppTimer implements Initializable, TuioListen
             Group group = object.getValue();
 
             group.getTransforms().clear();
-            group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), 0,0));
+            group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), 0, 0));
 
             //group.getChildren().get(0).setRotate(object.getKey().getAngleDegrees());
         }
         this.objectGroup.getChildren().retainAll(this.objectList.values());
 
-        for ( Map.Entry<TuioCursor,Circle> cursor:
+        for (Map.Entry<TuioCursor, Circle> cursor :
                 this.cursorList.entrySet()) {
-            if(!this.cursorGroup.getChildren().contains(cursor.getValue())) this.cursorGroup.getChildren().add(cursor.getValue());
+            if (!this.cursorGroup.getChildren().contains(cursor.getValue()))
+                this.cursorGroup.getChildren().add(cursor.getValue());
             int cx = cursor.getKey().getScreenX((int) this.root.getWidth());
             int cy = cursor.getKey().getScreenY((int) this.root.getHeight());
             cursor.getValue().setTranslateX(cx);
             cursor.getValue().setTranslateY(cy);
             Circle fingerTouch = cursor.getValue();
 
-            for ( Map.Entry<TuioObject,Group> object:
+            getMenuBarInput(fingerTouch);
+
+            for (Map.Entry<TuioObject, Group> object :
                     this.objectList.entrySet()) {
-                ArrayList<ReactButton> buttons = ((TangibleObject) object.getValue()).getModule().getButtonList();
-                Module module = ((TangibleObject) object.getValue()).getModule();
-
-                if(module instanceof AudioPlayerModule) {
-                    for (Track track:
-                         ((AudioPlayerModule) module).getTracks()) {
-                        if(track.getPlayButton().isEnabled()) {
-                            if(track.getPlayButton().localToScene(track.getPlayButton().getBoundsInLocal()).intersects(fingerTouch.getBoundsInParent())) {
-                                ((AudioPlayerModule) module).gotoAndPlay(track.getStartDuration());
-                            }
-                        }
-                    }
-                }
-
-                for (ReactButton button:
-                     buttons) {
-                    if (button.localToScene(button.getBoundsInLocal()).intersects(fingerTouch.getBoundsInParent())) {
-                        if(CoreApplication.verbose) {
-                            System.out.printf("Hit auf %s%n",button.getName());
-                        }
 
 
-                        if(button.isEnabled()) {
-                            ((FontIcon)button.getChildren().get(1)).setFill(new Color(0.4,0.6,0.8,.6));
+                try {
 
-                            if(module instanceof AudioPlayerModule) {
-                                switch (button.getName()) {
-                                    case "play":
-                                        ((AudioPlayerModule) module).play();
-                                        break;
-                                    case "pause":
-                                        ((AudioPlayerModule) module).pause();
-                                        break;
-                                    case "back":
-                                        ((AudioPlayerModule) module).rewind();
-                                        break;
-                                    case "next":
-                                        ((AudioPlayerModule) module).forward();
-                                        break;
-                                    case "toggleTrackView":
-                                        ((AudioPlayerModule) module).toggleTrackView();
-                                        break;
+                    Module module = ((TangibleObject) object.getValue()).getModule();
+                    ArrayList<ReactButton> buttons = module.getButtonList();
+
+                    if (module instanceof AudioPlayerModule) {
+                        for (Track track :
+                                ((AudioPlayerModule) module).getTracks()) {
+                            if (track.getPlayButton().isEnabled()) {
+                                if (track.getPlayButton().localToScene(track.getPlayButton().getBoundsInLocal()).intersects(fingerTouch.getBoundsInParent())) {
+                                    ((AudioPlayerModule) module).gotoAndPlay(track.getStartDuration());
                                 }
                             }
-
-                        }
-                    } else {
-                        if(button.isEnabled()) {
-                            ((FontIcon) button.getChildren().get(1)).setFill(new Color(1, 1, 1, .9));
                         }
                     }
+
+                    for (ReactButton button :
+                            buttons) {
+                        if (button.localToScene(button.getBoundsInLocal()).intersects(fingerTouch.getBoundsInParent())) {
+                            if (CoreApplication.verbose) {
+                                System.out.printf("Hit auf %s%n", button.getName());
+                            }
+
+
+                            if (button.isEnabled()) {
+                                ((FontIcon) button.getChildren().get(1)).setFill(new Color(0.4, 0.6, 0.8, .6));
+
+                                if (module instanceof AudioPlayerModule) {
+                                    switch (button.getName()) {
+                                        case "play":
+                                            ((AudioPlayerModule) module).play();
+                                            break;
+                                        case "pause":
+                                            ((AudioPlayerModule) module).pause();
+                                            break;
+                                        case "back":
+                                            ((AudioPlayerModule) module).rewind();
+                                            break;
+                                        case "next":
+                                            ((AudioPlayerModule) module).forward();
+                                            break;
+                                        case "toggleTrackView":
+                                            ((AudioPlayerModule) module).toggleTrackView();
+                                            break;
+                                    }
+                                }
+
+                            }
+                        } else {
+                            if (button.isEnabled()) {
+                                ((FontIcon) button.getChildren().get(1)).setFill(new Color(1, 1, 1, .9));
+                            }
+                        }
+                    }
+                } catch (NullPointerException ignored) {
+
                 }
             }
+
 
         }
         this.cursorGroup.getChildren().retainAll(this.cursorList.values());
@@ -250,10 +271,10 @@ public class AppController extends AppTimer implements Initializable, TuioListen
 
     @Override
     public void addTuioObject(TuioObject tobj) {
-        if(CoreApplication.verbose) {
+        if (CoreApplication.verbose) {
             System.out.println("Object added!");
         }
-        this.objectList.put(tobj,new TangibleObject(tobj));
+        this.objectList.put(tobj, new TangibleObject(tobj));
     }
 
     @Override
@@ -263,9 +284,9 @@ public class AppController extends AppTimer implements Initializable, TuioListen
 
     @Override
     public void removeTuioObject(TuioObject tobj) {
-        if(CoreApplication.verbose) System.out.println("Object removed!");
+        if (CoreApplication.verbose) System.out.println("Object removed!");
         TangibleObject disposedObject = (TangibleObject) this.objectList.get(tobj);
-        if(disposedObject.getModule() instanceof AudioPlayerModule) {
+        if (disposedObject.getModule() instanceof AudioPlayerModule) {
             ((AudioPlayerModule) disposedObject.getModule()).getMediaPlayer().dispose();
         }
 
@@ -274,10 +295,10 @@ public class AppController extends AppTimer implements Initializable, TuioListen
 
     @Override
     public void addTuioCursor(TuioCursor tcur) {
-        if(CoreApplication.verbose) System.out.println("Cursor added!");
-        Circle circle = new Circle(15,Color.WHITE);
-        ScaleTransition cst = Transitions.createScaleTransition(50,circle,.5,1);
-        this.cursorList.put(tcur,circle);
+        if (CoreApplication.verbose) System.out.println("Cursor added!");
+        Circle circle = new Circle(15, Color.WHITE);
+        ScaleTransition cst = Transitions.createScaleTransition(50, circle, .5, 1);
+        this.cursorList.put(tcur, circle);
         cst.play();
     }
 
@@ -288,7 +309,7 @@ public class AppController extends AppTimer implements Initializable, TuioListen
 
     @Override
     public void removeTuioCursor(TuioCursor tcur) {
-        if(CoreApplication.verbose) System.out.println("Cursor removed!");
+        if (CoreApplication.verbose) System.out.println("Cursor removed!");
         this.cursorList.remove(tcur);
     }
 
