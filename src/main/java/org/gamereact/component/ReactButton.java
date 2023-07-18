@@ -51,6 +51,11 @@ public class ReactButton extends Group {
         }
     }
 
+    public void setIcon(String name, String iconLiteral) {
+        this.icon.setIconLiteral(iconLiteral);
+        this.name = name;
+    }
+
     public void setBackground(Color color) {
         background.setFill(color);
     }

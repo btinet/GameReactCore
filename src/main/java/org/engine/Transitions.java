@@ -11,11 +11,11 @@ import javafx.util.Duration;
 
 public class Transitions {
 
-    public static FadeTransition createFadeTransition (int millis, Node node) {
-        return createFadeTransition(millis,node,0,1);
+    public static FadeTransition createFadeTransition(int millis, Node node) {
+        return createFadeTransition(millis, node, 0, 1);
     }
 
-    public static FadeTransition createFadeTransition (int millis, Node node, double from, double to,int cycleCount) {
+    public static FadeTransition createFadeTransition(int millis, Node node, double from, double to, int cycleCount) {
         FadeTransition transition = new FadeTransition(Duration.millis(millis), node);
         transition.setFromValue(from);
         transition.setToValue(to);
@@ -24,7 +24,7 @@ public class Transitions {
         return transition;
     }
 
-    public static ScaleTransition createScaleTransition (int millis, Node node, double from, double to) {
+    public static ScaleTransition createScaleTransition(int millis, Node node, double from, double to) {
         ScaleTransition transition = new ScaleTransition(Duration.millis(millis), node);
         transition.setFromX(from);
         transition.setFromY(from);
@@ -35,7 +35,7 @@ public class Transitions {
         return transition;
     }
 
-    public static FadeTransition createFadeTransition (int millis, Node node, double from, double to) {
+    public static FadeTransition createFadeTransition(int millis, Node node, double from, double to) {
         FadeTransition transition = new FadeTransition(Duration.millis(millis), node);
         transition.setFromValue(from);
         transition.setToValue(to);
@@ -44,8 +44,8 @@ public class Transitions {
         return transition;
     }
 
-    public static FillTransition createFillTransition (int millis, Shape shape, Color from, Color to, int cycleCount) {
-        FillTransition transition = new FillTransition(Duration.millis(millis),shape);
+    public static FillTransition createFillTransition(int millis, Shape shape, Color from, Color to, int cycleCount) {
+        FillTransition transition = new FillTransition(Duration.millis(millis), shape);
         transition.setFromValue(from);
         transition.setToValue(to);
         transition.setCycleCount(cycleCount);
@@ -53,8 +53,8 @@ public class Transitions {
         return transition;
     }
 
-    public static TranslateTransition createTranslateTransition (int duration, Node node) {
-        TranslateTransition translation = new TranslateTransition(new Duration(duration),node);
+    public static TranslateTransition createTranslateTransition(int duration, Node node) {
+        TranslateTransition translation = new TranslateTransition(new Duration(duration), node);
         translation.setCycleCount(1);
         translation.setAutoReverse(false);
         return translation;

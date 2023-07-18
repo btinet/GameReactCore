@@ -48,7 +48,7 @@ public class Track extends Group {
 
     public void setActive(Duration currentDuration) {
         if(currentDuration.greaterThanOrEqualTo(startDuration) && currentDuration.lessThan(endDuration)) {
-            background.setFill(new Color(0.4,0.9,0.5,.4));
+            background.setFill(new Color(0.4, 0.9, 0.5, .4));
         } else {
             background.setFill(new Color(0.4,0.6,0.8,.2));
         }

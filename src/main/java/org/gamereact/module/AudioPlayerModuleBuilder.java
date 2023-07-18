@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class AudioPlayerModuleBuilder {
 
-    private TangibleObject tangibleObject;
+    private final TangibleObject tangibleObject;
     private String title;
     private String file;
     private ArrayList<Track> tracks = new ArrayList<>();
@@ -37,6 +37,6 @@ public class AudioPlayerModuleBuilder {
     }
 
     public AudioPlayerModule createAudioPlayerModule() {
-        return new AudioPlayerModule(tangibleObject,title, file, tracks);
+        return new AudioPlayerModule(tangibleObject, title, file, tracks);
     }
 }

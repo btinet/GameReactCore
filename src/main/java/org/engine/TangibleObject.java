@@ -11,9 +11,9 @@ import javafx.scene.text.Text;
 
 public class TangibleObject extends Group {
 
-    private final Rectangle objectPane = new Rectangle(80,80,new Color(0.894,0.007,0.454,1));
-    private final Circle intersectPane = new Circle(100,new Color(0.3,0.8,0.9,.6));
-    private final Circle dashPane = new Circle(20,new Color(0.3,0.8,0.9,1));
+    private final Rectangle objectPane = new Rectangle(80, 80, new Color(0.894, 0.007, 0.454, 1));
+    private final Circle intersectPane = new Circle(100, new Color(0.3, 0.8, 0.9, .6));
+    private final Circle dashPane = new Circle(20, new Color(0.3, 0.8, 0.9, 1));
     private final Text idText = new Text();
     private Module module;
 
@@ -25,27 +25,27 @@ public class TangibleObject extends Group {
         group.getChildren().add(intersectPane);
 
 
-            module = resource.readConfig(tuioObject.getSymbolID());
-            module.setTranslateX(100);
-            objectPane.setArcWidth(20);
-            objectPane.setArcHeight(20);
-            objectPane.setTranslateX(-40);
-            objectPane.setTranslateY(-40);
-            idText.setTranslateX(70);
-            idText.setText(String.valueOf(tuioObject.getSymbolID()));
-            getChildren().add(group);
-            getChildren().add(objectPane);
-            getChildren().add(dashPane);
-            getChildren().add(module);
+        module = resource.readConfig(tuioObject.getSymbolID());
+        module.setTranslateX(100);
+        objectPane.setArcWidth(20);
+        objectPane.setArcHeight(20);
+        objectPane.setTranslateX(-40);
+        objectPane.setTranslateY(-40);
+        idText.setTranslateX(70);
+        idText.setText(String.valueOf(tuioObject.getSymbolID()));
+        getChildren().add(group);
+        getChildren().add(objectPane);
+        getChildren().add(dashPane);
+        getChildren().add(module);
 
-            ScaleTransition cst = Transitions.createScaleTransition(50,this,.5,1);
-            ScaleTransition cst2 = Transitions.createScaleTransition(100,dashPane,0,3);
-            FadeTransition cft2 = Transitions.createFadeTransition(200,dashPane,1,0,1);
+        ScaleTransition cst = Transitions.createScaleTransition(50, this, .5, 1);
+        ScaleTransition cst2 = Transitions.createScaleTransition(100, dashPane, 0, 3);
+        FadeTransition cft2 = Transitions.createFadeTransition(200, dashPane, 1, 0, 1);
 
-            cst.play();
-            cst2.play();
-            cft2.play();
-            cft2.setOnFinished(e -> this.getChildren().remove(dashPane));
+        cst.play();
+        cst2.play();
+        cft2.play();
+        cft2.setOnFinished(e -> this.getChildren().remove(dashPane));
 
     }
 

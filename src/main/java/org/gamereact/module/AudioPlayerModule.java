@@ -25,16 +25,16 @@ import java.util.ArrayList;
 
 public class AudioPlayerModule extends Module {
 
-    ReactButton prevButton = new ReactButton("back","jam-set-backward-square");
-    ReactButton stopButton = new ReactButton("pause","jam-pause");
-    ReactButton playButton = new ReactButton("play","jam-play-square");
-    ReactButton nextButton = new ReactButton("next","jam-set-forward-square");
-    ReactButton toggleTrackViewButton = new ReactButton("toggleTrackView","jam-info");
+    ReactButton prevButton = new ReactButton("back", "jam-set-backward-square");
+    ReactButton stopButton = new ReactButton("pause", "jam-pause");
+    ReactButton playButton = new ReactButton("play", "jam-play-square");
+    ReactButton nextButton = new ReactButton("next", "jam-set-forward-square");
+    ReactButton toggleTrackViewButton = new ReactButton("toggleTrackView", "jam-info");
     Slider slTime = new Slider();
-    Rectangle fill = new Rectangle(300,80,new Color(0.4,0.6,0.8,.2));
-    Rectangle frame = new Rectangle(300,80,Color.TRANSPARENT);
-    Rectangle statusField = new Rectangle(400,40,Color.TRANSPARENT);
-    Rectangle statusFillField = new Rectangle(400,40,new Color(0.4,0.6,0.8,.2).darker());
+    Rectangle fill = new Rectangle(300, 80, new Color(0.4, 0.6, 0.8, .2));
+    Rectangle frame = new Rectangle(300, 80, Color.TRANSPARENT);
+    Rectangle statusField = new Rectangle(400, 40, Color.TRANSPARENT);
+    Rectangle statusFillField = new Rectangle(400, 40, new Color(0.4, 0.6, 0.8, .2).darker());
 
     Boolean trackView = false;
     Text title = new Text("Eins und Alles");
@@ -44,11 +44,11 @@ public class AudioPlayerModule extends Module {
     Group trackGroup = new Group();
     Media music = null;
 
-    public AudioPlayerModule(TangibleObject tangibleObject,String title, String file, ArrayList<Track> tracks) {
+    public AudioPlayerModule(TangibleObject tangibleObject, String title, String file, ArrayList<Track> tracks) {
         super(tangibleObject);
         this.setConnectable(true);
         this.title.setText(title);
-        File mediaFile = new File(resources+file);
+        File mediaFile = new File(resources + file);
         music = new Media(mediaFile.toURI().toString());
 
         this.mediaPlayer = new MediaPlayer(music);
@@ -64,7 +64,7 @@ public class AudioPlayerModule extends Module {
             if (!slTime.isValueChanging()) {
                 setTime();
             }
-            for (Track track:
+            for (Track track :
                     tracks) {
                 track.setActive(mediaPlayer.getCurrentTime());
             }
@@ -84,11 +84,11 @@ public class AudioPlayerModule extends Module {
 
         int trackCount = this.tracks.size();
 
-        for (int i = 0; i<trackCount; i++) {
+        for (int i = 0; i < trackCount; i++) {
 
-            this.tracks.get(i).setTranslateY(-(trackCount-i)*50);
-            if(i % 2 == 0) {
-                ((Rectangle)this.tracks.get(i).getChildren().get(0)).setFill(new Color(0.4,0.6,0.8,.2));
+            this.tracks.get(i).setTranslateY(-(trackCount - i) * 50);
+            if (i % 2 == 0) {
+                ((Rectangle) this.tracks.get(i).getChildren().get(0)).setFill(new Color(0.4, 0.6, 0.8, .2));
             }
         }
 
@@ -96,18 +96,18 @@ public class AudioPlayerModule extends Module {
         this.slTime.setTranslateX(-40);
         this.slTime.setTranslateY(60);
 
-        this.time.setFill(new Color(1,1,1,.9));
+        this.time.setFill(new Color(1, 1, 1, .9));
         this.time.setTextAlignment(TextAlignment.RIGHT);
         this.time.setTranslateY(-74);
         this.time.setTranslateX(135);
         this.time.setFont(Fonts.REGULAR_14.getFont());
 
-        this.title.setFill(new Color(1,1,1,.9));
+        this.title.setFill(new Color(1, 1, 1, .9));
         this.title.setTranslateY(-74);
         this.title.setTranslateX(-130);
         this.title.setFont(Fonts.BOLD_16.getFont());
 
-        this.statusField.setStroke(new Color(0.4,0.6,0.8,1));
+        this.statusField.setStroke(new Color(0.4, 0.6, 0.8, 1));
 
         this.statusField.setTranslateY(-100);
         this.statusField.setStrokeWidth(2);
@@ -123,7 +123,7 @@ public class AudioPlayerModule extends Module {
         this.statusFillField.setArcHeight(20);
         this.statusFillField.setArcWidth(20);
 
-        this.frame.setStroke(new Color(0.4,0.6,0.8,1));
+        this.frame.setStroke(new Color(0.4, 0.6, 0.8, 1));
 
         this.frame.setTranslateY(-40);
         this.frame.setStrokeWidth(2);
@@ -152,7 +152,7 @@ public class AudioPlayerModule extends Module {
         this.buttonList.add(playButton);
         this.buttonList.add(nextButton);
         this.buttonList.add(toggleTrackViewButton);
-
+        addCancelConnectionButton();
         getChildren().add(this.fill);
         getChildren().add(this.trackGroup);
         getChildren().add(this.statusFillField);
@@ -198,6 +198,7 @@ public class AudioPlayerModule extends Module {
         mediaPlayer.seek(mediaPlayer.getCurrentTime().subtract(Duration.seconds(1)));
         updateButtons();
     }
+
     public void forward() {
         mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(1)));
         updateButtons();
@@ -214,7 +215,7 @@ public class AudioPlayerModule extends Module {
     }
 
     private void updateButtons() {
-        if(isPlaying()) {
+        if (isPlaying()) {
             playButton.setEnabled(false);
             stopButton.setEnabled(true);
         } else {
@@ -240,8 +241,10 @@ public class AudioPlayerModule extends Module {
     }
 
     public static String formatTime(double time) {
-        int t = (int)time;
-        if (t > 9) { return String.valueOf(t); }
+        int t = (int) time;
+        if (t > 9) {
+            return String.valueOf(t);
+        }
         return "0" + t;
     }
 
@@ -259,8 +262,8 @@ public class AudioPlayerModule extends Module {
     }
 
     private void toggleTrackButtons() {
-        for (Track track:
-             this.tracks) {
+        for (Track track :
+                this.tracks) {
             track.getPlayButton().setEnabled(!track.getPlayButton().isEnabled());
         }
     }
@@ -271,7 +274,7 @@ public class AudioPlayerModule extends Module {
 
         toggleTrackViewButton.setEnabled(false);
         updateButtons();
-        if(trackView) {
+        if (trackView) {
             FadeTransition ft = new FadeTransition();
             ft.setNode(this.trackGroup);
             ft.setAutoReverse(false);
@@ -284,7 +287,7 @@ public class AudioPlayerModule extends Module {
             tt.setFromX(statusField.getTranslateX());
             tt.setFromY(statusField.getTranslateY());
             tt.setToX(statusField.getTranslateX());
-            tt.setToY(statusField.getTranslateY()+65*trackCount);
+            tt.setToY(statusField.getTranslateY() + 65 * trackCount);
             tt.setCycleCount(1);
             tt.setAutoReverse(false);
             tt.setDuration(new Duration(500));
@@ -306,7 +309,7 @@ public class AudioPlayerModule extends Module {
             tt.setFromX(statusField.getTranslateX());
             tt.setFromY(statusField.getTranslateY());
             tt.setToX(statusField.getTranslateX());
-            tt.setToY(statusField.getTranslateY()-65*trackCount);
+            tt.setToY(statusField.getTranslateY() - 65 * trackCount);
             tt.setCycleCount(1);
             tt.setAutoReverse(false);
             tt.setDuration(new Duration(500));

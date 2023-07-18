@@ -18,8 +18,8 @@ import java.io.FileNotFoundException;
 public class Resource {
 
     public static final String slash = System.getProperty("file.separator");
-    public static final String resources = "."+slash;
-    private String config_file = resources+"marker.xml";
+    public static final String resources = "." + slash;
+    private String config_file = resources + "marker.xml";
 
     private final TangibleObject tangibleObject;
 
@@ -32,7 +32,7 @@ public class Resource {
         try {
             DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
-            doc = docBuilder.parse (new File(config_file));
+            doc = docBuilder.parse(new File(config_file));
 
             String docType = doc.getDocumentElement().getNodeName();
             if (!docType.equalsIgnoreCase("marker")) {
@@ -45,7 +45,7 @@ public class Resource {
 
         assert doc != null;
         NodeList objectNodes = doc.getElementsByTagName("object");
-        for (int i=0;i<objectNodes.getLength();i++) {
+        for (int i = 0; i < objectNodes.getLength(); i++) {
             AudioPlayerModuleBuilder moduleBuilder = new AudioPlayerModuleBuilder(tangibleObject);
             Node objectNode = objectNodes.item(i);
             int markerId = Integer.parseInt(((Element) objectNode).getAttribute("id"));
@@ -53,9 +53,9 @@ public class Resource {
             String fileName = ((Element) objectNode).getAttribute("file");
             String title = ((Element) objectNode).getAttribute("title");
 
-            if(id == markerId){
-                System.out.printf("Marker %s ist ein %s mit dem Titel '%s'%n",markerId,modelClassName,title);
-                System.out.printf("Eine Datei ist angehängt: %s%n%n",fileName);
+            if (id == markerId) {
+                System.out.printf("Marker %s ist ein %s mit dem Titel '%s'%n", markerId, modelClassName, title);
+                System.out.printf("Eine Datei ist angehängt: %s%n%n", fileName);
 
                 System.out.println("Folgende Abschnitte sind vorhanden:");
                 NodeList parts = ((Element) objectNode).getElementsByTagName("part");
@@ -66,12 +66,12 @@ public class Resource {
                                 .setTitle(title)
                                 .setFile(fileName)
                         ;
-                        for (int k=0;k<parts.getLength();k++) {
+                        for (int k = 0; k < parts.getLength(); k++) {
                             Node part = parts.item(k);
                             String partName = ((Element) part).getAttribute("name");
                             int startDuration = Integer.parseInt(((Element) part).getAttribute("start"));
                             int endDuration = Integer.parseInt(((Element) part).getAttribute("end"));
-                            moduleBuilder.addTrack(new Track(partName,new Duration(startDuration),new Duration(endDuration)));
+                            moduleBuilder.addTrack(new Track(partName, new Duration(startDuration), new Duration(endDuration)));
                         }
                         return moduleBuilder.createAudioPlayerModule();
                     case "VOLUME_CONTROL_MODULE":

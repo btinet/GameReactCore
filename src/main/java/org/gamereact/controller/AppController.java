@@ -165,7 +165,7 @@ public class AppController extends AppTimer implements Initializable, TuioListen
 
             Module module = ((TangibleObject) object.getValue()).getModule();
 
-            if(module instanceof VolumeControlModule) {
+            if (module instanceof VolumeControlModule) {
 
                 VolumeControlModule volumeControlModule = (VolumeControlModule) module;
                 Circle v = volumeControlModule.getIntersectPane();
@@ -224,6 +224,20 @@ public class AppController extends AppTimer implements Initializable, TuioListen
                             if (button.isEnabled()) {
                                 ((FontIcon) button.getChildren().get(1)).setFill(new Color(0.4, 0.6, 0.8, .6));
 
+                                if (module instanceof VolumeControlModule) {
+                                    switch (button.getName()) {
+                                        case "cancel":
+                                            ((VolumeControlModule) module).disconnectAll();
+                                            break;
+                                        case "lock":
+                                            ((VolumeControlModule) module).lockAll();
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+
+
                                 if (module instanceof AudioPlayerModule) {
                                     switch (button.getName()) {
                                         case "play":
@@ -240,6 +254,9 @@ public class AppController extends AppTimer implements Initializable, TuioListen
                                             break;
                                         case "toggleTrackView":
                                             ((AudioPlayerModule) module).toggleTrackView();
+                                            break;
+                                        case "cancel":
+                                            module.disconnect();
                                             break;
                                     }
                                 }
