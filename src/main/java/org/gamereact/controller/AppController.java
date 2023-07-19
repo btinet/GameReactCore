@@ -163,6 +163,11 @@ public class AppController extends AppTimer implements Initializable, TuioListen
             group.getTransforms().clear();
             group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), 0, 0));
 
+            if(((TangibleObject)object.getValue()).getModule() instanceof VolumeControlModule) {
+                VolumeControlModule volumeControlModule = (VolumeControlModule) ((TangibleObject)object.getValue()).getModule();
+                volumeControlModule.setParameter(object.getKey().getAngleDegrees());
+            }
+
             Module module = ((TangibleObject) object.getValue()).getModule();
 
             if (module instanceof VolumeControlModule) {

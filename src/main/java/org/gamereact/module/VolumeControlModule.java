@@ -3,7 +3,10 @@ package org.gamereact.module;
 
 import javafx.scene.effect.Bloom;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Arc;
+import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeLineCap;
 import org.engine.Module;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
@@ -15,8 +18,32 @@ public class VolumeControlModule extends Module {
     private final ReactButton lockConnectionButton = new ReactButton("lock", "jam-padlock-open");
     Rectangle fillRight = new Rectangle(80, 80, new Color(0.4, 0.6, 0.8, .2));
 
+    Arc getVolumeIndicatorBackground = new Arc();
+    Arc volumeIndicator = new Arc();
+
     public VolumeControlModule(TangibleObject tangibleObject) {
         super(tangibleObject);
+
+
+        getVolumeIndicatorBackground.setStartAngle(0);
+        getVolumeIndicatorBackground.setLength(360);
+        getVolumeIndicatorBackground.setRadiusX(80);
+        getVolumeIndicatorBackground.setRadiusY(80);
+        getVolumeIndicatorBackground.setStroke(new Color(1,1,1,.2));
+        getVolumeIndicatorBackground.setStrokeWidth(25);
+        getVolumeIndicatorBackground.setFill(Color.TRANSPARENT);
+        getVolumeIndicatorBackground.setTranslateX(-100);
+
+        volumeIndicator.setType(ArcType.OPEN);
+        volumeIndicator.setStrokeLineCap(StrokeLineCap.BUTT);
+        volumeIndicator.setStartAngle(90);
+        volumeIndicator.setLength(0);
+        volumeIndicator.setRadiusX(80);
+        volumeIndicator.setRadiusY(80);
+        volumeIndicator.setStroke(new Color(1,1,1,.4));
+        volumeIndicator.setStrokeWidth(25);
+        volumeIndicator.setFill(Color.TRANSPARENT);
+        volumeIndicator.setTranslateX(-100);
         moduleColor = createRandomColor();
         getIntersectPane().setFill(moduleColor);
 
@@ -35,6 +62,8 @@ public class VolumeControlModule extends Module {
         buttonList.add(lockConnectionButton);
         addCancelConnectionButton();
         getChildren().add(fillRight);
+        getChildren().add(getVolumeIndicatorBackground);
+        getChildren().add(volumeIndicator);
         getChildren().addAll(buttonList);
     }
 
@@ -62,6 +91,22 @@ public class VolumeControlModule extends Module {
 
     }
 
+    public void setParameter(double angle) {
+
+        volumeIndicator.setLength(angle);
+
+        double parameter = angle/360;
+
+        for (Module module : this.moduleList) {
+            if(module instanceof AudioPlayerModule) {
+                AudioPlayerModule audioPlayerModule = (AudioPlayerModule) module;
+                audioPlayerModule.getMediaPlayer().setVolume(parameter);
+            }
+
+        }
+    }
+
+
     public void disconnectAll() {
         disconnect();
         lockConnectionButton.setEnabled(false);
@@ -80,6 +125,7 @@ public class VolumeControlModule extends Module {
         this.lockConnectionButton.setBackground(new Color(0.9, 0.2, 0.5, .4));
         for (Module module : this.moduleList) {
             module.lock();
+
         }
     }
 }
