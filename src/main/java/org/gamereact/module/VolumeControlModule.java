@@ -75,7 +75,7 @@ public class VolumeControlModule extends Module {
                 if (otherModule.isConnectable()) {
                     System.out.println("Connectable!");
 
-                    if (otherModule instanceof AudioPlayerModule) {
+                    if (otherModule instanceof MultimediaModule) {
                         System.out.println("Schedule connection!");
                         otherModule.setModuleColor(this.moduleColor);
                         getConnectIndicator().play();
@@ -98,9 +98,9 @@ public class VolumeControlModule extends Module {
         double parameter = angle/360;
 
         for (Module module : this.moduleList) {
-            if(module instanceof AudioPlayerModule) {
-                AudioPlayerModule audioPlayerModule = (AudioPlayerModule) module;
-                audioPlayerModule.getMediaPlayer().setVolume(parameter);
+            if(module instanceof MultimediaModule) {
+                MultimediaModule MultimediaModule = (MultimediaModule) module;
+                MultimediaModule.getMediaPlayer().setVolume(parameter);
             }
 
         }

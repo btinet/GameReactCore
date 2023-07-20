@@ -10,9 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="update module">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/MultimediaModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/marker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/marker.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/music/goethe-eins_und_alles.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/music/goethe-eins_und_alles.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModule.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689708458378</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="update module">
+      <created>1689752721604</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1689752721604</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

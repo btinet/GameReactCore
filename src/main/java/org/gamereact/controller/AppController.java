@@ -15,7 +15,8 @@ import org.engine.Module;
 import org.gamereact.component.MenuBar;
 import org.gamereact.component.ReactButton;
 import org.gamereact.gamereactcore.CoreApplication;
-import org.gamereact.module.AudioPlayerModule;
+import org.gamereact.module.MultimediaModule;
+import org.gamereact.module.MultimediaModule;
 import org.gamereact.module.VolumeControlModule;
 import org.kordamp.ikonli.javafx.FontIcon;
 
@@ -207,12 +208,12 @@ public class AppController extends AppTimer implements Initializable, TuioListen
                     Module module = ((TangibleObject) object.getValue()).getModule();
                     ArrayList<ReactButton> buttons = module.getButtonList();
 
-                    if (module instanceof AudioPlayerModule) {
+                    if (module instanceof MultimediaModule) {
                         for (Track track :
-                                ((AudioPlayerModule) module).getTracks()) {
+                                ((MultimediaModule) module).getTracks()) {
                             if (track.getPlayButton().isEnabled()) {
                                 if (track.getPlayButton().localToScene(track.getPlayButton().getBoundsInLocal()).intersects(fingerTouch.getBoundsInParent())) {
-                                    ((AudioPlayerModule) module).gotoAndPlay(track.getStartDuration());
+                                    ((MultimediaModule) module).gotoAndPlay(track.getStartDuration());
                                 }
                             }
                         }
@@ -243,22 +244,22 @@ public class AppController extends AppTimer implements Initializable, TuioListen
                                 }
 
 
-                                if (module instanceof AudioPlayerModule) {
+                                if (module instanceof MultimediaModule) {
                                     switch (button.getName()) {
                                         case "play":
-                                            ((AudioPlayerModule) module).play();
+                                            ((MultimediaModule) module).play();
                                             break;
                                         case "pause":
-                                            ((AudioPlayerModule) module).pause();
+                                            ((MultimediaModule) module).pause();
                                             break;
                                         case "back":
-                                            ((AudioPlayerModule) module).rewind();
+                                            ((MultimediaModule) module).rewind();
                                             break;
                                         case "next":
-                                            ((AudioPlayerModule) module).forward();
+                                            ((MultimediaModule) module).forward();
                                             break;
                                         case "toggleTrackView":
-                                            ((AudioPlayerModule) module).toggleTrackView();
+                                            ((MultimediaModule) module).toggleTrackView();
                                             break;
                                         case "cancel":
                                             module.disconnect();
@@ -326,8 +327,8 @@ public class AppController extends AppTimer implements Initializable, TuioListen
     public void removeTuioObject(TuioObject tobj) {
         if (CoreApplication.verbose) System.out.println("Object removed!");
         TangibleObject disposedObject = (TangibleObject) this.objectList.get(tobj);
-        if (disposedObject.getModule() instanceof AudioPlayerModule) {
-            ((AudioPlayerModule) disposedObject.getModule()).getMediaPlayer().dispose();
+        if (disposedObject.getModule() instanceof MultimediaModule) {
+            ((MultimediaModule) disposedObject.getModule()).getMediaPlayer().dispose();
         }
         if (disposedObject.getModule() instanceof VolumeControlModule) {
             ((VolumeControlModule) disposedObject.getModule()).disconnectAll();

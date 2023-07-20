@@ -9,14 +9,7 @@
         <part name="Strophe 3" start="64372" end="89139" />
         <part name="Strophe 4" start="89197" end="117961" />
     </object>
-    <object id="4" class="AUDIO_PLAYER_MODULE" file="goethe-eins_und_alles.mp3" title="Etepetete">
-        <!-- Abschnitte zuweisen, Start und Ende in ms -->
-        <part name="Intro" start="12160" end="36592" />
-        <part name="Strophe 1" start="37708" end="63814" />
-        <part name="Refrain" start="64372" end="89139" />
-        <part name="Strophe 2" start="89197" end="117961" />
-        <part name="Outro" start="89197" end="117961" />
-    </object>
+    <object id="4" class="AUDIO_PLAYER_MODULE" file="forest-lullaby-110624.mp3" title="Forest Lullaby"></object>
 	<object id="11" class="VOLUME_CONTROL_MODULE" file="" title="Volume">
     </object>
 </marker>
