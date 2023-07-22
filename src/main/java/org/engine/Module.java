@@ -17,17 +17,14 @@ public class Module extends Group {
     public static final String resources = "." + slash + "music" + slash;
     protected TangibleObject tangibleObject;
     protected ArrayList<ReactButton> buttonList = new ArrayList<>();
-
     private final FadeTransition connectIndicator;
-
     protected Color moduleColor = Color.GREEN;
     private Boolean connectable = false;
     private Boolean connectionScheduled = false;
     private Boolean connected = false;
     private Module controlModule;
     protected ArrayList<Module> moduleList = new ArrayList<>();
-
-    protected ReactButton cancelConnectionButton = new ReactButton("cancel", "jam-stop-sign");
+    protected ReactButton cancelConnectionButton = new ReactButton("cancel", "ci-center-circle");
     Rectangle fillLeft = new Rectangle(80, 80, new Color(0.4, 0.6, 0.8, .2));
 
     public Module(TangibleObject tangibleObject) {
@@ -52,7 +49,7 @@ public class Module extends Group {
 
         int red = rand.nextInt(255);
         int green = rand.nextInt(255);
-        int blue = rand.nextInt(255);
+        int blue = rand.nextInt(50);
 
         return Color.rgb(red,green,blue,.6);
     }

@@ -1,10 +1,7 @@
 package org.engine;
 
 import javafx.util.Duration;
-import org.gamereact.module.AudioPlayerModule;
-import org.gamereact.module.AudioPlayerModuleBuilder;
-import org.gamereact.module.EmptyModule;
-import org.gamereact.module.VolumeControlModule;
+import org.gamereact.module.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -76,6 +73,12 @@ public class Resource {
                         return moduleBuilder.createAudioPlayerModule();
                     case "VOLUME_CONTROL_MODULE":
                         return new VolumeControlModule(tangibleObject);
+                    case "AXIS_SCROLL_CONTROL_MODULE":
+                        return new AxisScrollControlModule(tangibleObject);
+                    case "ROTATION_SIGNAL_OUTPUT_MODULE":
+                        return new RotationSignalOutputModule(tangibleObject);
+                    case "CHART_MODULE":
+                        return new ChartModule(tangibleObject);
                 }
 
             }

@@ -92,5 +92,9 @@ public abstract class AppTimer extends AnimationTimer {
     }
 
     public abstract void tick(float secondsSinceLastFrame);
+
+    public double getAnimationDuration() {
+        return animationDuration.get();
+    }
 }
 

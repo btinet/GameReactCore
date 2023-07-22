@@ -15,9 +15,8 @@ import org.engine.Module;
 import org.gamereact.component.MenuBar;
 import org.gamereact.component.ReactButton;
 import org.gamereact.gamereactcore.CoreApplication;
+import org.gamereact.module.*;
 import org.gamereact.module.MultimediaModule;
-import org.gamereact.module.MultimediaModule;
-import org.gamereact.module.VolumeControlModule;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.net.URL;
@@ -111,7 +110,7 @@ public class AppController extends AppTimer implements Initializable, TuioListen
 
 
         getKeyboardInput();
-        getTangibleInput();
+        getTangibleInput(getAnimationDuration());
 
     }
 
@@ -148,7 +147,7 @@ public class AppController extends AppTimer implements Initializable, TuioListen
         }
     }
 
-    private void getTangibleInput() {
+    private void getTangibleInput(double AnimationDuration) {
 
         for (Map.Entry<TuioObject, Group> object :
                 this.objectList.entrySet()) {
@@ -169,12 +168,40 @@ public class AppController extends AppTimer implements Initializable, TuioListen
                 volumeControlModule.setParameter(object.getKey().getAngleDegrees());
             }
 
+            /*
+            Instantiate module from objectList
+             */
             Module module = ((TangibleObject) object.getValue()).getModule();
+
+            if (module instanceof AxisScrollControlModule) {
+
+                AxisScrollControlModule axisScrollControlModule = (AxisScrollControlModule) module;
+                axisScrollControlModule.setParameter(getAnimationDuration(),object.getKey().getAngle() );
+
+                for (Map.Entry<TuioObject, Group> otherObject :
+                        this.objectList.entrySet()) {
+                    Module otherModule = ((TangibleObject) otherObject.getValue()).getModule();
+                    axisScrollControlModule.connect(otherModule);
+
+                }
+            }
+
+            if (module instanceof RotationSignalOutputModule) {
+
+                RotationSignalOutputModule axisScrollControlModule = (RotationSignalOutputModule) module;
+                axisScrollControlModule.setParameter(getAnimationDuration(),object.getKey().getAngle() );
+
+                for (Map.Entry<TuioObject, Group> otherObject :
+                        this.objectList.entrySet()) {
+                    Module otherModule = ((TangibleObject) otherObject.getValue()).getModule();
+                    axisScrollControlModule.connect(otherModule);
+
+                }
+            }
 
             if (module instanceof VolumeControlModule) {
 
                 VolumeControlModule volumeControlModule = (VolumeControlModule) module;
-                Circle v = volumeControlModule.getIntersectPane();
 
                 for (Map.Entry<TuioObject, Group> otherObject :
                         this.objectList.entrySet()) {
@@ -228,21 +255,47 @@ public class AppController extends AppTimer implements Initializable, TuioListen
 
 
                             if (button.isEnabled()) {
-                                ((FontIcon) button.getChildren().get(1)).setFill(new Color(0.4, 0.6, 0.8, .6));
 
-                                if (module instanceof VolumeControlModule) {
+                                if (module instanceof ControlModule) {
                                     switch (button.getName()) {
                                         case "cancel":
-                                            ((VolumeControlModule) module).disconnectAll();
+                                            ((ControlModule) module).disconnectAll();
+                                            System.out.println("Disconnect!");
                                             break;
                                         case "lock":
-                                            ((VolumeControlModule) module).lockAll();
+                                            ((ControlModule) module).lockAll();
+                                            System.out.println("Lock!");
                                             break;
                                         default:
                                             break;
                                     }
                                 }
 
+                                if (module instanceof ChartModule) {
+                                    switch (button.getName()) {
+                                        case "zoom-in":
+                                            ((ChartModule) module).zoomIn();
+                                            System.out.println("Zoom in!");
+                                            break;
+                                        case "zoom-out":
+                                            ((ChartModule) module).zoomOut();
+                                            System.out.println("Zoom out!");
+                                            break;
+                                        case "play":
+                                            ((ChartModule) module).togglePause(AnimationDuration);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+
+                                if (module instanceof ControllableModule) {
+                                    switch (button.getName()) {
+                                        case "cancel":
+                                            module.disconnect();
+                                            break;
+                                    }
+                                }
 
                                 if (module instanceof MultimediaModule) {
                                     switch (button.getName()) {
@@ -260,9 +313,6 @@ public class AppController extends AppTimer implements Initializable, TuioListen
                                             break;
                                         case "toggleTrackView":
                                             ((MultimediaModule) module).toggleTrackView();
-                                            break;
-                                        case "cancel":
-                                            module.disconnect();
                                             break;
                                     }
                                 }
@@ -332,6 +382,9 @@ public class AppController extends AppTimer implements Initializable, TuioListen
         }
         if (disposedObject.getModule() instanceof VolumeControlModule) {
             ((VolumeControlModule) disposedObject.getModule()).disconnectAll();
+        }
+        if(disposedObject.getModule() instanceof ChartModule) {
+            ((ChartModule) disposedObject.getModule()).resetData();
         }
 
         this.objectList.remove(tobj);

@@ -9,7 +9,9 @@
         <part name="Strophe 3" start="64372" end="89139" />
         <part name="Strophe 4" start="89197" end="117961" />
     </object>
-    <object id="4" class="AUDIO_PLAYER_MODULE" file="forest-lullaby-110624.mp3" title="Forest Lullaby"></object>
-	<object id="11" class="VOLUME_CONTROL_MODULE" file="" title="Volume">
-    </object>
+    <object id="4" class="AUDIO_PLAYER_MODULE" file="forest-lullaby-110624.mp3" title="Forest Lullaby"/>
+	<object id="1" class="CHART_MODULE" file="" title="Voltage" />
+	<object id="2" class="VOLUME_CONTROL_MODULE" file="" title="Volume" />
+	<object id="11" class="AXIS_SCROLL_CONTROL_MODULE" file="" title="X-Scroll" />
+	<object id="10" class="ROTATION_SIGNAL_OUTPUT_MODULE" file="" title="X-Scroll" />
 </marker>

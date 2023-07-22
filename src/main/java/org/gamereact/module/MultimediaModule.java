@@ -13,7 +13,6 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 import org.engine.Fonts;
-import org.engine.Module;
 import org.engine.TangibleObject;
 import org.engine.Track;
 import org.gamereact.component.ReactButton;
@@ -21,7 +20,7 @@ import org.gamereact.component.ReactButton;
 import java.io.File;
 import java.util.ArrayList;
 
-public abstract class MultimediaModule extends Module {
+public abstract class MultimediaModule extends ControllableModule {
 
     Rectangle fill = new Rectangle(300, 80, new Color(0.4, 0.6, 0.8, .2));
     Rectangle frame = new Rectangle(300, 80, Color.TRANSPARENT);

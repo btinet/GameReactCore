@@ -27,6 +27,7 @@ public class CoreApplication extends Application {
         CoreApplication.stage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(CoreApplication.class.getResource("index.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), width, height);
+        scene.getStylesheets().add(Objects.requireNonNull(this.getClass().getResource("/css/chart.css")).toExternalForm());
 
         KeyPolling.getInstance().pollScene(scene);
 
