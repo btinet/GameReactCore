@@ -10,22 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="update module">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/component/ToolBar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AxisScrollControlModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ChartModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControlModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControllableModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/RotationSignalOutputModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/css/chart.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/MarkerListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/ModuleInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/marker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/marker.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/AppTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/AppTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/Module.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/Resource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/component/ReactButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/component/ReactButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/component/ToolBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/component/ToolBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/gamereactcore/CoreApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/gamereactcore/CoreApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AxisScrollControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AxisScrollControlModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ChartModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ChartModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControlModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControllableModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControllableModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/EmptyModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/EmptyModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/MultimediaModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/MultimediaModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/RotationSignalOutputModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/RotationSignalOutputModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,6 +36,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -178,8 +179,26 @@
       <option name="project" value="LOCAL" />
       <updated>1689866229970</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="update module">
+      <created>1690028249424</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1690028249424</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

@@ -1,5 +1,6 @@
 package org.engine;
 
+import com.tuio.TuioCursor;
 import com.tuio.TuioObject;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
@@ -9,28 +10,32 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class TangibleObject extends Group {
 
     private final Rectangle objectPane = new Rectangle(80, 80, new Color(0.894, 0.007, 0.454, 1));
     private final Circle intersectPane = new Circle(100, new Color(0.3, 0.8, 0.9, .6));
     private final Circle dashPane = new Circle(20, new Color(0.3, 0.8, 0.9, 1));
-    private final Text idText = new Text();
-    private Module module;
+    private final Module module;
+    private final HashMap<TuioCursor, Circle> cursorList;
 
-    private Resource resource = new Resource(this);
-
-    public TangibleObject(TuioObject tuioObject) {
+    public TangibleObject(TuioObject tuioObject, HashMap<TuioCursor, Circle> cursorList) {
+        this.cursorList = cursorList;
         intersectPane.setOpacity(0);
         Group group = new Group();
         group.getChildren().add(intersectPane);
 
 
+        Resource resource = new Resource(this);
         module = resource.readConfig(tuioObject.getSymbolID());
         module.setTranslateX(100);
         objectPane.setArcWidth(20);
         objectPane.setArcHeight(20);
         objectPane.setTranslateX(-40);
         objectPane.setTranslateY(-40);
+        Text idText = new Text();
         idText.setTranslateX(70);
         idText.setText(String.valueOf(tuioObject.getSymbolID()));
         getChildren().add(group);
@@ -49,15 +54,15 @@ public class TangibleObject extends Group {
 
     }
 
-    public Rectangle getObjectPane() {
-        return objectPane;
-    }
-
     public Circle getIntersectPane() {
         return intersectPane;
     }
 
     public Module getModule() {
         return module;
+    }
+
+    public HashMap<TuioCursor, Circle> getCursorList () {
+        return this.cursorList;
     }
 }

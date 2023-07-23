@@ -1,5 +1,6 @@
 package org.engine;
 
+import com.tuio.TuioCursor;
 import javafx.animation.FadeTransition;
 import javafx.scene.Group;
 import javafx.scene.effect.Bloom;
@@ -8,10 +9,9 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import org.gamereact.component.ReactButton;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
-public class Module extends Group {
+public abstract class Module extends Group implements ModuleInterface {
 
     public static final String slash = System.getProperty("file.separator");
     public static final String resources = "." + slash + "music" + slash;
@@ -86,12 +86,12 @@ public class Module extends Group {
         getConnectIndicator().play();
     }
 
-    public Rectangle getObjectPane() {
-        return this.tangibleObject.getObjectPane();
-    }
-
     public Circle getIntersectPane() {
         return this.tangibleObject.getIntersectPane();
+    }
+
+    public Set<Map.Entry<TuioCursor, Circle>> getCursorList() {
+        return this.tangibleObject.getCursorList().entrySet();
     }
 
     public FadeTransition getConnectIndicator() {

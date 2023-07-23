@@ -1,6 +1,7 @@
 package org.gamereact.module;
 
 
+import com.tuio.TuioCursor;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -11,12 +12,15 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.effect.Bloom;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
 import org.gamereact.component.ToolBar;
+import org.gamereact.gamereactcore.CoreApplication;
 
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -198,5 +202,19 @@ public class ChartModule extends ControllableModule {
         }
         ((NumberAxis)chart.getXAxis()).setLowerBound(lowerBound);
         ((NumberAxis)chart.getXAxis()).setUpperBound(upperBound);
+    }
+
+    @Override
+    public void doAction() {
+
+        // Aktionen für jede Fingereingabe überprüfen:
+        for (Map.Entry<TuioCursor,Circle> finger : getCursorList()) {
+            for(ReactButton button : getButtonList()) {
+                if (button.isEnabled() && button.intersects(finger.getValue())) {
+                    System.out.printf("Treffer auf %s%n", button.getName());
+                }
+            }
+        }
+
     }
 }

@@ -13,7 +13,7 @@ import org.gamereact.component.ReactButton;
 
 import java.util.ArrayList;
 
-public class ControlModule extends Module {
+public abstract class ControlModule extends Module {
 
     private final ReactButton lockConnectionButton = new ReactButton("lock", "jam-padlock-open");
     Rectangle fillRight = new Rectangle(80, 80, new Color(0.4, 0.6, 0.8, .2));

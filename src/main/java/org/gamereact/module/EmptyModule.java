@@ -7,4 +7,9 @@ public class EmptyModule extends Module {
     public EmptyModule(TangibleObject tangibleObject) {
         super(tangibleObject);
     }
+
+    @Override
+    public void doAction() {
+
+    }
 }

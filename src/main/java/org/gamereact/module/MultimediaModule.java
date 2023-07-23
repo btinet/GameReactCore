@@ -317,4 +317,9 @@ public abstract class MultimediaModule extends ControllableModule {
 
         trackView = !trackView;
     }
+
+    @Override
+    public void doAction() {
+
+    }
 }

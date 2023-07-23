@@ -29,7 +29,7 @@ public class ToolBar extends Group {
             buttonList.get(i).setTranslateX(i*75);
         }
 
-        buttonFill.setWidth(buttonList.size() * 80);
+        buttonFill.setWidth(buttonList.size() * 75);
 
         this.buttonFill.setTranslateY(-40);
         this.buttonFill.setTranslateX(-40);

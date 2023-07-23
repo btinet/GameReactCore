@@ -25,4 +25,8 @@ public class AxisScrollControlModule extends ControlModule {
         }
     }
 
+    @Override
+    public void doAction() {
+
+    }
 }

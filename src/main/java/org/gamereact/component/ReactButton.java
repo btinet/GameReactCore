@@ -1,9 +1,9 @@
 package org.gamereact.component;
 
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.effect.Bloom;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import org.kordamp.ikonli.javafx.FontIcon;
 
@@ -58,5 +58,9 @@ public class ReactButton extends Group {
 
     public void setBackground(Color color) {
         background.setFill(color);
+    }
+
+    public boolean intersects(Node node) {
+        return localToScene(getBoundsInLocal()).intersects(node.getBoundsInParent());
     }
 }

@@ -3,13 +3,10 @@ package org.gamereact.module;
 
 import javafx.scene.effect.Bloom;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeLineCap;
 import org.engine.Module;
 import org.engine.TangibleObject;
-import org.gamereact.component.ReactButton;
 
 import java.util.ArrayList;
 
@@ -66,4 +63,8 @@ public class VolumeControlModule extends ControlModule {
         }
     }
 
+    @Override
+    public void doAction() {
+
+    }
 }

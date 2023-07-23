@@ -27,12 +27,11 @@ import java.util.ResourceBundle;
 
 import static org.gamereact.gamereactcore.CoreApplication.stage;
 
-public class AppController extends AppTimer implements Initializable, TuioListener {
+public class AppController extends AppTimer implements Initializable {
 
     private final KeyPolling keys = KeyPolling.getInstance();
     private final Circle middleCircle = new Circle(20, Color.WHITE);
     private final Circle transitionCircle = new Circle(10);
-    private final Circle cursor = new Circle(20, Color.WHITE);
     private final ScaleTransition st = Transitions.createScaleTransition(4000, transitionCircle, 1, 140);
     private final FadeTransition ft = Transitions.createFadeTransition(2000, middleCircle, 0, .5);
     private final TuioClient client = new TuioClient();
@@ -40,8 +39,8 @@ public class AppController extends AppTimer implements Initializable, TuioListen
     private final Group objectGroup = new Group();
     private final Group cursorGroup = new Group();
     private final MenuBar menuBar = new MenuBar();
-    private final HashMap<TuioCursor, Circle> cursorList = new HashMap<>();
-    private final HashMap<TuioObject, Group> objectList = new HashMap<>();
+    public final HashMap<TuioCursor, Circle> cursorList = new HashMap<>();
+    public final HashMap<TuioObject, Group> objectList = new HashMap<>();
     @FXML
     public BorderPane root;
     private double xOffset = 0;
@@ -58,7 +57,7 @@ public class AppController extends AppTimer implements Initializable, TuioListen
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        client.addTuioListener(this);
+        client.addTuioListener(new MarkerListener(this));
         client.connect();
 
 
@@ -147,6 +146,10 @@ public class AppController extends AppTimer implements Initializable, TuioListen
         }
     }
 
+    /**
+     * Diese Methode ist ganz furchtbar. Hier muss praktisch ein komplettes Refactoring vorgenommen werden.
+     * @param AnimationDuration Aktuelle Timer-Dauer.
+     */
     private void getTangibleInput(double AnimationDuration) {
 
         for (Map.Entry<TuioObject, Group> object :
@@ -172,6 +175,7 @@ public class AppController extends AppTimer implements Initializable, TuioListen
             Instantiate module from objectList
              */
             Module module = ((TangibleObject) object.getValue()).getModule();
+            module.doAction();
 
             if (module instanceof AxisScrollControlModule) {
 
@@ -215,6 +219,12 @@ public class AppController extends AppTimer implements Initializable, TuioListen
         }
         this.objectGroup.getChildren().retainAll(this.objectList.values());
 
+
+
+
+        /*
+        Für jeden Finger-Touch Aktionen ausführen
+         */
         for (Map.Entry<TuioCursor, Circle> cursor :
                 this.cursorList.entrySet()) {
             if (!this.cursorGroup.getChildren().contains(cursor.getValue()))
@@ -223,7 +233,14 @@ public class AppController extends AppTimer implements Initializable, TuioListen
             int cy = cursor.getKey().getScreenY((int) this.root.getHeight());
             cursor.getValue().setTranslateX(cx);
             cursor.getValue().setTranslateY(cy);
+
+            /*
+            START: Finger-Touch-Markierung zuweisen
+             */
             Circle fingerTouch = cursor.getValue();
+            /*
+            ENDE: Finger-Touch-Markierung zuweisen
+             */
 
             getMenuBarInput(fingerTouch);
 
@@ -232,8 +249,14 @@ public class AppController extends AppTimer implements Initializable, TuioListen
 
                 try {
 
+                    /*
+                    START: Modul und ModulButtons zuweisen:
+                     */
                     Module module = ((TangibleObject) object.getValue()).getModule();
                     ArrayList<ReactButton> buttons = module.getButtonList();
+                    /*
+                    ENDE: Modul und ModulButtons zuweisen:
+                     */
 
                     if (module instanceof MultimediaModule) {
                         for (Track track :
@@ -354,83 +377,6 @@ public class AppController extends AppTimer implements Initializable, TuioListen
 
     /*
     ENDE: Utility-Methoden
-     */
-
-    /*
-    START: TuioObject Listener für Objekte und Fingercursor
-     */
-
-    @Override
-    public void addTuioObject(TuioObject tobj) {
-        if (CoreApplication.verbose) {
-            System.out.println("Object added!");
-        }
-        this.objectList.put(tobj, new TangibleObject(tobj));
-    }
-
-    @Override
-    public void updateTuioObject(TuioObject tobj) {
-
-    }
-
-    @Override
-    public void removeTuioObject(TuioObject tobj) {
-        if (CoreApplication.verbose) System.out.println("Object removed!");
-        TangibleObject disposedObject = (TangibleObject) this.objectList.get(tobj);
-        if (disposedObject.getModule() instanceof MultimediaModule) {
-            ((MultimediaModule) disposedObject.getModule()).getMediaPlayer().dispose();
-        }
-        if (disposedObject.getModule() instanceof VolumeControlModule) {
-            ((VolumeControlModule) disposedObject.getModule()).disconnectAll();
-        }
-        if(disposedObject.getModule() instanceof ChartModule) {
-            ((ChartModule) disposedObject.getModule()).resetData();
-        }
-
-        this.objectList.remove(tobj);
-    }
-
-    @Override
-    public void addTuioCursor(TuioCursor tcur) {
-        if (CoreApplication.verbose) System.out.println("Cursor added!");
-        Circle circle = new Circle(15, Color.WHITE);
-        ScaleTransition cst = Transitions.createScaleTransition(50, circle, .5, 1);
-        this.cursorList.put(tcur, circle);
-        cst.play();
-    }
-
-    @Override
-    public void updateTuioCursor(TuioCursor tcur) {
-
-    }
-
-    @Override
-    public void removeTuioCursor(TuioCursor tcur) {
-        if (CoreApplication.verbose) System.out.println("Cursor removed!");
-        this.cursorList.remove(tcur);
-    }
-
-    @Override
-    public void addTuioBlob(TuioBlob tblb) {
-
-    }
-
-    @Override
-    public void updateTuioBlob(TuioBlob tblb) {
-
-    }
-
-    @Override
-    public void removeTuioBlob(TuioBlob tblb) {
-
-    }
-
-    @Override
-    public void refresh(TuioTime ftime) {
-    }
-
-    /*
-    ENDE: TuioObject Listener für Objekte und Fingercursor
      */
 
 }

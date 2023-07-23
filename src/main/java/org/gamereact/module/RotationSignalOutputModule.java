@@ -25,4 +25,8 @@ public class RotationSignalOutputModule extends ControlModule {
         }
     }
 
+    @Override
+    public void doAction() {
+
+    }
 }
