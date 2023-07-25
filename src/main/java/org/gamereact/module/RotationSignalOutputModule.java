@@ -82,6 +82,7 @@ public class RotationSignalOutputModule extends ControlModule {
 
         setParameter( animationDuration, getTangibleObject().getMarker().getAngle() );
         getVolumeIndicatorBackground.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
+        setValueDisplayText( getDf().format(Math.sin( (getTangibleObject().getMarker().getAngle()) )) );
         cancelConnectionButton.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
         lockConnectionButton.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
 

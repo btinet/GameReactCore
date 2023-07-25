@@ -8,6 +8,7 @@ import javafx.scene.shape.Circle;
 import org.engine.Module;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
+import org.gamereact.component.ReactIcon;
 
 import java.util.Map;
 
@@ -15,7 +16,12 @@ public class AxisScrollControlModule extends ControlModule {
 
 
     public AxisScrollControlModule(TangibleObject tangibleObject) {
-        super(tangibleObject, "ci-arrows-horizontal");
+        super(tangibleObject, "ci-x-axis");
+        this.setValueDisplayText(new ReactIcon("jam-circle-f"));
+        valueDisplayIcon.setTranslateX(-100);
+        valueDisplayIcon.setTranslateY(-160);
+        getChildren().remove(valueDisplayText);
+        getChildren().add(valueDisplayIcon);
     }
 
     public void setParameter(double time, double angle) {
@@ -79,6 +85,21 @@ public class AxisScrollControlModule extends ControlModule {
         }
 
         setParameter( animationDuration, getTangibleObject().getMarker().getAngle() );
+        if(Math.sin(getTangibleObject().getMarker().getAngle()) < -0.5) {
+            setValueDisplayIcon("jam-chevrons-square-left");
+        } else if(Math.sin(getTangibleObject().getMarker().getAngle()) < -0.2) {
+            setValueDisplayIcon("jam-chevron-square-left");
+        } else if (Math.sin(getTangibleObject().getMarker().getAngle()) > 0.5) {
+            setValueDisplayIcon("jam-chevrons-square-right");
+        } else if (Math.sin(getTangibleObject().getMarker().getAngle()) > 0.2) {
+            setValueDisplayIcon("jam-chevron-square-right");
+        } else {
+            setValueDisplayIcon("jam-circle");
+        }
+
+
+        cancelConnectionButton.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
+        lockConnectionButton.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
 
     }
 }

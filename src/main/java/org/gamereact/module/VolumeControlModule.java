@@ -18,7 +18,7 @@ public class VolumeControlModule extends ControlModule {
 
 
     public VolumeControlModule(TangibleObject tangibleObject) {
-        super(tangibleObject, "ci-audio-console");
+        super(tangibleObject, "ci-headphones");
 
 
         getVolumeIndicatorBackground.setStartAngle(0);
@@ -113,5 +113,8 @@ public class VolumeControlModule extends ControlModule {
         }
 
         setParameter(getTangibleObject().getMarker().getAngleDegrees());
+        setValueDisplayText(Math.round(getTangibleObject().getMarker().getAngleDegrees()/360*100));
+        cancelConnectionButton.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
+        lockConnectionButton.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
     }
 }

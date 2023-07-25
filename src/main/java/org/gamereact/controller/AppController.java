@@ -145,9 +145,20 @@ public class AppController extends AppTimer implements Initializable {
         object.getValue().setTranslateX(ox);
         object.getValue().setTranslateY(oy);
 
-        Group group = object.getValue();
-        group.getTransforms().clear();
-        group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), 0, 0));
+        TangibleObject tObject = (TangibleObject) object.getValue();
+
+        if(tObject.getModule() instanceof ControlModule) {
+            Group group = ((TangibleObject)object.getValue()).getModule().getRotationGroup();
+            group.getTransforms().clear();
+            group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), -100, 0));
+            tObject.getObjectPane().setRotate(object.getKey().getAngleDegrees());
+        } else {
+            Group group = object.getValue();
+            group.getTransforms().clear();
+            group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), 0, 0));
+        }
+
+
 
         Module module = ((TangibleObject) object.getValue()).getModule();
         module.doAction(animationDuration);

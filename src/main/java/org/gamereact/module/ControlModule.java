@@ -6,6 +6,9 @@ import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import org.engine.Fonts;
 import org.engine.Module;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
@@ -19,6 +22,9 @@ public abstract class ControlModule extends Module {
     protected final ReactButton lockConnectionButton = new ReactButton(ReactButtonAction.LOCK, "jam-padlock-open");
 
     protected final ReactIcon icon;
+
+    protected final Text valueDisplayText = new Text("90");
+    protected ReactIcon valueDisplayIcon = null;
     Rectangle fillRight = new Rectangle(80, 80, new Color(0.4, 0.6, 0.8, .2));
 
     Arc getVolumeIndicatorBackground = new Arc();
@@ -30,7 +36,9 @@ public abstract class ControlModule extends Module {
         this.setConnectable(true);
 
         icon.setTranslateY(80);
-
+        valueDisplayText.setFont(Fonts.BOLD_18.getFont());
+        valueDisplayText.setFill(Color.WHITE);
+        valueDisplayText.setTextAlignment(TextAlignment.CENTER);
         getVolumeIndicatorBackground.setStartAngle(0);
         getVolumeIndicatorBackground.setLength(360);
         getVolumeIndicatorBackground.setRadiusX(80);
@@ -63,14 +71,35 @@ public abstract class ControlModule extends Module {
         lockConnectionButton.setTranslateX(0);
         lockConnectionButton.setEnabled(false);
 
+        valueDisplayText.setWrappingWidth(100);
+        valueDisplayText.setTranslateX(-150);
+        valueDisplayText.setTranslateY(-150);
 
         buttonList.add(lockConnectionButton);
         addCancelConnectionButton();
-        getChildren().add(fillRight);
-        getChildren().add(getVolumeIndicatorBackground);
-        getChildren().add(volumeIndicator);
+        getRotationGroup().getChildren().add(fillRight);
+        getRotationGroup().getChildren().add(getVolumeIndicatorBackground);
+        getRotationGroup().getChildren().add(volumeIndicator);
         getChildren().add(icon);
-        getChildren().addAll(buttonList);
+        getRotationGroup().getChildren().addAll(buttonList);
+        getChildren().add(valueDisplayText);
+        getChildren().add(rotationGroup);
+    }
+
+    public void setValueDisplayText(Number number) {
+        this.valueDisplayText.setText(String.valueOf(number));
+    }
+
+    public void setValueDisplayText(String string) {
+        this.valueDisplayText.setText(string);
+    }
+
+    public void setValueDisplayText(ReactIcon icon) {
+        this.valueDisplayIcon = icon;
+    }
+
+    public void setValueDisplayIcon(String iconCode) {
+        this.valueDisplayIcon.setIcon(iconCode);
     }
 
     public void connect(Module otherModule) {

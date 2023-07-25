@@ -86,6 +86,7 @@ public class ChartModule extends ControllableModule {
         getChildren().add(fill);
         getChildren().add(toolBar);
         getChildren().add(chartGroup);
+        getChildren().add(rotationGroup);
         getChildren().addAll(this.buttonList);
 
         playButtonToggleAnimation.setCycleCount(1);

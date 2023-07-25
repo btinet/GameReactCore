@@ -11,13 +11,16 @@ import javafx.scene.shape.Rectangle;
 import org.gamereact.component.ReactButton;
 import org.gamereact.component.ReactButtonAction;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 public abstract class Module extends Group implements ModuleInterface {
 
     public static final String slash = System.getProperty("file.separator");
     public static final String resources = "." + slash + "music" + slash;
+
     protected TangibleObject tangibleObject;
+    protected Group rotationGroup = new Group();
     protected ArrayList<ReactButton> buttonList = new ArrayList<>();
     private final FadeTransition connectIndicator;
     protected Color moduleColor = Color.GREEN;
@@ -27,23 +30,33 @@ public abstract class Module extends Group implements ModuleInterface {
     private Module controlModule;
     protected ArrayList<Module> moduleList = new ArrayList<>();
     protected ReactButton cancelConnectionButton = new ReactButton(ReactButtonAction.CANCEL, "ci-center-circle");
+    protected DecimalFormat df;
     Rectangle fillLeft = new Rectangle(80, 80, new Color(0.4, 0.6, 0.8, .2));
 
     public Module(TangibleObject tangibleObject) {
         this.tangibleObject = tangibleObject;
         connectIndicator = Transitions.createFadeTransition(500, getIntersectPane(), 0, .4);
 
+        df = new DecimalFormat("#.##");
+
         this.fillLeft.setTranslateY(-40);
         this.fillLeft.setStrokeWidth(0);
         this.fillLeft.setTranslateX(-240);
         this.fillLeft.setArcHeight(20);
         this.fillLeft.setArcWidth(20);
-        this.fillLeft.setEffect(new Bloom());
 
         cancelConnectionButton.setBackground(new Color(0.9, 0.2, 0.5, .4));
         cancelConnectionButton.setTranslateX(-200);
         cancelConnectionButton.setEnabled(false);
 
+    }
+
+    public DecimalFormat getDf() {
+        return df;
+    }
+
+    public Group getRotationGroup() {
+        return rotationGroup;
     }
 
     protected Color createRandomColor() {
@@ -67,7 +80,7 @@ public abstract class Module extends Group implements ModuleInterface {
 
     public void addCancelConnectionButton() {
         buttonList.add(cancelConnectionButton);
-        getChildren().add(fillLeft);
+        getRotationGroup().getChildren().add(fillLeft);
     }
 
     public TangibleObject getTangibleObject() {

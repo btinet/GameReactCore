@@ -157,6 +157,7 @@ public abstract class MultimediaModule extends ControllableModule {
         getChildren().add(this.title);
         getChildren().add(this.time);
         getChildren().add(this.slTime);
+        getChildren().add(rotationGroup);
         getChildren().addAll(this.buttonList);
     }
 
