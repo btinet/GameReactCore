@@ -30,10 +30,6 @@ import static org.gamereact.gamereactcore.CoreApplication.stage;
 public class AppController extends AppTimer implements Initializable {
 
     private final KeyPolling keys = KeyPolling.getInstance();
-    private final Circle middleCircle = new Circle(20, Color.WHITE);
-    private final Circle transitionCircle = new Circle(10);
-    private final ScaleTransition st = Transitions.createScaleTransition(4000, transitionCircle, 1, 140);
-    private final FadeTransition ft = Transitions.createFadeTransition(2000, middleCircle, 0, .5);
     private final TuioClient client = new TuioClient();
     private final Group layoutGroup = new Group();
     private final Group objectGroup = new Group();
@@ -60,19 +56,10 @@ public class AppController extends AppTimer implements Initializable {
         client.addTuioListener(new MarkerListener(this));
         client.connect();
 
-
-        this.transitionCircle.setFill(Color.TRANSPARENT);
-        this.transitionCircle.setStroke(new Color(1, 1, 1, .2));
-        this.transitionCircle.setStrokeWidth(.1);
-
-
-        //this.layoutGroup.getChildren().add(this.transitionCircle);
-
         this.root.getChildren().add(layoutGroup);
         this.root.getChildren().add(objectGroup);
         this.root.getChildren().add(menuBar);
         this.root.getChildren().add(cursorGroup);
-
 
         root.setStyle("-fx-background-color: #005EAA");
 
@@ -85,9 +72,7 @@ public class AppController extends AppTimer implements Initializable {
             stage.setY(event.getScreenY() - yOffset);
         });
 
-
         this.start();
-        ft.play();
 
     }
 
@@ -96,26 +81,13 @@ public class AppController extends AppTimer implements Initializable {
      */
     @Override
     public void tick(float secondsSinceLastFrame) {
-        middleCircle.setTranslateX(root.getWidth() / 2);
-        middleCircle.setTranslateY(root.getHeight() / 2);
-        transitionCircle.setTranslateX(root.getWidth() / 2);
-        transitionCircle.setTranslateY(root.getHeight() / 2);
         menuBar.setTranslateX(root.getWidth() / 2);
         menuBar.setTranslateY(root.getHeight() - 50);
-
-        if (!this.isPaused() && Math.round(this.animationDurationProperty().get()) % 4 == 0) {
-            st.playFromStart();
-        }
-
 
         getKeyboardInput();
         getTangibleInput(getAnimationDuration());
 
     }
-
-    /*
-    BEGINN: Methoden, die während des gestarteten Timers aufgerufen werden.
-     */
 
     public void getKeyboardInput() {
         // Periodische Tastenabfragen
@@ -146,57 +118,50 @@ public class AppController extends AppTimer implements Initializable {
         }
     }
 
-    private void getTangibleInput(double AnimationDuration) {
+    private void getTangibleInput(double animationDuration) {
+
         for (Map.Entry<TuioObject, Group> object : this.objectList.entrySet()) {
-
-            if (!this.objectGroup.getChildren().contains(object.getValue())) {
-                this.objectGroup.getChildren().add(object.getValue());
-            }
-
-            int cx = object.getKey().getScreenX((int) this.root.getWidth());
-            int cy = object.getKey().getScreenY((int) this.root.getHeight());
-            object.getValue().setTranslateX(cx);
-            object.getValue().setTranslateY(cy);
-            Group group = object.getValue();
-            group.getTransforms().clear();
-            group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), 0, 0));
-
-            Module module = ((TangibleObject) object.getValue()).getModule();
-            module.doAction(AnimationDuration);
+            setObjectPosition(object, animationDuration);
         }
-
         this.objectGroup.getChildren().retainAll(this.objectList.values());
 
-        /*
-        Für jeden Finger-Touch Aktionen ausführen
-         */
-        for (Map.Entry<TuioCursor, Circle> cursor :
-                this.cursorList.entrySet()) {
-            if (!this.cursorGroup.getChildren().contains(cursor.getValue()))
-                this.cursorGroup.getChildren().add(cursor.getValue());
-            int cx = cursor.getKey().getScreenX((int) this.root.getWidth());
-            int cy = cursor.getKey().getScreenY((int) this.root.getHeight());
-            cursor.getValue().setTranslateX(cx);
-            cursor.getValue().setTranslateY(cy);
 
-            /*
-            START: Finger-Touch-Markierung zuweisen
-             */
-            Circle fingerTouch = cursor.getValue();
-            /*
-            ENDE: Finger-Touch-Markierung zuweisen
-             */
-            getMenuBarInput(fingerTouch);
-
+        for (Map.Entry<TuioCursor, Circle> cursor : this.cursorList.entrySet()) {
+            setCursorPosition(cursor);
+            getMenuBarInput(cursor.getValue());
         }
         this.cursorGroup.getChildren().retainAll(this.cursorList.values());
 
     }
 
-    /*
-    ENDE: Methoden, die während des gestarteten Timers aufgerufen werden.
-     */
+    public void setObjectPosition(Map.Entry<TuioObject, Group> object, double animationDuration) {
+        if (!this.objectGroup.getChildren().contains(object.getValue())) {
+            this.objectGroup.getChildren().add(object.getValue());
+        }
 
+        int ox = object.getKey().getScreenX((int) this.root.getWidth());
+        int oy = object.getKey().getScreenY((int) this.root.getHeight());
+
+        object.getValue().setTranslateX(ox);
+        object.getValue().setTranslateY(oy);
+
+        Group group = object.getValue();
+        group.getTransforms().clear();
+        group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), 0, 0));
+
+        Module module = ((TangibleObject) object.getValue()).getModule();
+        module.doAction(animationDuration);
+    }
+
+    public void setCursorPosition(Map.Entry<TuioCursor, Circle> cursor) {
+        if (!this.cursorGroup.getChildren().contains(cursor.getValue())) {
+            this.cursorGroup.getChildren().add(cursor.getValue());
+        }
+        int cx = cursor.getKey().getScreenX((int) this.root.getWidth());
+        int cy = cursor.getKey().getScreenY((int) this.root.getHeight());
+        cursor.getValue().setTranslateX(cx);
+        cursor.getValue().setTranslateY(cy);
+    }
 
     /*
     BEGINN: Utility-Methoden

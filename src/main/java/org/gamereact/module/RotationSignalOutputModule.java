@@ -16,6 +16,8 @@ public class RotationSignalOutputModule extends ControlModule {
 
     public RotationSignalOutputModule(TangibleObject tangibleObject) {
         super(tangibleObject, "ci-chart-line");
+        getVolumeIndicatorBackground.setStrokeWidth(8);
+        getVolumeIndicatorBackground.getStrokeDashArray().addAll(10d,10d,10d,10d);
     }
 
     public void setParameter(double time, double angle) {
@@ -79,6 +81,9 @@ public class RotationSignalOutputModule extends ControlModule {
         }
 
         setParameter( animationDuration, getTangibleObject().getMarker().getAngle() );
+        getVolumeIndicatorBackground.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
+        cancelConnectionButton.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
+        lockConnectionButton.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
 
     }
 }

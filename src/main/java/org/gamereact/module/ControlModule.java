@@ -42,11 +42,11 @@ public abstract class ControlModule extends Module {
 
         volumeIndicator.setType(ArcType.OPEN);
         volumeIndicator.setStrokeLineCap(StrokeLineCap.BUTT);
-        volumeIndicator.setStartAngle(80);
-        volumeIndicator.setLength(20);
+        volumeIndicator.setStartAngle(85);
+        volumeIndicator.setLength(10);
         volumeIndicator.setRadiusX(80);
         volumeIndicator.setRadiusY(80);
-        volumeIndicator.setStroke(new Color(1,1,1,.4));
+        volumeIndicator.setStroke(new Color(1,1,1,1));
         volumeIndicator.setStrokeWidth(25);
         volumeIndicator.setFill(Color.TRANSPARENT);
         volumeIndicator.setTranslateX(-100);
