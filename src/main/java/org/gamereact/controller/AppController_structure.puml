@@ -1,0 +1,1011 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "org.gamereact.controller.AppController",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1018246349 { 
+   	label=gamereact
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1063371939 { 
+   	label=controller
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   AppController1923850279[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AppController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   client: TuioClient [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   cursorGroup: Group [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   cursorList: HashMap&lt;TuioCursor, Circle&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ft: FadeTransition [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   keys: KeyPolling [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   layoutGroup: Group [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   menuBar: MenuBar [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   middleCircle: Circle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   objectGroup: Group [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   objectList: HashMap&lt;TuioObject, Group&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   root: BorderPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   st: ScaleTransition [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   transitionCircle: Circle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   xOffset: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   yOffset: double [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getKeyboardInput()</TD></TR>
+<TR><TD ALIGN="LEFT" >- getMenuBarInput(fingerTouch: Circle)</TD></TR>
+<TR><TD ALIGN="LEFT" >- getTangibleInput(AnimationDuration: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initialize(location: URL, resources: ResourceBundle)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ tick(secondsSinceLastFrame: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toggleFullscreen()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toggleVerbose()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2017953453 { 
+   	label=module
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   AudioPlayerModule311091319[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AudioPlayerModule</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AxisScrollControlModule311091319[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AxisScrollControlModule</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ connect(otherModule: Module)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ doAction(animationDuration: double)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ChartModule311091319[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ChartModule</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   buttonFill: Rectangle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   chart: LineChart&lt;Number, Number&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   fill: Rectangle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   initialTime: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lastX: SimpleIntegerProperty [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   pause: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   pauseEnd: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   pauseStart: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   playButton: ReactButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   playButtonToggleAnimation: Timeline [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   rand: Random [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   series: Series&lt;Number, Number&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   timeSincePause: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   zoomInButton: ReactButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   zoomOutButton: ReactButton [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- createChart(): LineChart&lt;Number, Number&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ doAction(animationDuration: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ moveOnXAxis(sin: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >- moveRange()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resetData()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ togglePause(animationDuration: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateChart(time: double, s: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ zoomIn()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ zoomOut()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ControlModule311091319[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ControlModule</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   fillRight: Rectangle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   getVolumeIndicatorBackground: Arc [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   lockConnectionButton: ReactButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   volumeIndicator: Arc [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ connect(otherModule: Module)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ disconnectAll()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ lockAll()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ControllableModule311091319[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ControllableModule</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+EmptyModule311091319[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)EmptyModule</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ doAction(animationDuration: double)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MultimediaModule311091319[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MultimediaModule</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   fill: Rectangle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   frame: Rectangle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   media: Media [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   mediaPlayer: MediaPlayer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   nextButton: ReactButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   playButton: ReactButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   prevButton: ReactButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   slTime: Slider [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   statusField: Rectangle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   statusFillField: Rectangle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   stopButton: ReactButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   time: Text [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   title: Text [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   toggleTrackViewButton: ReactButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   trackGroup: Group [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   trackView: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   tracks: ArrayList&lt;Track&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ doAction(animationDuration: double)</TD></TR>
+<TR><TD ALIGN="LEFT" ># enableToggleTrackViewButton()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ formatTime(time: double): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ forward()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTimeString(millis: double): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ gotoAndPlay(startDuration: Duration)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pause()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ play()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ rewind()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ stop()</TD></TR>
+<TR><TD ALIGN="LEFT" ># toggleTrackButtons()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toggleTrackView()</TD></TR>
+<TR><TD ALIGN="LEFT" ># updateButtons()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+RotationSignalOutputModule311091319[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)RotationSignalOutputModule</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ connect(otherModule: Module)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ doAction(animationDuration: double)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+VolumeControlModule311091319[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)VolumeControlModule</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ connect(otherModule: Module)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ doAction(animationDuration: double)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_346343708 { 
+   	label=component
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   MenuBar665672942[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MenuBar</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   buttonList: ArrayList&lt;ReactButton&gt; [0..*]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ReactButton665672942[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ReactButton</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   background: Rectangle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   enabled: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   icon: FontIcon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   name: ReactButtonAction [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ intersects(node: Node): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- toggleEnabled()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+subgraph cluster_1298662846 { 
+   	label=engine
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   AppTimer236902260[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AppTimer</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   animationDuration: DoubleProperty [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   animationStart: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   isActive: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   isPaused: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   lastFrameTimeNanos: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   pauseScheduled: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   pauseStart: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   playScheduled: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   restartScheduled: boolean [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ animationDurationProperty(): DoubleProperty</TD></TR>
+<TR><TD ALIGN="LEFT" >+ handle(now: long)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pause()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ play()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ start()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ stop()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ tick(secondsSinceLastFrame: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+KeyPolling236902260[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)KeyPolling</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- clearKeys()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isDown(keyCode: KeyCode): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isPressed(keyCode: KeyCode): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pollScene(scene: Scene)</TD></TR>
+<TR><TD ALIGN="LEFT" >- removeCurrentKeyHandlers()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MarkerListener236902260[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MarkerListener</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   controller: AppController [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   cursorList: HashMap&lt;TuioCursor, Circle&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   objectList: HashMap&lt;TuioObject, Group&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addTuioBlob(tblb: TuioBlob)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addTuioCursor(tcur: TuioCursor)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addTuioObject(tobj: TuioObject)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ refresh(ftime: TuioTime)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeTuioBlob(tblb: TuioBlob)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeTuioCursor(tcur: TuioCursor)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeTuioObject(tobj: TuioObject)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateTuioBlob(tblb: TuioBlob)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateTuioCursor(tcur: TuioCursor)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateTuioObject(tobj: TuioObject)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Module236902260[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Module</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   buttonList: ArrayList&lt;ReactButton&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   cancelConnectionButton: ReactButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   connectIndicator: FadeTransition [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   connectable: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   connected: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   connectionScheduled: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   controlModule: Module [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   fillLeft: Rectangle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   moduleColor: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   moduleList: ArrayList&lt;Module&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   tangibleObject: TangibleObject [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addCancelConnectionButton()</TD></TR>
+<TR><TD ALIGN="LEFT" ># createRandomColor(): Color</TD></TR>
+<TR><TD ALIGN="LEFT" >+ disconnect()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ lock()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ scheduleConnection(module: Module)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ unsetControlModule()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TangibleObject236902260[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TangibleObject</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   cursorList: HashMap&lt;TuioCursor, Circle&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dashPane: Circle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   intersectPane: Circle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   marker: TuioObject [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   module: Module [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   objectList: HashMap&lt;TuioObject, Group&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   objectPane: Rectangle [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Track236902260[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Track</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   background: Rectangle [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   endDuration: Duration [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   playButton: ReactButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   startDuration: Duration [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   title: Text [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Transitions236902260[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Transitions</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ createFadeTransition(millis: int, node: Node): FadeTransition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ createFadeTransition(millis: int, node: Node, from: double, to: double, cycleCount: int): FadeTransition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ createFadeTransition(millis: int, node: Node, from: double, to: double): FadeTransition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ createFillTransition(millis: int, shape: Shape, from: Color, to: Color, cycleCount: int): FillTransition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ createScaleTransition(millis: int, node: Node, from: double, to: double): ScaleTransition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ createTranslateTransition(duration: int, node: Node): TranslateTransition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1423555606 { 
+   	label=illposed
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1699010299 { 
+   	label=osc
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   OSCBundle1647658424[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSCBundle</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   packets: Vector&lt;OSCPacket&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   timestamp: Date [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addPacket(packet: OSCPacket)</TD></TR>
+<TR><TD ALIGN="LEFT" ># computeByteArray(stream: OSCJavaToByteArrayConverter)</TD></TR>
+<TR><TD ALIGN="LEFT" ># computeTimeTagByteArray(stream: OSCJavaToByteArrayConverter)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OSCByteArrayToJavaConverter1129026502[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSCByteArrayToJavaConverter</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   bytes: byte[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   bytesLength: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   floatBytes: byte[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   intBytes: byte[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   picosecBytes: byte[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   secondBytes: byte[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   streamPosition: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ convert(byteArray: byte[], bytesLength: int): OSCPacket</TD></TR>
+<TR><TD ALIGN="LEFT" >- convertBundle(): OSCBundle</TD></TR>
+<TR><TD ALIGN="LEFT" >- convertMessage(): OSCMessage</TD></TR>
+<TR><TD ALIGN="LEFT" >- lengthOfCurrentString(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- moveToFourByteBoundry()</TD></TR>
+<TR><TD ALIGN="LEFT" >- readArgument(c: char): Object</TD></TR>
+<TR><TD ALIGN="LEFT" >- readArray(types: char[], i: int): Object[]</TD></TR>
+<TR><TD ALIGN="LEFT" >- readBigInteger(): Object</TD></TR>
+<TR><TD ALIGN="LEFT" >- readChar(): Object</TD></TR>
+<TR><TD ALIGN="LEFT" >- readDouble(): Object</TD></TR>
+<TR><TD ALIGN="LEFT" >- readFloat(): Object</TD></TR>
+<TR><TD ALIGN="LEFT" >- readInteger(): Object</TD></TR>
+<TR><TD ALIGN="LEFT" >- readString(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- readTimeTag(): Date</TD></TR>
+<TR><TD ALIGN="LEFT" >- readTypes(): char[]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OSCJavaToByteArrayConverter1129026502[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSCJavaToByteArrayConverter</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   intBytes: byte[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   stream: ByteArrayOutputStream [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ appendNullCharToAlignStream()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toByteArray(): byte[]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ write(bytes: byte[])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ write(i: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ write(f: Float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ write(i: Integer)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ write(str: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ write(c: char)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ write(anObject: Object)</TD></TR>
+<TR><TD ALIGN="LEFT" >- writeBigEndToFourByteBoundry(bytes: byte[])</TD></TR>
+<TR><TD ALIGN="LEFT" >- writeIntegerToByteArray(value: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >- writeLittleEndToFourByteBoundry(bytes: byte[])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ writeType(c: Class)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ writeTypes(vector: Vector)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ writeTypesArray(array: Object[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OSCMessage1647658424[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSCMessage</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   address: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   arguments: Vector&lt;Object&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addArgument(argument: Object)</TD></TR>
+<TR><TD ALIGN="LEFT" ># computeAddressByteArray(stream: OSCJavaToByteArrayConverter)</TD></TR>
+<TR><TD ALIGN="LEFT" ># computeArgumentsByteArray(stream: OSCJavaToByteArrayConverter)</TD></TR>
+<TR><TD ALIGN="LEFT" ># computeByteArray(stream: OSCJavaToByteArrayConverter)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OSCPacket1647658424[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSCPacket</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   byteArray: byte[] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># computeByteArray()</TD></TR>
+<TR><TD ALIGN="LEFT" ># computeByteArray(stream: OSCJavaToByteArrayConverter)</TD></TR>
+<TR><TD ALIGN="LEFT" ># init()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OSCPacketDispatcher1129026502[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSCPacketDispatcher</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   addressToClassTable: Hashtable&lt;String, OSCListener&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addListener(address: String, listener: OSCListener)</TD></TR>
+<TR><TD ALIGN="LEFT" >- dispatchBundle(bundle: OSCBundle)</TD></TR>
+<TR><TD ALIGN="LEFT" >- dispatchMessage(message: OSCMessage)</TD></TR>
+<TR><TD ALIGN="LEFT" >- dispatchMessage(message: OSCMessage, time: Date)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dispatchPacket(packet: OSCPacket)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dispatchPacket(packet: OSCPacket, timestamp: Date)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OSCPort1647658424[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSCPort</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   port: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   socket: DatagramSocket [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ close()</TD></TR>
+<TR><TD ALIGN="LEFT" ># finalize()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OSCPortIn1647658424[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSCPortIn</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   converter: OSCByteArrayToJavaConverter [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   dispatcher: OSCPacketDispatcher [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   isListening: boolean [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addListener(anAddress: String, listener: OSCListener)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ close()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ run()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ startListening()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ stopListening()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OSCPortOut1647658424[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSCPortOut</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   address: InetAddress [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ send(aPacket: OSCPacket)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+subgraph cluster_3571559 { 
+   	label=tuio
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   TuioBlob660144204[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TuioBlob</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   angle: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   area: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   blob_id: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   height: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   rotation_accel: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   rotation_speed: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   width: float [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getScreenHeight(h: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getScreenWidth(w: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ stop(ttime: TuioTime)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(ttime: TuioTime, xp: float, yp: float, a: float, w: float, h: float, f: float, xs: float, ys: float, rs: float, ma: float, ra: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(xp: float, yp: float, a: float, w: float, h: float, f: float, xs: float, ys: float, rs: float, ma: float, ra: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(ttime: TuioTime, xp: float, yp: float, a: float, w: float, h: float, f: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(tblb: TuioBlob)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TuioClient660144204[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TuioClient</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   aliveBlobList: Vector&lt;Long&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   aliveCursorList: Vector&lt;Long&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   aliveObjectList: Vector&lt;Long&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   blobList: Hashtable&lt;Long, TuioBlob&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   connected: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   currentFrame: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   currentTime: TuioTime [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   cursorList: Hashtable&lt;Long, TuioCursor&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   frameBlobs: Vector&lt;TuioBlob&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   frameCursors: Vector&lt;TuioCursor&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   frameObjects: Vector&lt;TuioObject&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   freeBlobList: Vector&lt;TuioBlob&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   freeCursorList: Vector&lt;TuioCursor&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   listenerList: Vector&lt;TuioListener&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   maxBlobID: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   maxCursorID: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   newBlobList: Vector&lt;Long&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   newCursorList: Vector&lt;Long&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   newObjectList: Vector&lt;Long&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   objectList: Hashtable&lt;Long, TuioObject&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   oscPort: OSCPortIn [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   port: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ acceptMessage(date: Date, message: OSCMessage)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addTuioListener(listener: TuioListener)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ connect()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ disconnect()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTuioBlob(s_id: long): TuioBlob</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTuioCursor(s_id: long): TuioCursor</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTuioObject(s_id: long): TuioObject</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeAllTuioListeners()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeTuioListener(listener: TuioListener)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TuioContainer660144204[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TuioContainer</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   motion_accel: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   motion_speed: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   path: LinkedBlockingDeque&lt;TuioPoint&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   session_id: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   state: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   x_speed: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   y_speed: float [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ remove(ttime: TuioTime)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ stop(ttime: TuioTime)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(ttime: TuioTime, xp: float, yp: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(ttime: TuioTime, xp: float, yp: float, xs: float, ys: float, ma: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(xp: float, yp: float, xs: float, ys: float, ma: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(tcon: TuioContainer)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TuioCursor660144204[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TuioCursor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   cursor_id: int [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TuioObject660144204[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TuioObject</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   angle: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   imageView: ImageView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   rotation_accel: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   rotation_speed: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   symbol_id: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ stop(ttime: TuioTime)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(ttime: TuioTime, xp: float, yp: float, a: float, xs: float, ys: float, rs: float, ma: float, ra: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(xp: float, yp: float, a: float, xs: float, ys: float, rs: float, ma: float, ra: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(ttime: TuioTime, xp: float, yp: float, a: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(tobj: TuioObject)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TuioPoint660144204[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TuioPoint</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   currentTime: TuioTime [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   startTime: TuioTime [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   xpos: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ypos: float [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getAngle(xp: float, yp: float): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAngle(tpoint: TuioPoint): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAngleDegrees(xp: float, yp: float): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAngleDegrees(tpoint: TuioPoint): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDistance(xp: float, yp: float): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDistance(tpoint: TuioPoint): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getScreenX(width: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getScreenY(height: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(tpoint: TuioPoint)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(xp: float, yp: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(ttime: TuioTime, xp: float, yp: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TuioTime660144204[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TuioTime</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   frame_id: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   micro_seconds: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   seconds: long [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ add(us: long): TuioTime</TD></TR>
+<TR><TD ALIGN="LEFT" >+ add(ttime: TuioTime): TuioTime</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initSession()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reset()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ subtract(us: long): TuioTime</TD></TR>
+<TR><TD ALIGN="LEFT" >+ subtract(ttime: TuioTime): TuioTime</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+AppController1923850279 -> AxisScrollControlModule311091319[label="doAction() -> doAction()", arrowhead=none];
+AppController1923850279 -> ChartModule311091319[label="doAction() -> doAction()", arrowhead=none];
+AppController1923850279 -> EmptyModule311091319[label="doAction() -> doAction()", arrowhead=none];
+AppController1923850279 -> KeyPolling236902260[label="keys
+[0..1]"];
+AppController1923850279 -> MenuBar665672942[label="menuBar
+[0..1]"];
+AppController1923850279 -> Module236902260[arrowhead=none];
+AppController1923850279 -> MultimediaModule311091319[label="doAction() -> doAction()", arrowhead=none];
+AppController1923850279 -> RotationSignalOutputModule311091319[label="doAction() -> doAction()", arrowhead=none];
+AppController1923850279 -> TuioClient660144204[label="client
+[0..1]"];
+AppController1923850279 -> TuioCursor660144204[label="cursorList
+[0..*]"];
+AppController1923850279 -> TuioObject660144204[label="objectList
+[0..*]"];
+AppController1923850279 -> VolumeControlModule311091319[label="doAction() -> doAction()", arrowhead=none];
+AppTimer236902260 -> AppController1923850279[arrowhead=none, arrowtail=empty, dir=both];
+AxisScrollControlModule311091319 -> Module236902260[label="connect() -> scheduleConnection()"];
+AxisScrollControlModule311091319 -> ReactButton665672942[label="doAction() -> intersects()"];
+ChartModule311091319 -> Module236902260[label="doAction() -> disconnect()"];
+ChartModule311091319 -> ReactButton665672942[label="playButton
+[0..1]"];
+ChartModule311091319 -> ReactButton665672942[label="zoomInButton
+[0..1]"];
+ChartModule311091319 -> ReactButton665672942[label="zoomOutButton
+[0..1]"];
+ControlModule311091319 -> AxisScrollControlModule311091319[arrowhead=none, arrowtail=empty, dir=both];
+ControlModule311091319 -> ReactButton665672942[label="lockConnectionButton
+[0..1]"];
+ControlModule311091319 -> RotationSignalOutputModule311091319[arrowhead=none, arrowtail=empty, dir=both];
+ControlModule311091319 -> VolumeControlModule311091319[arrowhead=none, arrowtail=empty, dir=both];
+ControllableModule311091319 -> ChartModule311091319[arrowhead=none, arrowtail=empty, dir=both];
+ControllableModule311091319 -> MultimediaModule311091319[arrowhead=none, arrowtail=empty, dir=both];
+MarkerListener236902260 -> AppController1923850279[label="controller
+[0..1]"];
+MarkerListener236902260 -> ChartModule311091319[label="removeTuioObject() -> resetData()"];
+MarkerListener236902260 -> ControlModule311091319[label="removeTuioObject() -> disconnectAll()"];
+MarkerListener236902260 -> Transitions236902260[label="addTuioCursor() -> createScaleTransition()"];
+MarkerListener236902260 -> TuioCursor660144204[label="cursorList
+[0..*]"];
+MarkerListener236902260 -> TuioObject660144204[label="objectList
+[0..*]"];
+MenuBar665672942 -> ReactButton665672942[label="buttonList
+[0..*]"];
+Module236902260 -> ControlModule311091319[arrowhead=none, arrowtail=empty, dir=both];
+Module236902260 -> ControllableModule311091319[arrowhead=none, arrowtail=empty, dir=both];
+Module236902260 -> EmptyModule311091319[arrowhead=none, arrowtail=empty, dir=both];
+Module236902260 -> ReactButton665672942[label="buttonList
+[0..*]"];
+Module236902260 -> ReactButton665672942[label="cancelConnectionButton
+[0..1]"];
+Module236902260 -> TangibleObject236902260[label="tangibleObject
+[0..1]"];
+MultimediaModule311091319 -> AudioPlayerModule311091319[arrowhead=none, arrowtail=empty, dir=both];
+MultimediaModule311091319 -> Module236902260[label="doAction() -> disconnect()"];
+MultimediaModule311091319 -> ReactButton665672942[label="nextButton
+[0..1]"];
+MultimediaModule311091319 -> ReactButton665672942[label="playButton
+[0..1]"];
+MultimediaModule311091319 -> ReactButton665672942[label="prevButton
+[0..1]"];
+MultimediaModule311091319 -> ReactButton665672942[label="stopButton
+[0..1]"];
+MultimediaModule311091319 -> ReactButton665672942[label="toggleTrackViewButton
+[0..1]"];
+MultimediaModule311091319 -> Track236902260[label="tracks
+[0..*]"];
+OSCBundle1647658424 -> OSCPacket1647658424[label="packets
+[0..*]"];
+OSCByteArrayToJavaConverter1129026502 -> OSCBundle1647658424[label="convertBundle() -> addPacket()"];
+OSCPacket1647658424 -> OSCBundle1647658424[arrowhead=none, arrowtail=empty, dir=both];
+OSCPacket1647658424 -> OSCMessage1647658424[arrowhead=none, arrowtail=empty, dir=both];
+OSCPacketDispatcher1129026502 -> TuioClient660144204[label="addressToClassTable
+[0..*]", arrowhead=none];
+OSCPort1647658424 -> OSCPortIn1647658424[arrowhead=none, arrowtail=empty, dir=both];
+OSCPort1647658424 -> OSCPortOut1647658424[arrowhead=none, arrowtail=empty, dir=both];
+OSCPortIn1647658424 -> OSCByteArrayToJavaConverter1129026502[label="converter
+[0..1]"];
+OSCPortIn1647658424 -> OSCPacketDispatcher1129026502[label="dispatcher
+[0..1]"];
+RotationSignalOutputModule311091319 -> Module236902260[label="connect() -> scheduleConnection()"];
+RotationSignalOutputModule311091319 -> ReactButton665672942[label="doAction() -> intersects()"];
+TangibleObject236902260 -> Module236902260[label="module
+[0..1]"];
+TangibleObject236902260 -> TuioCursor660144204[label="cursorList
+[0..*]"];
+TangibleObject236902260 -> TuioObject660144204[label="marker
+[0..1]"];
+TangibleObject236902260 -> TuioObject660144204[label="objectList
+[0..*]"];
+Track236902260 -> ReactButton665672942[label="playButton
+[0..1]"];
+TuioClient660144204 -> MarkerListener236902260[arrowhead=none];
+TuioClient660144204 -> MarkerListener236902260[label="listenerList
+[0..*]", arrowhead=none];
+TuioClient660144204 -> OSCPortIn1647658424[label="oscPort
+[0..1]"];
+TuioClient660144204 -> TuioBlob660144204[label="blobList
+[0..*]"];
+TuioClient660144204 -> TuioBlob660144204[label="frameBlobs
+[0..*]"];
+TuioClient660144204 -> TuioBlob660144204[label="freeBlobList
+[0..*]"];
+TuioClient660144204 -> TuioCursor660144204[label="cursorList
+[0..*]"];
+TuioClient660144204 -> TuioCursor660144204[label="frameCursors
+[0..*]"];
+TuioClient660144204 -> TuioCursor660144204[label="freeCursorList
+[0..*]"];
+TuioClient660144204 -> TuioObject660144204[label="frameObjects
+[0..*]"];
+TuioClient660144204 -> TuioObject660144204[label="objectList
+[0..*]"];
+TuioClient660144204 -> TuioTime660144204[label="currentTime
+[0..1]"];
+TuioContainer660144204 -> TuioBlob660144204[arrowhead=none, arrowtail=empty, dir=both];
+TuioContainer660144204 -> TuioCursor660144204[arrowhead=none, arrowtail=empty, dir=both];
+TuioContainer660144204 -> TuioObject660144204[arrowhead=none, arrowtail=empty, dir=both];
+TuioContainer660144204 -> TuioPoint660144204[label="path
+[0..*]"];
+TuioContainer660144204 -> TuioTime660144204[label="update() -> subtract()"];
+TuioObject660144204 -> TuioTime660144204[label="update() -> subtract()"];
+TuioPoint660144204 -> TuioContainer660144204[arrowhead=none, arrowtail=empty, dir=both];
+VolumeControlModule311091319 -> Module236902260[label="connect() -> scheduleConnection()"];
+VolumeControlModule311091319 -> ReactButton665672942[label="doAction() -> intersects()"];
+    
+}
+@enduml

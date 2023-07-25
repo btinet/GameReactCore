@@ -8,6 +8,7 @@ import javafx.scene.shape.Circle;
 import org.gamereact.controller.AppController;
 import org.gamereact.gamereactcore.CoreApplication;
 import org.gamereact.module.ChartModule;
+import org.gamereact.module.ControlModule;
 import org.gamereact.module.MultimediaModule;
 import org.gamereact.module.VolumeControlModule;
 
@@ -45,8 +46,8 @@ public class MarkerListener implements TuioListener {
         if (disposedObject.getModule() instanceof MultimediaModule) {
             ((MultimediaModule) disposedObject.getModule()).getMediaPlayer().dispose();
         }
-        if (disposedObject.getModule() instanceof VolumeControlModule) {
-            ((VolumeControlModule) disposedObject.getModule()).disconnectAll();
+        if (disposedObject.getModule() instanceof ControlModule) {
+            ((ControlModule) disposedObject.getModule()).disconnectAll();
         }
         if(disposedObject.getModule() instanceof ChartModule) {
             ((ChartModule) disposedObject.getModule()).resetData();

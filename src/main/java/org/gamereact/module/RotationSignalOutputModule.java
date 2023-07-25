@@ -15,7 +15,7 @@ public class RotationSignalOutputModule extends ControlModule {
 
 
     public RotationSignalOutputModule(TangibleObject tangibleObject) {
-        super(tangibleObject);
+        super(tangibleObject, "ci-chart-line");
     }
 
     public void setParameter(double time, double angle) {

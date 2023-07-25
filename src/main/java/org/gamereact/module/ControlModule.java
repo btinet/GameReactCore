@@ -1,7 +1,6 @@
 package org.gamereact.module;
 
 
-import javafx.scene.effect.Bloom;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
@@ -11,20 +10,26 @@ import org.engine.Module;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
 import org.gamereact.component.ReactButtonAction;
+import org.gamereact.component.ReactIcon;
 
 import java.util.ArrayList;
 
 public abstract class ControlModule extends Module {
 
     protected final ReactButton lockConnectionButton = new ReactButton(ReactButtonAction.LOCK, "jam-padlock-open");
+
+    protected final ReactIcon icon;
     Rectangle fillRight = new Rectangle(80, 80, new Color(0.4, 0.6, 0.8, .2));
 
     Arc getVolumeIndicatorBackground = new Arc();
     Arc volumeIndicator = new Arc();
 
-    public ControlModule(TangibleObject tangibleObject) {
+    public ControlModule(TangibleObject tangibleObject, String iconName) {
         super(tangibleObject);
+        this.icon = new ReactIcon(iconName);
         this.setConnectable(true);
+
+        icon.setTranslateY(80);
 
         getVolumeIndicatorBackground.setStartAngle(0);
         getVolumeIndicatorBackground.setLength(360);
@@ -53,7 +58,6 @@ public abstract class ControlModule extends Module {
         this.fillRight.setTranslateX(-40);
         this.fillRight.setArcHeight(20);
         this.fillRight.setArcWidth(20);
-        this.fillRight.setEffect(new Bloom());
 
         lockConnectionButton.setBackground(new Color(0.4, 0.9, 0.5, .4));
         lockConnectionButton.setTranslateX(0);
@@ -65,6 +69,7 @@ public abstract class ControlModule extends Module {
         getChildren().add(fillRight);
         getChildren().add(getVolumeIndicatorBackground);
         getChildren().add(volumeIndicator);
+        getChildren().add(icon);
         getChildren().addAll(buttonList);
     }
 

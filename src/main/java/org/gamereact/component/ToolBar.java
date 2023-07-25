@@ -1,7 +1,6 @@
 package org.gamereact.component;
 
 import javafx.scene.Group;
-import javafx.scene.effect.Bloom;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -36,7 +35,6 @@ public class ToolBar extends Group {
         this.buttonFill.setStrokeWidth(0);
         this.buttonFill.setArcHeight(20);
         this.buttonFill.setArcWidth(20);
-        this.buttonFill.setEffect(new Bloom());
 
 
 

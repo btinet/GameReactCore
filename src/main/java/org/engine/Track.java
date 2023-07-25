@@ -1,7 +1,6 @@
 package org.engine;
 
 import javafx.scene.Group;
-import javafx.scene.effect.Bloom;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -34,7 +33,6 @@ public class Track extends Group {
         this.background.setArcHeight(20);
         this.background.setArcWidth(20);
         this.background.setTranslateY(-25);
-        this.background.setEffect(new Bloom());
 
         getChildren().addAll(this.background,this.title,this.playButton);
     }

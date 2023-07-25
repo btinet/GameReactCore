@@ -2,7 +2,6 @@ package org.gamereact.component;
 
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.effect.Bloom;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import org.kordamp.ikonli.javafx.FontIcon;
@@ -26,7 +25,6 @@ public class ReactButton extends Group {
         background.setTranslateY(-20);
         background.setArcWidth(12);
         background.setArcHeight(12);
-        background.setEffect(new Bloom());
         getChildren().addAll(background,icon);
     }
 

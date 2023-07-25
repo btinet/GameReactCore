@@ -4,7 +4,6 @@ package org.gamereact.module;
 import com.tuio.TuioCursor;
 import com.tuio.TuioObject;
 import javafx.scene.Group;
-import javafx.scene.effect.Bloom;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Circle;
@@ -19,7 +18,7 @@ public class VolumeControlModule extends ControlModule {
 
 
     public VolumeControlModule(TangibleObject tangibleObject) {
-        super(tangibleObject);
+        super(tangibleObject, "ci-audio-console");
 
 
         getVolumeIndicatorBackground.setStartAngle(0);
@@ -49,7 +48,6 @@ public class VolumeControlModule extends ControlModule {
         this.fillRight.setTranslateX(-40);
         this.fillRight.setArcHeight(20);
         this.fillRight.setArcWidth(20);
-        this.fillRight.setEffect(new Bloom());
 
     }
 

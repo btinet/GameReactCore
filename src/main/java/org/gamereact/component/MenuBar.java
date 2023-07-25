@@ -1,7 +1,6 @@
 package org.gamereact.component;
 
 import javafx.scene.Group;
-import javafx.scene.effect.Bloom;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -38,7 +37,6 @@ public class MenuBar extends Group {
         background.setArcWidth(50);
         background.setTranslateX(-400);
         background.setTranslateY(-25);
-        background.setEffect(new Bloom());
 
         getChildren().add(background);
         getChildren().add(buttonGroup);

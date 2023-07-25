@@ -10,7 +10,6 @@ import javafx.scene.Group;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.effect.Bloom;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -51,14 +50,12 @@ public class ChartModule extends ControllableModule {
         this.fill.setStrokeWidth(0);
         this.fill.setArcHeight(20);
         this.fill.setArcWidth(20);
-        this.fill.setEffect(new Bloom());
 
         this.buttonFill.setTranslateY(-40);
         this.buttonFill.setStrokeWidth(0);
         this.buttonFill.setTranslateX(-40);
         this.buttonFill.setArcHeight(20);
         this.buttonFill.setArcWidth(20);
-        this.buttonFill.setEffect(new Bloom());
 
         fill.setTranslateX(-140);
         fill.setTranslateY(-360);

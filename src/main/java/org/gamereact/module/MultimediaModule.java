@@ -5,7 +5,6 @@ import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Group;
 import javafx.scene.control.Slider;
-import javafx.scene.effect.Bloom;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
@@ -137,8 +136,6 @@ public abstract class MultimediaModule extends ControllableModule {
         this.fill.setArcHeight(20);
         this.fill.setArcWidth(20);
 
-        this.fill.setEffect(new Bloom());
-        this.statusFillField.setEffect(new Bloom());
 
         prevButton.setEnabled(false);
         stopButton.setEnabled(false);

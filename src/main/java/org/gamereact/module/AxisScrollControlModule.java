@@ -15,7 +15,7 @@ public class AxisScrollControlModule extends ControlModule {
 
 
     public AxisScrollControlModule(TangibleObject tangibleObject) {
-        super(tangibleObject);
+        super(tangibleObject, "ci-arrows-horizontal");
     }
 
     public void setParameter(double time, double angle) {
