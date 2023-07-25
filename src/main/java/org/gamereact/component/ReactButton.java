@@ -11,11 +11,11 @@ import java.util.ArrayList;
 
 public class ReactButton extends Group {
 
-    protected String name;
+    protected ReactButtonAction name;
     protected FontIcon icon;
     protected Rectangle background = new Rectangle(40,40,new Color(0.4,0.6,0.8,.4));
     private Boolean enabled = true;
-    public ReactButton(String name, String iconCode) {
+    public ReactButton(ReactButtonAction name, String iconCode) {
         this.name = name;
         icon = new FontIcon(iconCode);
         toggleEnabled();
@@ -30,7 +30,7 @@ public class ReactButton extends Group {
         getChildren().addAll(background,icon);
     }
 
-    public String getName() {
+    public ReactButtonAction getName() {
         return name;
     }
 
@@ -51,7 +51,7 @@ public class ReactButton extends Group {
         }
     }
 
-    public void setIcon(String name, String iconLiteral) {
+    public void setIcon(ReactButtonAction name, String iconLiteral) {
         this.icon.setIconLiteral(iconLiteral);
         this.name = name;
     }

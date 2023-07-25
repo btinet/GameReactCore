@@ -2,6 +2,7 @@ package org.engine;
 
 import com.tuio.*;
 import javafx.animation.ScaleTransition;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import org.gamereact.controller.AppController;
@@ -16,10 +17,12 @@ public class MarkerListener implements TuioListener {
 
     private final AppController controller;
     public final HashMap<TuioCursor, Circle> cursorList;
+    public final HashMap<TuioObject, Group> objectList;
 
     public MarkerListener(AppController controller) {
         this.controller = controller;
         this.cursorList = controller.cursorList;
+        this.objectList = controller.objectList;
     }
 
     @Override
@@ -27,7 +30,7 @@ public class MarkerListener implements TuioListener {
         if (CoreApplication.verbose) {
             System.out.println("Object added!");
         }
-        this.controller.objectList.put(tobj, new TangibleObject(tobj,this.cursorList));
+        this.controller.objectList.put(tobj, new TangibleObject(tobj,this.cursorList,this.objectList));
     }
 
     @Override

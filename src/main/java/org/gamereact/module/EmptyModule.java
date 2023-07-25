@@ -9,7 +9,7 @@ public class EmptyModule extends Module {
     }
 
     @Override
-    public void doAction() {
+    public void doAction(double animationDuration) {
 
     }
 }

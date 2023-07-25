@@ -17,8 +17,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
+import org.gamereact.component.ReactButtonAction;
 import org.gamereact.component.ToolBar;
-import org.gamereact.gamereactcore.CoreApplication;
 
 import java.util.Map;
 import java.util.Random;
@@ -38,9 +38,9 @@ public class ChartModule extends ControllableModule {
     Rectangle fill = new Rectangle(800, 300, new Color(0.1, 0.3, 0.4, .2));
 
     Rectangle buttonFill = new Rectangle(300, 80, new Color(0.4, 0.6, 0.8, .2));
-    ReactButton zoomOutButton = new ReactButton("zoom-out", "ci-subtract-alt");
-    ReactButton zoomInButton = new ReactButton("zoom-in", "ci-add-alt");
-    ReactButton playButton = new ReactButton("play", "ci-pause-filled");
+    ReactButton zoomOutButton = new ReactButton(ReactButtonAction.ZOOM_OUT, "ci-subtract-alt");
+    ReactButton zoomInButton = new ReactButton(ReactButtonAction.ZOOM_IN, "ci-add-alt");
+    ReactButton playButton = new ReactButton(ReactButtonAction.PLAY, "ci-pause-filled");
     final Timeline playButtonToggleAnimation = new Timeline(
             new KeyFrame(Duration.millis(400),
                     actionEvent -> playButton.setEnabled(false)));
@@ -141,7 +141,7 @@ public class ChartModule extends ControllableModule {
             System.out.println("Pausenstart: " + pauseStart);
             System.out.println("=========================");
 
-            playButton.setIcon("play","ci-pause-filled");
+            playButton.setIcon(ReactButtonAction.PLAY,"ci-pause-filled");
             playButton.setBackground(new Color(0.9, 0.2, 0.5, .4));
 
 
@@ -153,7 +153,7 @@ public class ChartModule extends ControllableModule {
             System.out.println("=========================");
 
             initialTime += (pauseEnd-pauseStart);
-            playButton.setIcon("play","ci-play-filled-alt");
+            playButton.setIcon(ReactButtonAction.PLAY,"ci-play-filled-alt");
             playButton.setBackground(new Color(0.4, 0.9, 0.5, .4));
         }
         this.pause = pause;
@@ -205,13 +205,32 @@ public class ChartModule extends ControllableModule {
     }
 
     @Override
-    public void doAction() {
+    public void doAction(double animationDuration) {
 
         // Aktionen für jede Fingereingabe überprüfen:
         for (Map.Entry<TuioCursor,Circle> finger : getCursorList()) {
             for(ReactButton button : getButtonList()) {
                 if (button.isEnabled() && button.intersects(finger.getValue())) {
-                    System.out.printf("Treffer auf %s%n", button.getName());
+
+                    switch (button.getName()) {
+                        case ZOOM_IN:
+                            zoomIn();
+                            System.out.println("Zoom in!");
+                            break;
+                        case ZOOM_OUT:
+                            zoomOut();
+                            System.out.println("Zoom out!");
+                            break;
+                        case PLAY:
+                            togglePause(animationDuration);
+                            break;
+                        case CANCEL:
+                            disconnect();
+                            break;
+                        default:
+                            break;
+                    }
+
                 }
             }
         }

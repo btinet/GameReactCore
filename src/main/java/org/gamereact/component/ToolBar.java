@@ -11,11 +11,11 @@ public class ToolBar extends Group {
 
     protected ArrayList<ReactButton> buttonList = new ArrayList<>();
     Rectangle buttonFill = new Rectangle(300, 80, new Color(0.4, 0.6, 0.8, .2));
-    ReactButton arduinoInputToggleButton = new ReactButton("arduino-tgggle", "cib-arduino");
-    ReactButton arduinoInputToggleButton2 = new ReactButton("arduino-tgggle", "ci-circuit-composer");
-    ReactButton chartMaximum = new ReactButton("arduino-tgggle", "ci-chart-maximum");
-    ReactButton chartMinimum = new ReactButton("arduino-tgggle", "ci-chart-minimum");
-    ReactButton chartAverage = new ReactButton("arduino-tgggle", "ci-chart-average");
+    ReactButton arduinoInputToggleButton = new ReactButton(ReactButtonAction.ARDUINO_TOGGLE, "cib-arduino");
+    ReactButton arduinoInputToggleButton2 = new ReactButton(ReactButtonAction.ARDUINO_TOGGLE, "ci-circuit-composer");
+    ReactButton chartMaximum = new ReactButton(ReactButtonAction.ARDUINO_TOGGLE, "ci-chart-maximum");
+    ReactButton chartMinimum = new ReactButton(ReactButtonAction.ARDUINO_TOGGLE, "ci-chart-minimum");
+    ReactButton chartAverage = new ReactButton(ReactButtonAction.ARDUINO_TOGGLE, "ci-chart-average");
 
     public ToolBar() {
 

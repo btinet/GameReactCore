@@ -12,6 +12,8 @@ import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class TangibleObject extends Group {
 
@@ -20,9 +22,13 @@ public class TangibleObject extends Group {
     private final Circle dashPane = new Circle(20, new Color(0.3, 0.8, 0.9, 1));
     private final Module module;
     private final HashMap<TuioCursor, Circle> cursorList;
+    protected HashMap<TuioObject, Group> objectList;
+    private final TuioObject marker;
 
-    public TangibleObject(TuioObject tuioObject, HashMap<TuioCursor, Circle> cursorList) {
+    public TangibleObject(TuioObject tuioObject, HashMap<TuioCursor, Circle> cursorList,HashMap<TuioObject, Group> objectList) {
+        this.marker = tuioObject;
         this.cursorList = cursorList;
+        this.objectList = objectList;
         intersectPane.setOpacity(0);
         Group group = new Group();
         group.getChildren().add(intersectPane);
@@ -58,11 +64,19 @@ public class TangibleObject extends Group {
         return intersectPane;
     }
 
+    public TuioObject getMarker() {
+        return marker;
+    }
+
     public Module getModule() {
         return module;
     }
 
     public HashMap<TuioCursor, Circle> getCursorList () {
         return this.cursorList;
+    }
+
+    public HashMap<TuioObject, Group> getObjectList() {
+        return this.objectList;
     }
 }

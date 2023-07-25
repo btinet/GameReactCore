@@ -2,6 +2,6 @@ package org.engine;
 
 public interface ModuleInterface {
 
-    public void doAction();
+    public void doAction(double animationDuration);
 
 }

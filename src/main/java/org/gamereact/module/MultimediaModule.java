@@ -1,5 +1,6 @@
 package org.gamereact.module;
 
+import com.tuio.TuioCursor;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Group;
@@ -8,6 +9,7 @@ import javafx.scene.effect.Bloom;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -16,9 +18,11 @@ import org.engine.Fonts;
 import org.engine.TangibleObject;
 import org.engine.Track;
 import org.gamereact.component.ReactButton;
+import org.gamereact.component.ReactButtonAction;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Map;
 
 public abstract class MultimediaModule extends ControllableModule {
 
@@ -30,11 +34,11 @@ public abstract class MultimediaModule extends ControllableModule {
     ArrayList<Track> tracks;
     Group trackGroup = new Group();
     Media media = null;
-    ReactButton prevButton = new ReactButton("back", "jam-set-backward-square");
-    ReactButton stopButton = new ReactButton("pause", "jam-pause");
-    ReactButton playButton = new ReactButton("play", "jam-play-square");
-    ReactButton nextButton = new ReactButton("next", "jam-set-forward-square");
-    ReactButton toggleTrackViewButton = new ReactButton("toggleTrackView", "jam-info");
+    ReactButton prevButton = new ReactButton(ReactButtonAction.REWIND, "jam-set-backward-square");
+    ReactButton stopButton = new ReactButton(ReactButtonAction.PAUSE, "jam-pause");
+    ReactButton playButton = new ReactButton(ReactButtonAction.PLAY, "jam-play-square");
+    ReactButton nextButton = new ReactButton(ReactButtonAction.FORWARD, "jam-set-forward-square");
+    ReactButton toggleTrackViewButton = new ReactButton(ReactButtonAction.TOGGLE_TRACK_VIEW, "jam-info");
     Slider slTime = new Slider();
     Boolean trackView = false;
     Text title = new Text("Eins und Alles");
@@ -319,7 +323,47 @@ public abstract class MultimediaModule extends ControllableModule {
     }
 
     @Override
-    public void doAction() {
+    public void doAction(double animationDuration) {
+
+        for (Map.Entry<TuioCursor,Circle> finger : getCursorList()) {
+
+            Circle fingerTouch = finger.getValue();
+
+            for (Track track :
+                    getTracks()) {
+                if (track.getPlayButton().isEnabled()) {
+                    if (track.getPlayButton().localToScene(track.getPlayButton().getBoundsInLocal()).intersects(fingerTouch.getBoundsInParent())) {
+                        gotoAndPlay(track.getStartDuration());
+                    }
+                }
+            }
+
+            for(ReactButton button : getButtonList()) {
+
+                if (button.isEnabled() && button.intersects(finger.getValue())) {
+                    switch (button.getName()) {
+                        case PLAY:
+                            play();
+                            break;
+                        case PAUSE:
+                            pause();
+                            break;
+                        case REWIND:
+                            rewind();
+                            break;
+                        case FORWARD:
+                            forward();
+                            break;
+                        case TOGGLE_TRACK_VIEW:
+                            toggleTrackView();
+                            break;
+                        case CANCEL:
+                            disconnect();
+                            break;
+                    }
+                }
+            }
+        }
 
     }
 }

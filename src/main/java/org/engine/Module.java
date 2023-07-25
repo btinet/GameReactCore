@@ -1,6 +1,7 @@
 package org.engine;
 
 import com.tuio.TuioCursor;
+import com.tuio.TuioObject;
 import javafx.animation.FadeTransition;
 import javafx.scene.Group;
 import javafx.scene.effect.Bloom;
@@ -8,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import org.gamereact.component.ReactButton;
+import org.gamereact.component.ReactButtonAction;
 
 import java.util.*;
 
@@ -24,7 +26,7 @@ public abstract class Module extends Group implements ModuleInterface {
     private Boolean connected = false;
     private Module controlModule;
     protected ArrayList<Module> moduleList = new ArrayList<>();
-    protected ReactButton cancelConnectionButton = new ReactButton("cancel", "ci-center-circle");
+    protected ReactButton cancelConnectionButton = new ReactButton(ReactButtonAction.CANCEL, "ci-center-circle");
     Rectangle fillLeft = new Rectangle(80, 80, new Color(0.4, 0.6, 0.8, .2));
 
     public Module(TangibleObject tangibleObject) {
@@ -92,6 +94,10 @@ public abstract class Module extends Group implements ModuleInterface {
 
     public Set<Map.Entry<TuioCursor, Circle>> getCursorList() {
         return this.tangibleObject.getCursorList().entrySet();
+    }
+
+    public Set<Map.Entry<TuioObject, Group>> getObjectList() {
+        return this.tangibleObject.getObjectList().entrySet();
     }
 
     public FadeTransition getConnectIndicator() {

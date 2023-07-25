@@ -12,13 +12,13 @@ public class MenuBar extends Group {
     private final ArrayList<ReactButton> buttonList = new ArrayList<>();
 
     public MenuBar() {
-        ReactButton startButton = new ReactButton("start", "jam-play-square");
+        ReactButton startButton = new ReactButton(ReactButtonAction.START, "jam-play-square");
         startButton.setBackground(new Color(0.2,0.2,0.2,.2));
 
-        ReactButton toggleFullscreenButton = new ReactButton("fullscreen", "jam-arrows-fullscreen");
+        ReactButton toggleFullscreenButton = new ReactButton(ReactButtonAction.TOGGLE_FULLSCREEN, "jam-arrows-fullscreen");
         toggleFullscreenButton.setBackground(new Color(0.2,0.2,0.2,.2));
 
-        ReactButton exitApplication = new ReactButton("exit", "jam-log-out");
+        ReactButton exitApplication = new ReactButton(ReactButtonAction.EXIT, "jam-log-out");
         exitApplication.setBackground(new Color(0.2,0.2,0.2,.2));
 
         buttonList.add(startButton);

@@ -10,12 +10,13 @@ import javafx.scene.shape.StrokeLineCap;
 import org.engine.Module;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
+import org.gamereact.component.ReactButtonAction;
 
 import java.util.ArrayList;
 
 public abstract class ControlModule extends Module {
 
-    private final ReactButton lockConnectionButton = new ReactButton("lock", "jam-padlock-open");
+    protected final ReactButton lockConnectionButton = new ReactButton(ReactButtonAction.LOCK, "jam-padlock-open");
     Rectangle fillRight = new Rectangle(80, 80, new Color(0.4, 0.6, 0.8, .2));
 
     Arc getVolumeIndicatorBackground = new Arc();
@@ -104,7 +105,7 @@ public abstract class ControlModule extends Module {
     public void disconnectAll() {
         disconnect();
         lockConnectionButton.setEnabled(false);
-        this.lockConnectionButton.setIcon("lock","jam-padlock-open");
+        this.lockConnectionButton.setIcon(ReactButtonAction.LOCK,"jam-padlock-open");
         lockConnectionButton.setBackground(new Color(0.4, 0.9, 0.5, .4));
         for (Module module : this.moduleList) {
             module.disconnect();
@@ -115,7 +116,7 @@ public abstract class ControlModule extends Module {
     public void lockAll() {
         lockConnectionButton.setEnabled(false);
         lock();
-        this.lockConnectionButton.setIcon("unlock","jam-padlock");
+        this.lockConnectionButton.setIcon(ReactButtonAction.UNLOCK,"jam-padlock");
         this.lockConnectionButton.setBackground(new Color(0.9, 0.2, 0.5, .4));
         for (Module module : this.moduleList) {
             module.lock();

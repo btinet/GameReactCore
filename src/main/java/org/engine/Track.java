@@ -7,6 +7,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.gamereact.component.ReactButton;
+import org.gamereact.component.ReactButtonAction;
 
 public class Track extends Group {
 
@@ -15,7 +16,7 @@ public class Track extends Group {
     private final Duration endDuration;
     private final Rectangle background = new Rectangle(400,40,new Color(0.4,0.6,0.8,.2));
 
-    private final ReactButton playButton = new ReactButton("playTrack","jam-arrow-square-right");
+    private final ReactButton playButton = new ReactButton(ReactButtonAction.PLAY_TRACk,"jam-arrow-square-right");
 
     public Track(String title, Duration startDuration, Duration endDuration) {
         this.title.setText(title);

@@ -66,7 +66,7 @@ public class AppController extends AppTimer implements Initializable {
         this.transitionCircle.setStrokeWidth(.1);
 
 
-        this.layoutGroup.getChildren().add(this.transitionCircle);
+        //this.layoutGroup.getChildren().add(this.transitionCircle);
 
         this.root.getChildren().add(layoutGroup);
         this.root.getChildren().add(objectGroup);
@@ -132,12 +132,12 @@ public class AppController extends AppTimer implements Initializable {
                 this.menuBar.getButtonList()) {
             if (menuBarButton.localToScene(menuBarButton.getBoundsInLocal()).intersects(fingerTouch.getBoundsInParent())) {
                 switch (menuBarButton.getName()) {
-                    case "start":
+                    case START:
                         break;
-                    case "fullscreen":
+                    case TOGGLE_FULLSCREEN:
                         toggleFullscreen();
                         break;
-                    case "exit":
+                    case EXIT:
                         System.exit(0);
                         break;
                     default:
@@ -146,81 +146,26 @@ public class AppController extends AppTimer implements Initializable {
         }
     }
 
-    /**
-     * Diese Methode ist ganz furchtbar. Hier muss praktisch ein komplettes Refactoring vorgenommen werden.
-     * @param AnimationDuration Aktuelle Timer-Dauer.
-     */
     private void getTangibleInput(double AnimationDuration) {
+        for (Map.Entry<TuioObject, Group> object : this.objectList.entrySet()) {
 
-        for (Map.Entry<TuioObject, Group> object :
-                this.objectList.entrySet()) {
-            if (!this.objectGroup.getChildren().contains(object.getValue()))
+            if (!this.objectGroup.getChildren().contains(object.getValue())) {
                 this.objectGroup.getChildren().add(object.getValue());
+            }
+
             int cx = object.getKey().getScreenX((int) this.root.getWidth());
             int cy = object.getKey().getScreenY((int) this.root.getHeight());
             object.getValue().setTranslateX(cx);
             object.getValue().setTranslateY(cy);
-
             Group group = object.getValue();
-
             group.getTransforms().clear();
             group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), 0, 0));
 
-            if(((TangibleObject)object.getValue()).getModule() instanceof VolumeControlModule) {
-                VolumeControlModule volumeControlModule = (VolumeControlModule) ((TangibleObject)object.getValue()).getModule();
-                volumeControlModule.setParameter(object.getKey().getAngleDegrees());
-            }
-
-            /*
-            Instantiate module from objectList
-             */
             Module module = ((TangibleObject) object.getValue()).getModule();
-            module.doAction();
-
-            if (module instanceof AxisScrollControlModule) {
-
-                AxisScrollControlModule axisScrollControlModule = (AxisScrollControlModule) module;
-                axisScrollControlModule.setParameter(getAnimationDuration(),object.getKey().getAngle() );
-
-                for (Map.Entry<TuioObject, Group> otherObject :
-                        this.objectList.entrySet()) {
-                    Module otherModule = ((TangibleObject) otherObject.getValue()).getModule();
-                    axisScrollControlModule.connect(otherModule);
-
-                }
-            }
-
-            if (module instanceof RotationSignalOutputModule) {
-
-                RotationSignalOutputModule axisScrollControlModule = (RotationSignalOutputModule) module;
-                axisScrollControlModule.setParameter(getAnimationDuration(),object.getKey().getAngle() );
-
-                for (Map.Entry<TuioObject, Group> otherObject :
-                        this.objectList.entrySet()) {
-                    Module otherModule = ((TangibleObject) otherObject.getValue()).getModule();
-                    axisScrollControlModule.connect(otherModule);
-
-                }
-            }
-
-            if (module instanceof VolumeControlModule) {
-
-                VolumeControlModule volumeControlModule = (VolumeControlModule) module;
-
-                for (Map.Entry<TuioObject, Group> otherObject :
-                        this.objectList.entrySet()) {
-                    Module otherModule = ((TangibleObject) otherObject.getValue()).getModule();
-                    volumeControlModule.connect(otherModule);
-
-                }
-            }
-
-            //group.getChildren().get(0).setRotate(object.getKey().getAngleDegrees());
+            module.doAction(AnimationDuration);
         }
+
         this.objectGroup.getChildren().retainAll(this.objectList.values());
-
-
-
 
         /*
         Für jeden Finger-Touch Aktionen ausführen
@@ -241,117 +186,7 @@ public class AppController extends AppTimer implements Initializable {
             /*
             ENDE: Finger-Touch-Markierung zuweisen
              */
-
             getMenuBarInput(fingerTouch);
-
-            for (Map.Entry<TuioObject, Group> object :
-                    this.objectList.entrySet()) {
-
-                try {
-
-                    /*
-                    START: Modul und ModulButtons zuweisen:
-                     */
-                    Module module = ((TangibleObject) object.getValue()).getModule();
-                    ArrayList<ReactButton> buttons = module.getButtonList();
-                    /*
-                    ENDE: Modul und ModulButtons zuweisen:
-                     */
-
-                    if (module instanceof MultimediaModule) {
-                        for (Track track :
-                                ((MultimediaModule) module).getTracks()) {
-                            if (track.getPlayButton().isEnabled()) {
-                                if (track.getPlayButton().localToScene(track.getPlayButton().getBoundsInLocal()).intersects(fingerTouch.getBoundsInParent())) {
-                                    ((MultimediaModule) module).gotoAndPlay(track.getStartDuration());
-                                }
-                            }
-                        }
-                    }
-
-                    for (ReactButton button :
-                            buttons) {
-                        if (button.localToScene(button.getBoundsInLocal()).intersects(fingerTouch.getBoundsInParent())) {
-                            if (CoreApplication.verbose) {
-                                System.out.printf("Hit auf %s%n", button.getName());
-                            }
-
-
-                            if (button.isEnabled()) {
-
-                                if (module instanceof ControlModule) {
-                                    switch (button.getName()) {
-                                        case "cancel":
-                                            ((ControlModule) module).disconnectAll();
-                                            System.out.println("Disconnect!");
-                                            break;
-                                        case "lock":
-                                            ((ControlModule) module).lockAll();
-                                            System.out.println("Lock!");
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                }
-
-                                if (module instanceof ChartModule) {
-                                    switch (button.getName()) {
-                                        case "zoom-in":
-                                            ((ChartModule) module).zoomIn();
-                                            System.out.println("Zoom in!");
-                                            break;
-                                        case "zoom-out":
-                                            ((ChartModule) module).zoomOut();
-                                            System.out.println("Zoom out!");
-                                            break;
-                                        case "play":
-                                            ((ChartModule) module).togglePause(AnimationDuration);
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                }
-
-                                if (module instanceof ControllableModule) {
-                                    switch (button.getName()) {
-                                        case "cancel":
-                                            module.disconnect();
-                                            break;
-                                    }
-                                }
-
-                                if (module instanceof MultimediaModule) {
-                                    switch (button.getName()) {
-                                        case "play":
-                                            ((MultimediaModule) module).play();
-                                            break;
-                                        case "pause":
-                                            ((MultimediaModule) module).pause();
-                                            break;
-                                        case "back":
-                                            ((MultimediaModule) module).rewind();
-                                            break;
-                                        case "next":
-                                            ((MultimediaModule) module).forward();
-                                            break;
-                                        case "toggleTrackView":
-                                            ((MultimediaModule) module).toggleTrackView();
-                                            break;
-                                    }
-                                }
-
-                            }
-                        } else {
-                            if (button.isEnabled()) {
-                                ((FontIcon) button.getChildren().get(1)).setFill(new Color(1, 1, 1, .9));
-                            }
-                        }
-                    }
-                } catch (NullPointerException ignored) {
-
-                }
-            }
-
 
         }
         this.cursorGroup.getChildren().retainAll(this.cursorList.values());
@@ -367,11 +202,11 @@ public class AppController extends AppTimer implements Initializable {
     BEGINN: Utility-Methoden
      */
 
-    protected void toggleFullscreen() {
+    public static void toggleFullscreen() {
         stage.setFullScreen(!stage.isFullScreen());
     }
 
-    protected void toggleVerbose() {
+    public static void toggleVerbose() {
         CoreApplication.verbose = !CoreApplication.verbose;
     }
 
