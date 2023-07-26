@@ -51,6 +51,10 @@ public abstract class Module extends Group implements ModuleInterface {
 
     }
 
+    public Rectangle getFillLeft() {
+        return fillLeft;
+    }
+
     public DecimalFormat getDf() {
         return df;
     }

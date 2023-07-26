@@ -10,7 +10,6 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.io.FileNotFoundException;
 
 public class Resource {
 
@@ -33,17 +32,17 @@ public class Resource {
 
             String docType = doc.getDocumentElement().getNodeName();
             if (!docType.equalsIgnoreCase("marker")) {
-                System.out.println("error parsing configuration file");
+                System.out.println("Root-Node 'marker' ist nicht vorhanden!");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("error reading configuration file");
+            System.out.println("Fehler beim Einlesen von marker.xml");
         }
 
         assert doc != null;
         NodeList objectNodes = doc.getElementsByTagName("object");
         for (int i = 0; i < objectNodes.getLength(); i++) {
-            AudioPlayerModuleBuilder moduleBuilder = new AudioPlayerModuleBuilder(tangibleObject);
+
             Node objectNode = objectNodes.item(i);
             int markerId = Integer.parseInt(((Element) objectNode).getAttribute("id"));
             String modelClassName = ((Element) objectNode).getAttribute("class");
@@ -52,13 +51,20 @@ public class Resource {
 
             if (id == markerId) {
                 System.out.printf("Marker %s ist ein %s mit dem Titel '%s'%n", markerId, modelClassName, title);
-                System.out.printf("Eine Datei ist angehängt: %s%n%n", fileName);
 
-                System.out.println("Folgende Abschnitte sind vorhanden:");
+                if(fileName.length() > 0) {
+                    System.out.printf("Eine Datei ist angehängt: %s%n", fileName);
+                }
+
                 NodeList parts = ((Element) objectNode).getElementsByTagName("part");
+
+                if(parts.getLength() > 0) {
+                    System.out.println("Folgende Abschnitte sind vorhanden:");
+                }
 
                 switch (modelClassName) {
                     case "AUDIO_PLAYER_MODULE":
+                        AudioPlayerModuleBuilder moduleBuilder = new AudioPlayerModuleBuilder(tangibleObject);
                         moduleBuilder
                                 .setTitle(title)
                                 .setFile(fileName)
@@ -69,6 +75,7 @@ public class Resource {
                             int startDuration = Integer.parseInt(((Element) part).getAttribute("start"));
                             int endDuration = Integer.parseInt(((Element) part).getAttribute("end"));
                             moduleBuilder.addTrack(new Track(partName, new Duration(startDuration), new Duration(endDuration)));
+                            System.out.println(partName + ", Start: " + startDuration + " | Ende: " + endDuration);
                         }
                         return moduleBuilder.createAudioPlayerModule();
                     case "VOLUME_CONTROL_MODULE":
@@ -79,6 +86,17 @@ public class Resource {
                         return new RotationSignalOutputModule(tangibleObject);
                     case "CHART_MODULE":
                         return new ChartModule(tangibleObject);
+                    case "IMAGE_MODULE":
+                        ImageModuleBuilder imageModuleBuilder =  new ImageModuleBuilder().setTangibleObject(tangibleObject);
+                        imageModuleBuilder.setTitle(title);
+                        NodeList images = ((Element) objectNode).getElementsByTagName("image");
+                        for (int k = 0; k < images.getLength(); k++) {
+                            Node image = images.item(k);
+                            String imageName = ((Element) image).getAttribute("name");
+                            String imageFile = ((Element) image).getAttribute("file");
+                            imageModuleBuilder.addImage(imageFile,imageName);
+                        }
+                        return imageModuleBuilder.createImageModule();
                 }
 
             }
