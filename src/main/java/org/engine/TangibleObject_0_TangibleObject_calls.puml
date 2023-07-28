@@ -1,0 +1,204 @@
+@startuml
+
+/' diagram meta data start
+config=CallConfiguration;
+{
+  "rootMethod": "org.engine.TangibleObject#TangibleObject(TuioObject,HashMap\u003cTuioCursor, FingerTouchObject\u003e,HashMap\u003cTuioObject, TangibleObject\u003e)",
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showMethodParametersTypes": false,
+    "showMethodParametersNames": false,
+    "showMethodReturnType": false,
+    "showPackageLevels": 2,
+    "showCallOrder": false,
+    "edgeMode": "MethodsOnly", // TypesOnly, MethodsOnly, TypesAndMethods, MethodsAndDirectTypeUsage
+    "showDetailedClassStructure": false
+  },
+  "rootClass": "org.engine.TangibleObject",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="LR"
+    splines=polyline
+    
+
+
+
+subgraph cluster_1298662846 { 
+   	label=engine
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1088933712 { 
+   	label=Resource
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Resource236902260XXXreadConfig104431[
+	label="+ readConfig()"
+	style=filled
+	fillcolor=white
+	tooltip="Resource
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_277613360 { 
+   	label=MarkerListener
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   MarkerListener236902260XXXaddTuioObject49578406[
+	label="+ addTuioObject()"
+	style=filled
+	fillcolor=white
+	tooltip="MarkerListener
+
+&#10;	  This callback method is invoked by the TuioClient when a new TuioObject is added to the session. &#10;	 &#10;	  @param tobj the TuioObject reference associated to the addTuioObject event&#10;	 "
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_556573017 { 
+   	label=TangibleObject
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   TangibleObject236902260XXXTangibleObject1378963881[
+	label="+ TangibleObject()"
+	style=filled
+	fillcolor=white
+	tooltip="TangibleObject
+
+null"
+	penwidth=4
+	fontcolor=darkgreen
+];
+} 
+} 
+
+subgraph cluster_1423555606 { 
+   	label=illposed
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1699010299 { 
+   	label=osc
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+
+
+OSCPacketDispatcher1129026502XXXdispatchPacket714438585[
+	label="+ dispatchPacket()"
+	style=filled
+	fillcolor=white
+	tooltip="OSCPacketDispatcher
+
+null"
+	fontcolor=darkgreen
+];
+
+} 
+} 
+
+subgraph cluster_3571559 { 
+   	label=tuio
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1885001900 { 
+   	label=TuioClient
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   TuioClient660144204XXXacceptMessage1726079126[
+	label="+ acceptMessage()"
+	style=filled
+	fillcolor=white
+	tooltip="TuioClient
+
+&#10;	  The OSC callback method where all TUIO messages are received and decoded&#10;	  and where the TUIO event callbacks are dispatched&#10;	 &#10;	  @param date	the time stamp of the OSC bundle&#10;	  @param message	the received OSC message&#10;	 "
+	fontcolor=darkgreen
+];
+} 
+} 
+
+'edges    
+MarkerListener236902260XXXaddTuioObject49578406 -> TangibleObject236902260XXXTangibleObject1378963881;
+OSCPacketDispatcher1129026502XXXdispatchPacket714438585 -> TuioClient660144204XXXacceptMessage1726079126;
+TangibleObject236902260XXXTangibleObject1378963881 -> Resource236902260XXXreadConfig104431;
+TuioClient660144204XXXacceptMessage1726079126 -> MarkerListener236902260XXXaddTuioObject49578406;
+    
+}
+@enduml
