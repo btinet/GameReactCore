@@ -20,10 +20,10 @@ public class TangibleObject extends Group {
     private final Circle dashPane = new Circle(20, new Color(0.3, 0.8, 0.9, 1));
     private final Module module;
     private final HashMap<TuioCursor, Circle> cursorList;
-    protected HashMap<TuioObject, Group> objectList;
+    protected HashMap<TuioObject, TangibleObject> objectList;
     private final TuioObject marker;
 
-    public TangibleObject(TuioObject tuioObject, HashMap<TuioCursor, Circle> cursorList,HashMap<TuioObject, Group> objectList) {
+    public TangibleObject(TuioObject tuioObject, HashMap<TuioCursor, Circle> cursorList,HashMap<TuioObject, TangibleObject> objectList) {
         this.marker = tuioObject;
         this.cursorList = cursorList;
         this.objectList = objectList;
@@ -78,7 +78,7 @@ public class TangibleObject extends Group {
         return this.cursorList;
     }
 
-    public HashMap<TuioObject, Group> getObjectList() {
+    public HashMap<TuioObject, TangibleObject> getObjectList() {
         return this.objectList;
     }
 }

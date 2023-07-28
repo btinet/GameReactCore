@@ -30,7 +30,7 @@ public class AppController extends AppTimer implements Initializable {
     private final Group cursorGroup = new Group();
     private final MenuBar menuBar = new MenuBar();
     public final HashMap<TuioCursor, Circle> cursorList = new HashMap<>();
-    public final HashMap<TuioObject, Group> objectList = new HashMap<>();
+    public final HashMap<TuioObject, TangibleObject> objectList = new HashMap<>();
     @FXML
     public BorderPane root;
     private double xOffset = 0;
@@ -114,7 +114,7 @@ public class AppController extends AppTimer implements Initializable {
 
     private void getTangibleInput(double animationDuration) {
 
-        for (Map.Entry<TuioObject, Group> object : this.objectList.entrySet()) {
+        for (Map.Entry<TuioObject, TangibleObject> object : this.objectList.entrySet()) {
             setObjectPosition(object, animationDuration);
         }
         this.objectGroup.getChildren().retainAll(this.objectList.values());
@@ -128,7 +128,11 @@ public class AppController extends AppTimer implements Initializable {
 
     }
 
-    public void setObjectPosition(Map.Entry<TuioObject, Group> object, double animationDuration) {
+    public void setObjectPosition(Map.Entry<TuioObject, TangibleObject> object, double animationDuration) {
+
+        TuioObject tuioObject = object.getKey();
+        TangibleObject tangibleObject = object.getValue();
+
 
         if (!this.objectGroup.getChildren().contains(object.getValue())) {
             this.objectGroup.getChildren().add(object.getValue());
@@ -140,10 +144,10 @@ public class AppController extends AppTimer implements Initializable {
         object.getValue().setTranslateX(ox);
         object.getValue().setTranslateY(oy);
 
-        TangibleObject tObject = (TangibleObject) object.getValue();
+        TangibleObject tObject = object.getValue();
 
         if(tObject.getModule() instanceof ControlModule) {
-            Group group = ((TangibleObject)object.getValue()).getModule().getRotationGroup();
+            Group group = object.getValue().getModule().getRotationGroup();
             group.getTransforms().clear();
             group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), -100, 0));
             tObject.getObjectPane().setRotate(object.getKey().getAngleDegrees());
@@ -153,7 +157,7 @@ public class AppController extends AppTimer implements Initializable {
             group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), 0, 0));
         }
 
-        Module module = ((TangibleObject) object.getValue()).getModule();
+        Module module = object.getValue().getModule();
         module.doAction(animationDuration);
     }
 

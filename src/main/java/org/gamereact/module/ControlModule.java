@@ -156,4 +156,9 @@ public abstract class ControlModule extends Module {
 
         }
     }
+
+    public void setPosition(double animationDuration) {
+
+    }
+
 }

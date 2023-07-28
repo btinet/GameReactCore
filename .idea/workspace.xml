@@ -9,24 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="add module">
+    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="refactor class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/Module.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/Resource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/MarkerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/MarkerListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/ModuleInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/ModuleInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Track.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/component/Track.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController_structure.puml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController_structure.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModuleBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModuleBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AxisScrollControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AxisScrollControlModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControlModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControllableModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControllableModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/EmptyModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/EmptyModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ImageModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ImageModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/MultimediaModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/MultimediaModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/Module.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/RotationSignalOutputModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/RotationSignalOutputModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" afterDir="false" />
     </list>
@@ -237,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690370208764</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="refactor class">
+      <created>1690526306805</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1690526306805</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -259,6 +259,7 @@
     <MESSAGE value="refactor modules" />
     <MESSAGE value="update modules" />
     <MESSAGE value="add module" />
-    <option name="LAST_COMMIT_MESSAGE" value="add module" />
+    <MESSAGE value="refactor class" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor class" />
   </component>
 </project>

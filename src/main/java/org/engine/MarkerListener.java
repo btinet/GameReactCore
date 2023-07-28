@@ -18,7 +18,7 @@ public class MarkerListener implements TuioListener {
 
     private final AppController controller;
     public final HashMap<TuioCursor, Circle> cursorList;
-    public final HashMap<TuioObject, Group> objectList;
+    public final HashMap<TuioObject, TangibleObject> objectList;
 
     public MarkerListener(AppController controller) {
         this.controller = controller;

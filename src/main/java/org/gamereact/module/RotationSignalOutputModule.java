@@ -75,7 +75,7 @@ public class RotationSignalOutputModule extends ControlModule {
 
         }
 
-        for (Map.Entry<TuioObject, Group> otherModule : getObjectList()) {
+        for (Map.Entry<TuioObject, TangibleObject> otherModule : getObjectList()) {
             connect( ((TangibleObject) otherModule.getValue()).getModule() );
         }
 

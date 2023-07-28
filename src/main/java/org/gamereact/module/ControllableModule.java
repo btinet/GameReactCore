@@ -6,4 +6,9 @@ public abstract class ControllableModule extends Module {
     public ControllableModule(TangibleObject tangibleObject) {
         super(tangibleObject);
     }
+
+    public void setPosition(double animationDuration) {
+
+    }
+
 }

@@ -11,4 +11,9 @@ public class EmptyModule extends Module {
     public void doAction(double animationDuration) {
 
     }
+
+    @Override
+    public void setPosition(double animationDuration) {
+
+    }
 }

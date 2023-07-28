@@ -115,7 +115,7 @@ public abstract class Module extends Group implements ModuleInterface {
         return this.tangibleObject.getCursorList().entrySet();
     }
 
-    public Set<Map.Entry<TuioObject, Group>> getObjectList() {
+    public Set<Map.Entry<TuioObject, TangibleObject>> getObjectList() {
         return this.tangibleObject.getObjectList().entrySet();
     }
 
