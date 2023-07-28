@@ -1,26 +1,20 @@
 package org.gamereact.controller;
 
 import com.tuio.*;
-import javafx.animation.FadeTransition;
-import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.transform.Transform;
 import org.engine.*;
-import org.engine.Module;
+import org.gamereact.module.Module;
 import org.gamereact.component.MenuBar;
 import org.gamereact.component.ReactButton;
 import org.gamereact.gamereactcore.CoreApplication;
 import org.gamereact.module.*;
-import org.gamereact.module.MultimediaModule;
-import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -135,6 +129,7 @@ public class AppController extends AppTimer implements Initializable {
     }
 
     public void setObjectPosition(Map.Entry<TuioObject, Group> object, double animationDuration) {
+
         if (!this.objectGroup.getChildren().contains(object.getValue())) {
             this.objectGroup.getChildren().add(object.getValue());
         }
@@ -157,8 +152,6 @@ public class AppController extends AppTimer implements Initializable {
             group.getTransforms().clear();
             group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), 0, 0));
         }
-
-
 
         Module module = ((TangibleObject) object.getValue()).getModule();
         module.doAction(animationDuration);

@@ -1,6 +1,5 @@
 package org.gamereact.module;
 
-import org.engine.Module;
 import org.engine.ReactImage;
 import org.engine.TangibleObject;
 import java.util.ArrayList;

@@ -9,7 +9,6 @@ import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import org.engine.Fonts;
-import org.engine.Module;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
 import org.gamereact.component.ReactButtonAction;

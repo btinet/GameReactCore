@@ -8,7 +8,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.StrokeLineCap;
-import org.engine.Module;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
 

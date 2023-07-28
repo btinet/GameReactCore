@@ -15,4 +15,5 @@ module org.gamereact.gamereactcore {
     exports org.engine;
     exports com.tuio;
     opens org.gamereact.controller to javafx.fxml;
+    exports org.gamereact.module;
 }

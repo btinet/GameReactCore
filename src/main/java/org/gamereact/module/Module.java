@@ -1,13 +1,15 @@
-package org.engine;
+package org.gamereact.module;
 
 import com.tuio.TuioCursor;
 import com.tuio.TuioObject;
 import javafx.animation.FadeTransition;
 import javafx.scene.Group;
-import javafx.scene.effect.Bloom;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import org.engine.ModuleInterface;
+import org.engine.TangibleObject;
+import org.engine.Transitions;
 import org.gamereact.component.ReactButton;
 import org.gamereact.component.ReactButtonAction;
 

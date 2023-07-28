@@ -5,7 +5,6 @@ import com.tuio.TuioCursor;
 import com.tuio.TuioObject;
 import javafx.scene.Group;
 import javafx.scene.shape.Circle;
-import org.engine.Module;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
 import org.gamereact.component.ReactIcon;
