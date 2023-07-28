@@ -10,18 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="refactor class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/FingerTouchObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/TangibleInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/MarkerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/MarkerListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/ModuleInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/ModuleInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AxisScrollControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AxisScrollControlModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControlModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControllableModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControllableModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/EmptyModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/EmptyModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/Module.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/RotationSignalOutputModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/RotationSignalOutputModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -237,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690526306805</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="refactor class">
+      <created>1690548792784</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1690548792784</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

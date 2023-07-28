@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.StrokeLineCap;
+import org.engine.FingerTouchObject;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
 
@@ -88,7 +89,7 @@ public class VolumeControlModule extends ControlModule {
     @Override
     public void doAction(double animationDuration) {
 
-        for (Map.Entry<TuioCursor, Circle> finger : getCursorList()) {
+        for (Map.Entry<TuioCursor, FingerTouchObject> finger : getCursorList()) {
 
             for(ReactButton button : getButtonList()) {
                 if (button.isEnabled() && button.intersects(finger.getValue())) {

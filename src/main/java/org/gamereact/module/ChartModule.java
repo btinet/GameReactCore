@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import org.engine.FingerTouchObject;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
 import org.gamereact.component.ReactButtonAction;
@@ -206,7 +207,7 @@ public class ChartModule extends ControllableModule {
     public void doAction(double animationDuration) {
 
         // Aktionen für jede Fingereingabe überprüfen:
-        for (Map.Entry<TuioCursor,Circle> finger : getCursorList()) {
+        for (Map.Entry<TuioCursor, FingerTouchObject> finger : getCursorList()) {
             for(ReactButton button : getButtonList()) {
                 if (button.isEnabled() && button.intersects(finger.getValue())) {
 

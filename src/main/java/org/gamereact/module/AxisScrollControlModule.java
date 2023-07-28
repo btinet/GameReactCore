@@ -5,6 +5,7 @@ import com.tuio.TuioCursor;
 import com.tuio.TuioObject;
 import javafx.scene.Group;
 import javafx.scene.shape.Circle;
+import org.engine.FingerTouchObject;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
 import org.gamereact.component.ReactIcon;
@@ -60,7 +61,7 @@ public class AxisScrollControlModule extends ControlModule {
     @Override
     public void doAction(double animationDuration) {
 
-        for (Map.Entry<TuioCursor, Circle> finger : getCursorList()) {
+        for (Map.Entry<TuioCursor, FingerTouchObject> finger : getCursorList()) {
 
             for(ReactButton button : getButtonList()) {
                 if (button.isEnabled() && button.intersects(finger.getValue())) {

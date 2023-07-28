@@ -13,17 +13,17 @@ import org.gamereact.module.Module;
 
 import java.util.HashMap;
 
-public class TangibleObject extends Group {
+public class TangibleObject extends Group implements TangibleInterface {
 
     private final Rectangle objectPane = new Rectangle(80, 80, new Color(0.894, 0.007, 0.454, 1));
     private final Circle intersectPane = new Circle(100, new Color(0.3, 0.8, 0.9, .6));
     private final Circle dashPane = new Circle(20, new Color(0.3, 0.8, 0.9, 1));
     private final Module module;
-    private final HashMap<TuioCursor, Circle> cursorList;
+    private final HashMap<TuioCursor, FingerTouchObject> cursorList;
     protected HashMap<TuioObject, TangibleObject> objectList;
     private final TuioObject marker;
 
-    public TangibleObject(TuioObject tuioObject, HashMap<TuioCursor, Circle> cursorList,HashMap<TuioObject, TangibleObject> objectList) {
+    public TangibleObject(TuioObject tuioObject, HashMap<TuioCursor, FingerTouchObject> cursorList,HashMap<TuioObject, TangibleObject> objectList) {
         this.marker = tuioObject;
         this.cursorList = cursorList;
         this.objectList = objectList;
@@ -74,11 +74,17 @@ public class TangibleObject extends Group {
         return module;
     }
 
-    public HashMap<TuioCursor, Circle> getCursorList () {
+    public HashMap<TuioCursor, FingerTouchObject> getCursorList () {
         return this.cursorList;
     }
 
     public HashMap<TuioObject, TangibleObject> getObjectList() {
         return this.objectList;
     }
+
+    @Override
+    public void setPosition(TuioObject tuioObject, double animationDuration) {
+
+    }
+
 }

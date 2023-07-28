@@ -2,8 +2,6 @@ package org.engine;
 
 import com.tuio.*;
 import javafx.animation.ScaleTransition;
-import javafx.scene.Group;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import org.gamereact.controller.AppController;
 import org.gamereact.gamereactcore.CoreApplication;
@@ -17,7 +15,7 @@ import java.util.HashMap;
 public class MarkerListener implements TuioListener {
 
     private final AppController controller;
-    public final HashMap<TuioCursor, Circle> cursorList;
+    public final HashMap<TuioCursor, FingerTouchObject> cursorList;
     public final HashMap<TuioObject, TangibleObject> objectList;
 
     public MarkerListener(AppController controller) {
@@ -59,9 +57,9 @@ public class MarkerListener implements TuioListener {
     @Override
     public void addTuioCursor(TuioCursor tcur) {
         if (CoreApplication.verbose) System.out.println("Cursor added!");
-        Circle circle = new Circle(15, Color.WHITE);
-        ScaleTransition cst = Transitions.createScaleTransition(50, circle, .5, 1);
-        this.controller.cursorList.put(tcur, circle);
+        FingerTouchObject fingerTouchObject = new FingerTouchObject();
+        ScaleTransition cst = Transitions.createScaleTransition(50, fingerTouchObject, .5, 1);
+        this.controller.cursorList.put(tcur, fingerTouchObject);
         cst.play();
     }
 

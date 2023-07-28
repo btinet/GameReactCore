@@ -7,6 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import org.engine.FingerTouchObject;
 import org.engine.ModuleInterface;
 import org.engine.TangibleObject;
 import org.engine.Transitions;
@@ -111,7 +112,7 @@ public abstract class Module extends Group implements ModuleInterface {
         return this.tangibleObject.getIntersectPane();
     }
 
-    public Set<Map.Entry<TuioCursor, Circle>> getCursorList() {
+    public Set<Map.Entry<TuioCursor, FingerTouchObject>> getCursorList() {
         return this.tangibleObject.getCursorList().entrySet();
     }
 

@@ -13,6 +13,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
+import org.engine.FingerTouchObject;
 import org.engine.Fonts;
 import org.engine.TangibleObject;
 import org.gamereact.component.Track;
@@ -323,7 +324,7 @@ public abstract class MultimediaModule extends ControllableModule {
     @Override
     public void doAction(double animationDuration) {
 
-        for (Map.Entry<TuioCursor,Circle> finger : getCursorList()) {
+        for (Map.Entry<TuioCursor, FingerTouchObject> finger : getCursorList()) {
 
             Circle fingerTouch = finger.getValue();
 

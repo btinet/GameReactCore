@@ -8,7 +8,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.transform.Transform;
 import org.engine.*;
-import org.gamereact.module.Module;
 import org.gamereact.component.MenuBar;
 import org.gamereact.component.ReactButton;
 import org.gamereact.gamereactcore.CoreApplication;
@@ -29,7 +28,7 @@ public class AppController extends AppTimer implements Initializable {
     private final Group objectGroup = new Group();
     private final Group cursorGroup = new Group();
     private final MenuBar menuBar = new MenuBar();
-    public final HashMap<TuioCursor, Circle> cursorList = new HashMap<>();
+    public final HashMap<TuioCursor, FingerTouchObject> cursorList = new HashMap<>();
     public final HashMap<TuioObject, TangibleObject> objectList = new HashMap<>();
     @FXML
     public BorderPane root;
@@ -120,7 +119,7 @@ public class AppController extends AppTimer implements Initializable {
         this.objectGroup.getChildren().retainAll(this.objectList.values());
 
 
-        for (Map.Entry<TuioCursor, Circle> cursor : this.cursorList.entrySet()) {
+        for (Map.Entry<TuioCursor, FingerTouchObject> cursor : this.cursorList.entrySet()) {
             setCursorPosition(cursor);
             getMenuBarInput(cursor.getValue());
         }
@@ -133,35 +132,30 @@ public class AppController extends AppTimer implements Initializable {
         TuioObject tuioObject = object.getKey();
         TangibleObject tangibleObject = object.getValue();
 
-
-        if (!this.objectGroup.getChildren().contains(object.getValue())) {
-            this.objectGroup.getChildren().add(object.getValue());
+        if (!this.objectGroup.getChildren().contains(tangibleObject)) {
+            this.objectGroup.getChildren().add(tangibleObject);
         }
 
-        int ox = object.getKey().getScreenX((int) this.root.getWidth());
-        int oy = object.getKey().getScreenY((int) this.root.getHeight());
+        int ox = tuioObject.getScreenX((int) this.root.getWidth());
+        int oy = tuioObject.getScreenY((int) this.root.getHeight());
 
-        object.getValue().setTranslateX(ox);
-        object.getValue().setTranslateY(oy);
+        tangibleObject.setTranslateX(ox);
+        tangibleObject.setTranslateY(oy);
 
-        TangibleObject tObject = object.getValue();
-
-        if(tObject.getModule() instanceof ControlModule) {
-            Group group = object.getValue().getModule().getRotationGroup();
+        if(tangibleObject.getModule() instanceof ControlModule) {
+            Group group = tangibleObject.getModule().getRotationGroup();
             group.getTransforms().clear();
-            group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), -100, 0));
-            tObject.getObjectPane().setRotate(object.getKey().getAngleDegrees());
+            group.getTransforms().add(Transform.rotate(tuioObject.getAngleDegrees(), -100, 0));
+            tangibleObject.getObjectPane().setRotate(tuioObject.getAngleDegrees());
         } else {
-            Group group = object.getValue();
-            group.getTransforms().clear();
-            group.getTransforms().add(Transform.rotate(object.getKey().getAngleDegrees(), 0, 0));
+            tangibleObject.getTransforms().clear();
+            tangibleObject.getTransforms().add(Transform.rotate(tuioObject.getAngleDegrees(), 0, 0));
         }
 
-        Module module = object.getValue().getModule();
-        module.doAction(animationDuration);
+        tangibleObject.getModule().doAction(animationDuration);
     }
 
-    public void setCursorPosition(Map.Entry<TuioCursor, Circle> cursor) {
+    public void setCursorPosition(Map.Entry<TuioCursor, FingerTouchObject> cursor) {
         if (!this.cursorGroup.getChildren().contains(cursor.getValue())) {
             this.cursorGroup.getChildren().add(cursor.getValue());
         }
