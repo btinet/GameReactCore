@@ -1,10 +1,9 @@
-Welcome to Lumache's documentation!
+GameReact Core
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+**GameReact Core** ist ein auf Machine-Vision basierendes Konferenzsystem für nahezu jeden Anwendungsbereich, in dem
+mehrere Personen involviert sind.
+
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
