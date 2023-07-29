@@ -1,9 +1,26 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 
+<!--
+Konfiguration der Marker:
+Weitere Informationen entnehmen Sie bitte der Dokumentation.
+
+Diese Konfiguration dient als Backup, falls keine Verbindung zum GameReact-Server besteht.
+
+Steuerbare Module:
+========================
+AUDIO_PLAYER_MODULE: Mediaplayer mit Track-liste
+CHART_MODULE: Diagrammmodul zue Ausgabe interner oder externer Messdaten
+IMAGE_MODULE: Bildbetrachter
+
+Steuermodule:
+========================
+VOLUME_CONTROL_MODULE: Lautstärkeregelung für Multimedia-Module
+AXIS_SCROLL_CONTROL_MODULE: Regler zur Verschiebung von Diagrammen auf der x-Achse oder y-Achse
+ROTATION_SIGNAL_OUTPUT_MODULE: Sinus-Steuersignal auf Basis des Rotationswinkels.
+-->
+
 <marker>
-    <!-- Marker zuweisen -->
     <object id="0" class="AUDIO_PLAYER_MODULE" file="goethe-eins_und_alles.mp3" title="Eins und Alles">
-        <!-- Abschnitte zuweisen, Start und Ende in ms -->
         <part name="Strophe 1" start="12160" end="36592" />
         <part name="Strophe 2" start="37708" end="63814" />
         <part name="Strophe 3" start="64372" end="89139" />

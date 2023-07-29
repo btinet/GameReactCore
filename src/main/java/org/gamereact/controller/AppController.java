@@ -74,6 +74,7 @@ public class AppController extends AppTimer implements Initializable {
      */
     @Override
     public void tick(float secondsSinceLastFrame) {
+
         menuBar.setTranslateX(root.getWidth() / 2);
         menuBar.setTranslateY(root.getHeight() - 50);
 
@@ -90,6 +91,22 @@ public class AppController extends AppTimer implements Initializable {
         if (keys.isPressed(ButtonConfig.toggleFullscreen)) toggleFullscreen();
         if (keys.isPressed(ButtonConfig.toggleCalibrationGrid)) toggleVerbose();
         if (keys.isPressed(ButtonConfig.exit)) System.exit(0);
+    }
+
+    private void getTangibleInput(double animationDuration) {
+
+        for (Map.Entry<TuioObject, TangibleObject> object : this.objectList.entrySet()) {
+            setObjectPosition(object, animationDuration);
+        }
+        this.objectGroup.getChildren().retainAll(this.objectList.values());
+
+
+        for (Map.Entry<TuioCursor, FingerTouchObject> cursor : this.cursorList.entrySet()) {
+            setCursorPosition(cursor);
+            getMenuBarInput(cursor.getValue());
+        }
+        this.cursorGroup.getChildren().retainAll(this.cursorList.values());
+
     }
 
     private void getMenuBarInput(Circle fingerTouch) {
@@ -111,21 +128,17 @@ public class AppController extends AppTimer implements Initializable {
         }
     }
 
-    private void getTangibleInput(double animationDuration) {
-
-        for (Map.Entry<TuioObject, TangibleObject> object : this.objectList.entrySet()) {
-            setObjectPosition(object, animationDuration);
+    public void setCursorPosition(Map.Entry<TuioCursor, FingerTouchObject> cursor) {
+        if (!this.cursorGroup.getChildren().contains(cursor.getValue())) {
+            this.cursorGroup.getChildren().add(cursor.getValue());
         }
-        this.objectGroup.getChildren().retainAll(this.objectList.values());
-
-
-        for (Map.Entry<TuioCursor, FingerTouchObject> cursor : this.cursorList.entrySet()) {
-            setCursorPosition(cursor);
-            getMenuBarInput(cursor.getValue());
-        }
-        this.cursorGroup.getChildren().retainAll(this.cursorList.values());
-
+        int cx = cursor.getKey().getScreenX((int) this.root.getWidth());
+        int cy = cursor.getKey().getScreenY((int) this.root.getHeight());
+        cursor.getValue().setTranslateX(cx);
+        cursor.getValue().setTranslateY(cy);
     }
+
+
 
     public void setObjectPosition(Map.Entry<TuioObject, TangibleObject> object, double animationDuration) {
 
@@ -155,15 +168,7 @@ public class AppController extends AppTimer implements Initializable {
         tangibleObject.getModule().doAction(animationDuration);
     }
 
-    public void setCursorPosition(Map.Entry<TuioCursor, FingerTouchObject> cursor) {
-        if (!this.cursorGroup.getChildren().contains(cursor.getValue())) {
-            this.cursorGroup.getChildren().add(cursor.getValue());
-        }
-        int cx = cursor.getKey().getScreenX((int) this.root.getWidth());
-        int cy = cursor.getKey().getScreenY((int) this.root.getHeight());
-        cursor.getValue().setTranslateX(cx);
-        cursor.getValue().setTranslateY(cy);
-    }
+
 
     /*
     BEGINN: Utility-Methoden

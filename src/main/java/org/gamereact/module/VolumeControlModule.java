@@ -3,10 +3,8 @@ package org.gamereact.module;
 
 import com.tuio.TuioCursor;
 import com.tuio.TuioObject;
-import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.StrokeLineCap;
 import org.engine.FingerTouchObject;
 import org.engine.TangibleObject;
@@ -59,8 +57,8 @@ public class VolumeControlModule extends ControlModule {
 
         for (Module module : this.moduleList) {
             if(module instanceof MultimediaModule) {
-                MultimediaModule MultimediaModule = (MultimediaModule) module;
-                MultimediaModule.getMediaPlayer().setVolume(parameter);
+                MultimediaModule multimediaModule = (MultimediaModule) module;
+                multimediaModule.getMediaPlayer().setVolume(parameter);
             }
 
         }
@@ -89,6 +87,8 @@ public class VolumeControlModule extends ControlModule {
     @Override
     public void doAction(double animationDuration) {
 
+        TuioObject tuioObject = getTangibleObject().getMarker();
+
         for (Map.Entry<TuioCursor, FingerTouchObject> finger : getCursorList()) {
 
             for(ReactButton button : getButtonList()) {
@@ -96,11 +96,9 @@ public class VolumeControlModule extends ControlModule {
                     switch (button.getName()) {
                         case CANCEL:
                             disconnectAll();
-                            System.out.println("Disconnect!");
                             break;
                         case LOCK:
                             lockAll();
-                            System.out.println("Lock!");
                             break;
                     }
                 }
@@ -109,12 +107,12 @@ public class VolumeControlModule extends ControlModule {
         }
 
         for (Map.Entry<TuioObject, TangibleObject> otherModule : getObjectList()) {
-            connect( ((TangibleObject) otherModule.getValue()).getModule() );
+            connect( otherModule.getValue().getModule() );
         }
 
-        setParameter(getTangibleObject().getMarker().getAngleDegrees());
-        setValueDisplayText(Math.round(getTangibleObject().getMarker().getAngleDegrees()/360*100));
-        cancelConnectionButton.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
-        lockConnectionButton.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
+        setParameter(tuioObject.getAngleDegrees());
+        setValueDisplayText(Math.round(tuioObject.getAngleDegrees()/360*100));
+        cancelConnectionButton.setRotate(-tuioObject.getAngleDegrees());
+        lockConnectionButton.setRotate(-tuioObject.getAngleDegrees());
     }
 }

@@ -77,7 +77,7 @@ public class RotationSignalOutputModule extends ControlModule {
         }
 
         for (Map.Entry<TuioObject, TangibleObject> otherModule : getObjectList()) {
-            connect( ((TangibleObject) otherModule.getValue()).getModule() );
+            connect( otherModule.getValue().getModule() );
         }
 
         setParameter( animationDuration, getTangibleObject().getMarker().getAngle() );

@@ -326,12 +326,12 @@ public abstract class MultimediaModule extends ControllableModule {
 
         for (Map.Entry<TuioCursor, FingerTouchObject> finger : getCursorList()) {
 
-            Circle fingerTouch = finger.getValue();
+            FingerTouchObject fingerTouch = finger.getValue();
 
             for (Track track :
                     getTracks()) {
                 if (track.getPlayButton().isEnabled()) {
-                    if (track.getPlayButton().localToScene(track.getPlayButton().getBoundsInLocal()).intersects(fingerTouch.getBoundsInParent())) {
+                    if (track.getPlayButton().intersects(fingerTouch)) {
                         gotoAndPlay(track.getStartDuration());
                     }
                 }
@@ -339,7 +339,7 @@ public abstract class MultimediaModule extends ControllableModule {
 
             for(ReactButton button : getButtonList()) {
 
-                if (button.isEnabled() && button.intersects(finger.getValue())) {
+                if (button.isEnabled() && button.intersects(fingerTouch)) {
                     switch (button.getName()) {
                         case PLAY:
                             play();
