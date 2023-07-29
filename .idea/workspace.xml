@@ -9,14 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="add uml diagramm">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/marker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/marker.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/MultimediaModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/MultimediaModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/RotationSignalOutputModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/RotationSignalOutputModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" afterDir="false" />
-    </list>
+    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -252,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690575782762</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="update">
+      <created>1690608693518</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1690608693518</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -276,6 +276,7 @@
     <MESSAGE value="add module" />
     <MESSAGE value="refactor class" />
     <MESSAGE value="add uml diagramm" />
-    <option name="LAST_COMMIT_MESSAGE" value="add uml diagramm" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>

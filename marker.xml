@@ -8,9 +8,9 @@ Diese Konfiguration dient als Backup, falls keine Verbindung zum GameReact-Serve
 
 Steuerbare Module:
 ========================
-AUDIO_PLAYER_MODULE: Mediaplayer mit Track-liste
+AUDIO_PLAYER_MODULE: Mediaplayer mit optionaler Track-liste
 CHART_MODULE: Diagrammmodul zue Ausgabe interner oder externer Messdaten
-IMAGE_MODULE: Bildbetrachter
+IMAGE_MODULE: Bildbetrachter mit Bildliste
 
 Steuermodule:
 ========================
