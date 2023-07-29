@@ -2,9 +2,9 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = 'GameReact Core'
+copyright = '2022-2023, Benjamin Wagner'
+author = 'Benjamin Wagner'
 
 release = '0.1'
 version = '0.1.0'
