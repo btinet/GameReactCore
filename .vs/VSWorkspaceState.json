@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\docs",
+    "\\docs\\source",
+    "\\src",
+    "\\src\\main",
+    "\\src\\main\\java",
+    "\\src\\main\\java\\org",
+    "\\src\\main\\java\\org\\gamereact",
+    "\\src\\main\\java\\org\\gamereact\\controller"
+  ],
+  "SelectedNode": "\\src\\main\\java\\org\\gamereact\\controller\\AppController.java",
+  "PreviewInSolutionExplorer": false
+}

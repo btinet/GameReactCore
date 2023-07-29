@@ -9,8 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="add docs">
+    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="update docs">
+      <change afterPath="$PROJECT_DIR$/.vs/GameReactCore/FileContentIndex/ccc0cf3b-2e71-48eb-bc30-880095c44df3.vsidx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/GameReactCore/FileContentIndex/read.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/GameReactCore/v17/.wsuo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/VSWorkspaceState.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/slnx.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/GameReactCore_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/GameReactCore_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/marker.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +63,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "C:/Users/BenjaminWagner/IdeaProjects/GameReactCore/src/main/java/org/engine",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.41149426",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -275,7 +284,21 @@
       <option name="project" value="LOCAL" />
       <updated>1690619496991</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="update docs">
+      <created>1690620028316</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1690620028316</updated>
+    </task>
+    <task id="LOCAL-00028" summary="update docs">
+      <created>1690620128827</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1690620128827</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -301,6 +324,7 @@
     <MESSAGE value="add uml diagramm" />
     <MESSAGE value="update" />
     <MESSAGE value="add docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="add docs" />
+    <MESSAGE value="update docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="update docs" />
   </component>
 </project>
