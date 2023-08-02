@@ -5,6 +5,7 @@ import com.tuio.TuioCursor;
 import com.tuio.TuioObject;
 import javafx.scene.Group;
 import javafx.scene.shape.Circle;
+import org.engine.ArduinoControl;
 import org.engine.FingerTouchObject;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
@@ -13,9 +14,11 @@ import java.util.Map;
 
 public class RotationSignalOutputModule extends ControlModule {
 
+    ArduinoControl arduinoControl;
 
     public RotationSignalOutputModule(TangibleObject tangibleObject) {
         super(tangibleObject, "ci-chart-line");
+        arduinoControl = new ArduinoControl();
         getVolumeIndicatorBackground.setStrokeWidth(8);
         getVolumeIndicatorBackground.getStrokeDashArray().addAll(10d,10d,10d,10d);
     }
@@ -26,12 +29,18 @@ public class RotationSignalOutputModule extends ControlModule {
 
         for (Module module : this.moduleList) {
             if(module instanceof ChartModule) {
+
                 ChartModule chartModule = (ChartModule) module;
-                chartModule.updateChart(time, Math.sin(angle) );
+                chartModule.updateChart(time, arduinoControl.getData() );
+                //chartModule.updateChart(time, Math.sin(angle) );
                 //chartModule.getMediaPlayer().setVolume(parameter);
             }
 
         }
+    }
+
+    public ArduinoControl getArduinoControl() {
+        return arduinoControl;
     }
 
     @Override

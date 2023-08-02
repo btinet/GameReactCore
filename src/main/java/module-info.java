@@ -7,6 +7,7 @@ module org.gamereact.gamereactcore {
     requires com.almasb.fxgl.all;
     requires javafx.media;
     requires java.xml;
+    requires jSerialComm;
 
     opens org.gamereact.gamereactcore to javafx.fxml;
     exports org.gamereact.gamereactcore;

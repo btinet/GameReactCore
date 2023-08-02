@@ -5,10 +5,7 @@ import javafx.animation.ScaleTransition;
 import javafx.scene.shape.Circle;
 import org.gamereact.controller.AppController;
 import org.gamereact.gamereactcore.CoreApplication;
-import org.gamereact.module.ChartModule;
-import org.gamereact.module.ControlModule;
-import org.gamereact.module.MultimediaModule;
-import org.gamereact.module.VolumeControlModule;
+import org.gamereact.module.*;
 
 import java.util.HashMap;
 
@@ -46,6 +43,10 @@ public class MarkerListener implements TuioListener {
         }
         if (disposedObject.getModule() instanceof ControlModule) {
             ((ControlModule) disposedObject.getModule()).disconnectAll();
+            if (disposedObject.getModule() instanceof RotationSignalOutputModule) {
+                ((RotationSignalOutputModule) disposedObject.getModule()).getArduinoControl().closePort();
+            }
+
         }
         if(disposedObject.getModule() instanceof ChartModule) {
             ((ChartModule) disposedObject.getModule()).resetData();
