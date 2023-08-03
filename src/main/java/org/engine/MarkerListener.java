@@ -2,7 +2,6 @@ package org.engine;
 
 import com.tuio.*;
 import javafx.animation.ScaleTransition;
-import javafx.scene.shape.Circle;
 import org.gamereact.controller.AppController;
 import org.gamereact.gamereactcore.CoreApplication;
 import org.gamereact.module.*;
