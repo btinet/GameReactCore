@@ -10,6 +10,7 @@ import org.engine.FingerTouchObject;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class RotationSignalOutputModule extends ControlModule {
@@ -18,7 +19,11 @@ public class RotationSignalOutputModule extends ControlModule {
 
     public RotationSignalOutputModule(TangibleObject tangibleObject) {
         super(tangibleObject, "ci-chart-line");
-        arduinoControl = new ArduinoControl();
+        // Testweise:
+            ArrayList<String> measurementTypes = new ArrayList<>();
+            measurementTypes.add("voltage");
+        // Testweise, ENDE
+        arduinoControl = new ArduinoControl(measurementTypes);
         getVolumeIndicatorBackground.setStrokeWidth(8);
         getVolumeIndicatorBackground.getStrokeDashArray().addAll(10d,10d,10d,10d);
     }
