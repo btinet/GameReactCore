@@ -113,7 +113,7 @@ public class ChartModule extends ControllableModule {
         ((NumberAxis)chart.getXAxis()).setLowerBound(0);
         ((NumberAxis)chart.getXAxis()).setUpperBound(60);
         ((NumberAxis)chart.getYAxis()).setLowerBound(0);
-        ((NumberAxis)chart.getYAxis()).setUpperBound(150);
+        ((NumberAxis)chart.getYAxis()).setUpperBound(1500);
         chart.getYAxis().setAutoRanging(false);
         chart.getXAxis().setLabel("t in s");
         chart.getYAxis().setLabel("U in mV");
@@ -177,7 +177,7 @@ public class ChartModule extends ControllableModule {
     }
 
     public void updateChart(double time, Double s) {
-        if(!pause && s != null && s <= 150) {
+        if(!pause && s != null) {
             double mTime = time - initialTime;
             //if (series.getData().size()>1000) series.getData().remove(0);
             Double rndDouble = ThreadLocalRandom.current().nextDouble(-1,1);

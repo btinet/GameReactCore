@@ -9,6 +9,8 @@ public class ArduinoControl {
 
     SerialPort sp;
     char lastChar = '?';
+
+    Double x = (double) 0;
     StringBuilder text = new StringBuilder();
 
     public ArduinoControl() {
@@ -31,6 +33,32 @@ public class ArduinoControl {
 
         try {
             if (sp.bytesAvailable() > 0) {
+                // new
+
+                /* Read serial bytes from communication port */
+                byte[] newData = new byte[16];
+                sp.readBytes(newData, newData.length);
+
+                for (byte newDatum : newData)
+                {
+                    /* convert byte to char */
+                    Character serialInput = (char) newDatum;
+                    if(Character.isLetterOrDigit(serialInput))
+                    {
+                        text.append(serialInput);
+                    }
+                    /* Indicates the end of a value */
+                    if (serialInput.equals('E'))
+                    {
+                        parseData(text.toString());
+                        text.setLength(0);
+                        break;
+                    }
+                }
+
+
+                /*
+
                 byte[] data = new byte[10];
                 sp.readBytes(data, 1);
 
@@ -51,13 +79,41 @@ public class ArduinoControl {
                         }
 
                 }
+                 */
+
 
 
             }
         } catch (NumberFormatException ignored) {
 
         }
-        return null;
+        return x;
+    }
+
+    /**
+     *
+     * @param serialData - String sent by controller
+     */
+    private void parseData(String serialData)
+    {
+
+        if(serialData.contains("voltage"))
+        {
+            x = Double.parseDouble(serialData.replaceAll("[^0-9]", ""));
+
+        }
+
+        else if (serialData.contains("current"))
+        {
+
+        }
+
+        else if (serialData.contains("Widerstand"))
+        {
+
+
+        }
+        //System.out.println(serialData);
     }
 
     public void closePort() {
