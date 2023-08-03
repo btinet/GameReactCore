@@ -108,13 +108,14 @@ public class ChartModule extends ControllableModule {
         chart.setPrefWidth(800);
         chart.setPrefHeight(300);
         ((NumberAxis)chart.getXAxis()).setForceZeroInRange(false);
+        ((NumberAxis)chart.getYAxis()).setForceZeroInRange(false);
         ((NumberAxis)chart.getXAxis()).setMinorTickVisible(false);
         chart.getXAxis().setAutoRanging(false);
         ((NumberAxis)chart.getXAxis()).setLowerBound(0);
         ((NumberAxis)chart.getXAxis()).setUpperBound(60);
-        ((NumberAxis)chart.getYAxis()).setLowerBound(0);
-        ((NumberAxis)chart.getYAxis()).setUpperBound(1500);
-        chart.getYAxis().setAutoRanging(false);
+        //((NumberAxis)chart.getYAxis()).setLowerBound(0);
+        //((NumberAxis)chart.getYAxis()).setUpperBound(1500);
+        chart.getYAxis().setAutoRanging(true);
         chart.getXAxis().setLabel("t in s");
         chart.getYAxis().setLabel("U in mV");
         chart.getStyleClass().add("thick-chart");
