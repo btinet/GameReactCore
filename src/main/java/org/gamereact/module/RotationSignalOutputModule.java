@@ -29,16 +29,10 @@ public class RotationSignalOutputModule extends ControlModule {
     }
 
     public void setParameter(double time, double angle) {
-
-        //volumeIndicator.setLength(angle);
-
         for (Module module : this.moduleList) {
             if(module instanceof ChartModule) {
-
                 ChartModule chartModule = (ChartModule) module;
                 chartModule.updateChart(time, arduinoControl.getData() );
-                //chartModule.updateChart(time, Math.sin(angle) );
-                //chartModule.getMediaPlayer().setVolume(parameter);
             }
 
         }

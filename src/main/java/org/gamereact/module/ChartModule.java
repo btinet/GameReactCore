@@ -95,10 +95,7 @@ public class ChartModule extends ControllableModule {
     }
 
     private LineChart<Number, Number> createChart() {
-
-
         chart = new LineChart<>(new NumberAxis(), new NumberAxis());
-
         chart.setCreateSymbols(false);
         chart.setStyle("-fx-background-color:  transparent");
         chart.setVerticalGridLinesVisible(true);
@@ -136,22 +133,11 @@ public class ChartModule extends ControllableModule {
 
     public void setPause(Boolean pause, double animationDuration) {
         if (pause) {
-
             pauseStart = animationDuration - initialTime;
-            System.out.println("Pausenstart: " + pauseStart);
-            System.out.println("=========================");
-
             playButton.setIcon(ReactButtonAction.PLAY,"ci-pause-filled");
             playButton.setBackground(new Color(0.9, 0.2, 0.5, .4));
-
-
         } else {
-
             pauseEnd = animationDuration - initialTime;
-            System.out.println("Pausenende: " + pauseEnd);
-            System.out.println("Pausenzeit: " + (pauseEnd-pauseStart));
-            System.out.println("=========================");
-
             initialTime += (pauseEnd-pauseStart);
             playButton.setIcon(ReactButtonAction.PLAY,"ci-play-filled-alt");
             playButton.setBackground(new Color(0.4, 0.9, 0.5, .4));
@@ -180,22 +166,14 @@ public class ChartModule extends ControllableModule {
     public void updateChart(double time, Double s) {
         if(!pause && s != null) {
             double mTime = time - initialTime;
-            //if (series.getData().size()>1000) series.getData().remove(0);
-            Double rndDouble = ThreadLocalRandom.current().nextDouble(-1,1);
             XYChart.Data<Number, Number> data = new XYChart.Data<>(mTime, s);
-
             series.getData().add(data);
-        } else {
-            //timeSincePause = time - initialTime;
         }
-
     }
 
     public void moveOnXAxis(double sin) {
-
         double lowerBound = ((NumberAxis)chart.getXAxis()).getLowerBound();
         double upperBound = ((NumberAxis)chart.getXAxis()).getUpperBound();
-
         if(sin < -.15 || sin > .15) {
             lowerBound += sin*.7;
             upperBound += sin*.7;
@@ -206,20 +184,15 @@ public class ChartModule extends ControllableModule {
 
     @Override
     public void doAction(double animationDuration) {
-
-        // Aktionen für jede Fingereingabe überprüfen:
         for (Map.Entry<TuioCursor, FingerTouchObject> finger : getCursorList()) {
             for(ReactButton button : getButtonList()) {
                 if (button.isEnabled() && button.intersects(finger.getValue())) {
-
                     switch (button.getName()) {
                         case ZOOM_IN:
                             zoomIn();
-                            System.out.println("Zoom in!");
                             break;
                         case ZOOM_OUT:
                             zoomOut();
-                            System.out.println("Zoom out!");
                             break;
                         case PLAY:
                             togglePause(animationDuration);
@@ -230,10 +203,9 @@ public class ChartModule extends ControllableModule {
                         default:
                             break;
                     }
-
                 }
             }
         }
-
     }
+
 }

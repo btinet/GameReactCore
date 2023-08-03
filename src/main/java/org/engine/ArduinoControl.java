@@ -10,9 +10,7 @@ public class ArduinoControl {
     SerialPort sp;
     Double x = (double) 0;
     StringBuilder text = new StringBuilder();
-
     ArrayList<String> measurementTypes;
-
 
     public ArduinoControl(ArrayList<String> measurementTypes) {
         this.measurementTypes = measurementTypes;
