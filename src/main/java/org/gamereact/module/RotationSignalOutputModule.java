@@ -3,8 +3,6 @@ package org.gamereact.module;
 
 import com.tuio.TuioCursor;
 import com.tuio.TuioObject;
-import javafx.scene.Group;
-import javafx.scene.shape.Circle;
 import org.engine.ArduinoControl;
 import org.engine.FingerTouchObject;
 import org.engine.TangibleObject;
