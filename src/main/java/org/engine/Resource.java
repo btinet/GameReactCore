@@ -17,7 +17,7 @@ public class Resource {
 
     public static final String slash = System.getProperty("file.separator");
     public static final String resources = "." + slash;
-    private String config_file = resources + "marker.xml";
+    private final String config_file = resources + "marker.xml";
 
     private final TangibleObject tangibleObject;
 

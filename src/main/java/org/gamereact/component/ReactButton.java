@@ -6,8 +6,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import org.kordamp.ikonli.javafx.FontIcon;
 
-import java.util.ArrayList;
-
 public class ReactButton extends Group {
 
     protected ReactButtonAction name;
