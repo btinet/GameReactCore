@@ -6,7 +6,9 @@ import javafx.animation.FadeTransition;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeLineCap;
 import org.engine.FingerTouchObject;
 import org.engine.ModuleInterface;
 import org.engine.TangibleObject;
@@ -32,6 +34,8 @@ public abstract class Module extends Group implements ModuleInterface {
     private Boolean connected = false;
     private Module controlModule;
     protected ArrayList<Module> moduleList = new ArrayList<>();
+
+    private final Line connectionLine = new Line();
     protected ReactButton cancelConnectionButton = new ReactButton(ReactButtonAction.CANCEL, "ci-center-circle");
     protected DecimalFormat df;
     Rectangle fillLeft = new Rectangle(80, 80, new Color(0.4, 0.6, 0.8, .2));
@@ -39,6 +43,10 @@ public abstract class Module extends Group implements ModuleInterface {
     public Module(TangibleObject tangibleObject) {
         this.tangibleObject = tangibleObject;
         connectIndicator = Transitions.createFadeTransition(500, getIntersectPane(), 0, .4);
+
+        connectionLine.setStroke(new Color(0.4, 0.6, 0.8, .2));
+        connectionLine.setStrokeLineCap(StrokeLineCap.ROUND);
+        connectionLine.setStrokeWidth(80);
 
         df = new DecimalFormat("#.##");
 
@@ -52,6 +60,10 @@ public abstract class Module extends Group implements ModuleInterface {
         cancelConnectionButton.setTranslateX(-200);
         cancelConnectionButton.setEnabled(false);
 
+    }
+
+    public Line getConnectionLine() {
+        return connectionLine;
     }
 
     public Rectangle getFillLeft() {
@@ -70,10 +82,10 @@ public abstract class Module extends Group implements ModuleInterface {
         Random rand = new Random(System.currentTimeMillis());
 
         int red = rand.nextInt(255);
-        int green = rand.nextInt(255);
-        int blue = rand.nextInt(50);
+        int green = 255;
+        int blue = rand.nextInt(255);
 
-        return Color.rgb(red,green,blue,.6);
+        return Color.rgb(red,green,blue,.5);
     }
 
     public ArrayList<Module> getModuleList() {

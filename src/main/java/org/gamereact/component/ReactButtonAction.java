@@ -21,6 +21,11 @@ public enum ReactButtonAction {
     EXIT,
     LOCK,
     UNLOCK,
-    ARDUINO_TOGGLE
+    ARDUINO_TOGGLE,
+    MAXIMUM,
+    MINIMUM,
+    AVERAGE,
+    CIRCUIT
+
 
 }

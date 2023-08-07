@@ -3,6 +3,7 @@ package org.gamereact.module;
 
 import com.tuio.TuioCursor;
 import com.tuio.TuioObject;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
 import javafx.scene.shape.StrokeLineCap;
@@ -69,8 +70,16 @@ public class VolumeControlModule extends ControlModule {
         if (!isConnected()) {
             if (getIntersectPane().localToScene(getIntersectPane().getLayoutBounds()).intersects(otherModule.getIntersectPane().localToScene(otherModule.getLayoutBounds())) && !getIntersectPane().equals(otherModule.getIntersectPane())) {
                 if (otherModule.isConnectable()) {
+
+
+
                     if (otherModule instanceof MultimediaModule) {
                         System.out.println("Multimedia connection scheduled!");
+
+                        if(!getTangibleObject().getConnectionLineList().contains(otherModule.getConnectionLine())) {
+                            getTangibleObject().getConnectionLineList().add(otherModule.getConnectionLine());
+                        }
+
                         otherModule.setModuleColor(this.moduleColor);
                         getConnectIndicator().play();
                         otherModule.scheduleConnection(this);

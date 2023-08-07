@@ -12,25 +12,29 @@ public class ArduinoControl {
     StringBuilder text = new StringBuilder();
     ArrayList<String> measurementTypes;
 
+
     public ArduinoControl(ArrayList<String> measurementTypes) {
         this.measurementTypes = measurementTypes;
 
-        SerialPort[] sps = SerialPort.getCommPorts();
-        sp = sps[0];
-        sp.setComPortParameters(9600, 8, 1, 0);
-        sp.setComPortTimeouts(SerialPort.TIMEOUT_WRITE_BLOCKING, 0, 0);
-
-        if (sp.openPort()) {
-            System.out.println("Port geöffnet!");
-        } else {
-            System.out.println("Fehler beim Öffnen des Ports!");
+        for (SerialPort port : SerialPort.getCommPorts()) {
+            System.out.println(port.getDescriptivePortName());
         }
+
+        sp = SerialPort.getCommPort("COM3");
+        sp.setComPortParameters(9600, 8, 1, 0);
+        sp.setComPortTimeouts(SerialPort.TIMEOUT_NONBLOCKING, 0, 0);
+
+            if (sp.openPort()) {
+                System.out.println("Port geöffnet!");
+            } else {
+                System.out.println("Fehler beim Öffnen des Ports!");
+            }
 
     }
 
     public Double getData() {
         try {
-            if (sp.bytesAvailable() > 0) {
+            if (sp != null && sp.bytesAvailable() > 0) {
 
                 // Bytes auslesen
                 byte[] newData = new byte[16];
@@ -55,7 +59,8 @@ public class ArduinoControl {
                 }
 
             }
-        } catch (NumberFormatException ignored) {
+
+        } catch (NumberFormatException | NullPointerException ignored) {
 
         }
         // besser HashMap zurückgeben (HashMap<String,Double>) String = Schlüssel des Datums / Double = Wert des Datums
@@ -77,10 +82,15 @@ public class ArduinoControl {
     }
 
     public void closePort() {
-        if (sp.closePort()) {
-            System.out.println("Port geschlossen!");
+        if(sp != null) {
+            if (sp.closePort()) {
+                System.out.println("Port geschlossen!");
+            } else {
+                System.out.println("Fehler beim Schließen des Ports!");
+            }
         } else {
-            System.out.println("Fehler beim Schließen des Ports!");
+            System.err.println("Serial Port ist null!");
         }
+
     }
 }

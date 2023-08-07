@@ -98,6 +98,11 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.knowhowlab.comm</groupId>
+            <artifactId>org.knowhowlab.comm.rxtx-patched</artifactId>
+            <version>0.2</version>
+        </dependency>
     </dependencies>
 
     <build>

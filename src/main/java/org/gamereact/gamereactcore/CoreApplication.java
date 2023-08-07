@@ -38,7 +38,7 @@ public class CoreApplication extends Application {
 
         stage.setFullScreen(false);
         stage.initStyle(StageStyle.UNDECORATED);
-        stage.getIcons().add(new Image(Objects.requireNonNull(CoreApplication.class.getResource("/org/icons/favicon.png")).openStream()));
+        stage.getIcons().add(new Image(Objects.requireNonNull(CoreApplication.class.getResource("/org/icons/tk.png")).openStream()));
         stage.setTitle(title);
         stage.setScene(scene);
         stage.setResizable(resizable);

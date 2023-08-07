@@ -5,7 +5,6 @@ import com.tuio.TuioCursor;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Group;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -20,17 +19,12 @@ import org.gamereact.component.ReactButtonAction;
 import org.gamereact.component.ToolBar;
 
 import java.util.Map;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class ChartModule extends ControllableModule {
 
     LineChart<Number, Number> chart;
     XYChart.Series<Number, Number> series;
-    private final SimpleIntegerProperty lastX = new SimpleIntegerProperty(0);
-    private final Random rand = new Random();
     double initialTime = 0;
-    double timeSincePause = 0;
     double pauseStart = 0;
     double pauseEnd = 0;
     Boolean pause = true;
@@ -43,6 +37,7 @@ public class ChartModule extends ControllableModule {
     final Timeline playButtonToggleAnimation = new Timeline(
             new KeyFrame(Duration.millis(400),
                     actionEvent -> playButton.setEnabled(false)));
+    ToolBar toolBar;
 
     public ChartModule(TangibleObject tangibleObject) {
         super(tangibleObject);
@@ -78,7 +73,7 @@ public class ChartModule extends ControllableModule {
         this.buttonList.add(zoomInButton);
         this.buttonList.add(playButton);
 
-        ToolBar toolBar = new ToolBar();
+        toolBar = new ToolBar();
         toolBar.setTranslateX(320);
 
         addCancelConnectionButton();
@@ -126,10 +121,6 @@ public class ChartModule extends ControllableModule {
 
     }
 
-    public Boolean getPause() {
-        return pause;
-    }
-
     public void setPause(Boolean pause, double animationDuration) {
         if (pause) {
             pauseStart = animationDuration - initialTime;
@@ -142,10 +133,6 @@ public class ChartModule extends ControllableModule {
             playButton.setBackground(new Color(0.4, 0.9, 0.5, .4));
         }
         this.pause = pause;
-    }
-
-    private void moveRange() {
-
     }
 
     public void zoomIn() {
@@ -204,6 +191,31 @@ public class ChartModule extends ControllableModule {
                     }
                 }
             }
+
+            for(ReactButton button : toolBar.getButtonList()) {
+                if (button.isEnabled() && button.intersects(finger.getValue())) {
+                    switch (button.getName()) {
+                        case ARDUINO_TOGGLE:
+                            System.out.println("Arduino!");
+                            break;
+                        case CIRCUIT:
+                            System.out.println("Circuit!");
+                            break;
+                        case MAXIMUM:
+                            System.out.println("Maximum!");
+                            break;
+                        case MINIMUM:
+                            System.out.println("Minimum!");
+                            break;
+                        case AVERAGE:
+                            System.out.println("Average!");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
         }
     }
 

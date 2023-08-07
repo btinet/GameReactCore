@@ -18,8 +18,8 @@ public class AxisScrollControlModule extends ControlModule {
     public AxisScrollControlModule(TangibleObject tangibleObject) {
         super(tangibleObject, "ci-x-axis");
         this.setValueDisplayText(new ReactIcon("jam-circle-f"));
-        valueDisplayIcon.setTranslateX(-100);
-        valueDisplayIcon.setTranslateY(-160);
+        valueDisplayIcon.setTranslateX(45);
+        valueDisplayIcon.setTranslateY(80);
         getChildren().remove(valueDisplayText);
         getChildren().add(valueDisplayIcon);
     }
@@ -43,8 +43,15 @@ public class AxisScrollControlModule extends ControlModule {
         if (!isConnected()) {
             if (getIntersectPane().localToScene(getIntersectPane().getLayoutBounds()).intersects(otherModule.getIntersectPane().localToScene(otherModule.getLayoutBounds())) && !getIntersectPane().equals(otherModule.getIntersectPane())) {
                 if (otherModule.isConnectable()) {
+
+
                     if (otherModule instanceof ChartModule) {
                         System.out.println("Chart connection scheduled!");
+
+                        if(!getTangibleObject().getConnectionLineList().contains(otherModule.getConnectionLine())) {
+                            getTangibleObject().getConnectionLineList().add(otherModule.getConnectionLine());
+                        }
+
                         otherModule.setModuleColor(this.moduleColor);
                         getConnectIndicator().play();
                         otherModule.scheduleConnection(this);
@@ -81,7 +88,7 @@ public class AxisScrollControlModule extends ControlModule {
         }
 
         for (Map.Entry<TuioObject,TangibleObject> otherModule : getObjectList()) {
-            connect( ((TangibleObject) otherModule.getValue()).getModule() );
+            connect( otherModule.getValue().getModule() );
         }
 
         setParameter( animationDuration, getTangibleObject().getMarker().getAngle() );

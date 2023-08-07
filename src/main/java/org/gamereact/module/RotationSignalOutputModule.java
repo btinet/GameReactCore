@@ -19,7 +19,7 @@ public class RotationSignalOutputModule extends ControlModule {
         super(tangibleObject, "ci-chart-line");
         // Testweise:
             ArrayList<String> measurementTypes = new ArrayList<>();
-            measurementTypes.add("voltage");
+            measurementTypes.add("current");
         // Testweise, ENDE
         arduinoControl = new ArduinoControl(measurementTypes);
         getVolumeIndicatorBackground.setStrokeWidth(8);
@@ -45,8 +45,15 @@ public class RotationSignalOutputModule extends ControlModule {
         if (!isConnected()) {
             if (getIntersectPane().localToScene(getIntersectPane().getLayoutBounds()).intersects(otherModule.getIntersectPane().localToScene(otherModule.getLayoutBounds())) && !getIntersectPane().equals(otherModule.getIntersectPane())) {
                 if (otherModule.isConnectable()) {
+
+
                     if (otherModule instanceof ChartModule) {
                         System.out.println("Chart connection scheduled!");
+
+                        if(!getTangibleObject().getConnectionLineList().contains(otherModule.getConnectionLine())) {
+                            getTangibleObject().getConnectionLineList().add(otherModule.getConnectionLine());
+                        }
+
                         otherModule.setModuleColor(this.moduleColor);
                         getConnectIndicator().play();
                         otherModule.scheduleConnection(this);

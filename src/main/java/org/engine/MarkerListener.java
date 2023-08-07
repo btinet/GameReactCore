@@ -25,7 +25,7 @@ public class MarkerListener implements TuioListener {
         if (CoreApplication.verbose) {
             System.out.println("Object added!");
         }
-        this.controller.objectList.put(tobj, new TangibleObject(tobj,this.cursorList,this.objectList));
+        this.controller.objectList.put(tobj, new TangibleObject(tobj,this.cursorList,this.objectList,this.controller.getConnectionLineList()));
     }
 
     @Override
@@ -36,7 +36,8 @@ public class MarkerListener implements TuioListener {
     @Override
     public void removeTuioObject(TuioObject tobj) {
         if (CoreApplication.verbose) System.out.println("Object removed!");
-        TangibleObject disposedObject = (TangibleObject) this.controller.objectList.get(tobj);
+        TangibleObject disposedObject = this.controller.objectList.get(tobj);
+        disposedObject.getConnectionLineList().remove(disposedObject.getModule().getConnectionLine());
         if (disposedObject.getModule() instanceof MultimediaModule) {
             ((MultimediaModule) disposedObject.getModule()).getMediaPlayer().dispose();
         }

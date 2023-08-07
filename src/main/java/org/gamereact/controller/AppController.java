@@ -6,14 +6,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.transform.Transform;
 import org.engine.*;
 import org.gamereact.component.MenuBar;
 import org.gamereact.component.ReactButton;
 import org.gamereact.gamereactcore.CoreApplication;
 import org.gamereact.module.*;
+import org.gamereact.module.Module;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -24,12 +27,14 @@ public class AppController extends AppTimer implements Initializable {
 
     private final KeyPolling keys = KeyPolling.getInstance();
     private final TuioClient client = new TuioClient();
+    private final Group connectionLineGroup = new Group();
     private final Group layoutGroup = new Group();
     private final Group objectGroup = new Group();
     private final Group cursorGroup = new Group();
     private final MenuBar menuBar = new MenuBar();
     public final HashMap<TuioCursor, FingerTouchObject> cursorList = new HashMap<>();
     public final HashMap<TuioObject, TangibleObject> objectList = new HashMap<>();
+    public final ArrayList<Line> connectionLineList = new ArrayList<>();
     @FXML
     public BorderPane root;
     private double xOffset = 0;
@@ -49,6 +54,7 @@ public class AppController extends AppTimer implements Initializable {
         client.addTuioListener(new MarkerListener(this));
         client.connect();
 
+        this.root.getChildren().add(connectionLineGroup);
         this.root.getChildren().add(layoutGroup);
         this.root.getChildren().add(objectGroup);
         this.root.getChildren().add(menuBar);
@@ -94,6 +100,13 @@ public class AppController extends AppTimer implements Initializable {
     }
 
     private void getTangibleInput(double animationDuration) {
+
+        for (Line connectionLine : this.connectionLineList) {
+            if(!getConnectionLineGroup().getChildren().contains(connectionLine)){
+                getConnectionLineGroup().getChildren().add(connectionLine);
+            }
+        }
+        getConnectionLineGroup().getChildren().retainAll(this.connectionLineList);
 
         for (Map.Entry<TuioObject, TangibleObject> object : this.objectList.entrySet()) {
             setObjectPosition(object, animationDuration);
@@ -149,8 +162,8 @@ public class AppController extends AppTimer implements Initializable {
             this.objectGroup.getChildren().add(tangibleObject);
         }
 
-        int ox = tuioObject.getScreenX((int) this.root.getWidth());
-        int oy = tuioObject.getScreenY((int) this.root.getHeight());
+        double ox = tuioObject.getScreenX((int) this.root.getWidth());
+        double oy = tuioObject.getScreenY((int) this.root.getHeight());
 
         tangibleObject.setTranslateX(ox);
         tangibleObject.setTranslateY(oy);
@@ -160,6 +173,19 @@ public class AppController extends AppTimer implements Initializable {
             group.getTransforms().clear();
             group.getTransforms().add(Transform.rotate(tuioObject.getAngleDegrees(), -100, 0));
             tangibleObject.getObjectPane().setRotate(tuioObject.getAngleDegrees());
+
+
+
+            for (Module controllableModule : tangibleObject.getModule().getModuleList()) {
+                TangibleObject otherTangibleObject = controllableModule.getTangibleObject();
+                double tx = otherTangibleObject.getMarker().getScreenX((int) this.root.getWidth());
+                double ty = otherTangibleObject.getMarker().getScreenY((int) this.root.getHeight());
+                otherTangibleObject.getModule().getConnectionLine().setStartX(ox);
+                otherTangibleObject.getModule().getConnectionLine().setStartY(oy);
+                otherTangibleObject.getModule().getConnectionLine().setEndX(tx);
+                otherTangibleObject.getModule().getConnectionLine().setEndY(ty);
+            }
+
         } else {
             tangibleObject.getTransforms().clear();
             tangibleObject.getTransforms().add(Transform.rotate(tuioObject.getAngleDegrees(), 0, 0));
@@ -180,6 +206,13 @@ public class AppController extends AppTimer implements Initializable {
 
     public static void toggleVerbose() {
         CoreApplication.verbose = !CoreApplication.verbose;
+    }
+
+    public Group getConnectionLineGroup() {
+        return connectionLineGroup;
+    }
+    public ArrayList<Line> getConnectionLineList() {
+        return connectionLineList;
     }
 
     /*

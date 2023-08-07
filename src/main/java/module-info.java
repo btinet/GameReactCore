@@ -8,6 +8,7 @@ module org.gamereact.gamereactcore {
     requires javafx.media;
     requires java.xml;
     requires jSerialComm;
+    requires org.knowhowlab.comm.rxtx.patched;
 
     opens org.gamereact.gamereactcore to javafx.fxml;
     exports org.gamereact.gamereactcore;

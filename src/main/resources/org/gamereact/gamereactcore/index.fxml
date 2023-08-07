@@ -2,11 +2,7 @@
 
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane
-        fx:id="root"
-        fx:controller="org.gamereact.controller.AppController"
-        xmlns:fx="http://javafx.com/fxml"
->
+<BorderPane fx:id="root" fx:controller="org.gamereact.controller.AppController" xmlns:fx="http://javafx.com/fxml">
 
 </BorderPane>
 

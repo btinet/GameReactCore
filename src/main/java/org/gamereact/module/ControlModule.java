@@ -1,6 +1,7 @@
 package org.gamereact.module;
 
 
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
@@ -37,7 +38,7 @@ public abstract class ControlModule extends Module {
         icon.setTranslateY(80);
         valueDisplayText.setFont(Fonts.BOLD_18.getFont());
         valueDisplayText.setFill(Color.WHITE);
-        valueDisplayText.setTextAlignment(TextAlignment.CENTER);
+        valueDisplayText.setTextAlignment(TextAlignment.LEFT);
         getVolumeIndicatorBackground.setStartAngle(0);
         getVolumeIndicatorBackground.setLength(360);
         getVolumeIndicatorBackground.setRadiusX(80);
@@ -71,8 +72,8 @@ public abstract class ControlModule extends Module {
         lockConnectionButton.setEnabled(false);
 
         valueDisplayText.setWrappingWidth(100);
-        valueDisplayText.setTranslateX(-150);
-        valueDisplayText.setTranslateY(-150);
+        valueDisplayText.setTranslateX(40);
+        valueDisplayText.setTranslateY(87);
 
         buttonList.add(lockConnectionButton);
         addCancelConnectionButton();
@@ -108,6 +109,7 @@ public abstract class ControlModule extends Module {
             if (getIntersectPane().localToScene(getIntersectPane().getLayoutBounds()).intersects(otherModule.getIntersectPane().localToScene(otherModule.getLayoutBounds())) && !getIntersectPane().equals(otherModule.getIntersectPane())) {
                 if (otherModule.isConnectable()) {
 
+
                     if (otherModule instanceof ChartModule) {
                         System.out.println("Chart connection scheduled!");
                         otherModule.setModuleColor(this.moduleColor);
@@ -142,6 +144,7 @@ public abstract class ControlModule extends Module {
         lockConnectionButton.setBackground(new Color(0.4, 0.9, 0.5, .4));
         for (Module module : this.moduleList) {
             module.disconnect();
+            //module.getTangibleObject().getConnectionLineList().remove(module.getConnectionLine());
         }
         this.moduleList = new ArrayList<>();
     }
