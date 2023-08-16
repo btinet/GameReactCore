@@ -4,6 +4,7 @@ import javafx.util.Duration;
 import org.gamereact.component.Track;
 import org.gamereact.module.*;
 import org.gamereact.module.Module;
+import org.gamereact.module.electronic.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -86,6 +87,18 @@ public class Resource {
                         return new AxisScrollControlModule(tangibleObject);
                     case "ROTATION_SIGNAL_OUTPUT_MODULE":
                         return new RotationSignalOutputModule(tangibleObject);
+                    case "LED_COMPONENT_MODULE":
+                        return new LEDModule(tangibleObject);
+                    case "TRANSISTOR_COMPONENT_MODULE":
+                        return new TransistorModule(tangibleObject);
+                    case "RESISTOR_COMPONENT_MODULE":
+                        return new ResistorModule(tangibleObject);
+                    case "CAPACITOR_COMPONENT_MODULE":
+                        return new CapacitorModule(tangibleObject);
+                    case "COIL_COMPONENT_MODULE":
+                        return new CoilModule(tangibleObject);
+                    case "INDUCTOR_COMPONENT_MODULE":
+                        return new InductorModule(tangibleObject);
                     case "CHART_MODULE":
                         return new ChartModule(tangibleObject);
                     case "IMAGE_MODULE":

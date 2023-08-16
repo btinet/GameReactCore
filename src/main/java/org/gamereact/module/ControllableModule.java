@@ -1,5 +1,6 @@
 package org.gamereact.module;
 
+import org.engine.Controller;
 import org.engine.TangibleObject;
 
 public abstract class ControllableModule extends Module {
@@ -10,7 +11,7 @@ public abstract class ControllableModule extends Module {
     }
 
     public void disconnect() {
-        getTangibleObject().getConnectionLineList().remove(getConnectionLine());
+        Controller.connectionLineList.remove(getConnectionLine());
         super.disconnect();
     }
 

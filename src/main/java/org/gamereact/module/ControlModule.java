@@ -84,6 +84,7 @@ public abstract class ControlModule extends Module {
         getRotationGroup().getChildren().addAll(buttonList);
         getChildren().add(valueDisplayText);
         getChildren().add(rotationGroup);
+        getConnectionLine().setOpacity(0);
     }
 
     public void setValueDisplayText(Number number) {
@@ -102,13 +103,16 @@ public abstract class ControlModule extends Module {
         this.valueDisplayIcon.setIcon(iconCode);
     }
 
+    /**
+     * Schedule the connection to a ControllableModule-instance.
+     * @param otherModule Module extending from ControllableModule.
+     */
     public void connect(Module otherModule) {
 
 
         if (!isConnected()) {
             if (getIntersectPane().localToScene(getIntersectPane().getLayoutBounds()).intersects(otherModule.getIntersectPane().localToScene(otherModule.getLayoutBounds())) && !getIntersectPane().equals(otherModule.getIntersectPane())) {
                 if (otherModule.isConnectable()) {
-
 
                     if (otherModule instanceof ChartModule) {
                         System.out.println("Chart connection scheduled!");
@@ -137,6 +141,9 @@ public abstract class ControlModule extends Module {
 
     }
 
+    /**
+     * Disconnect all currently connected modules.
+     */
     public void disconnectAll() {
         disconnect();
         lockConnectionButton.setEnabled(false);
@@ -149,6 +156,9 @@ public abstract class ControlModule extends Module {
         this.moduleList = new ArrayList<>();
     }
 
+    /**
+     * Lock all scheduled module connections. Only Modules extending from ControllableModule can be connected.
+     */
     public void lockAll() {
         lockConnectionButton.setEnabled(false);
         lock();
@@ -160,6 +170,10 @@ public abstract class ControlModule extends Module {
         }
     }
 
+    /**
+     * @deprecated
+     * @param animationDuration aktuelle AppTimer-Zeit in Millis.
+     */
     public void setPosition(double animationDuration) {
 
     }

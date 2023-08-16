@@ -12,6 +12,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
+import org.engine.Controller;
 import org.engine.FingerTouchObject;
 import org.engine.Fonts;
 import org.engine.TangibleObject;
@@ -323,7 +324,7 @@ public abstract class MultimediaModule extends ControllableModule {
     @Override
     public void doAction(double animationDuration) {
 
-        for (Map.Entry<TuioCursor, FingerTouchObject> finger : getCursorList()) {
+        for (Map.Entry<TuioCursor, FingerTouchObject> finger : Controller.cursorList.entrySet()) {
 
             FingerTouchObject fingerTouch = finger.getValue();
 

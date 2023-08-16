@@ -4,6 +4,7 @@ package org.gamereact.module;
 import com.tuio.TuioCursor;
 import com.tuio.TuioObject;
 import org.engine.ArduinoControl;
+import org.engine.Controller;
 import org.engine.FingerTouchObject;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
@@ -50,8 +51,8 @@ public class RotationSignalOutputModule extends ControlModule {
                     if (otherModule instanceof ChartModule) {
                         System.out.println("Chart connection scheduled!");
 
-                        if(!getTangibleObject().getConnectionLineList().contains(otherModule.getConnectionLine())) {
-                            getTangibleObject().getConnectionLineList().add(otherModule.getConnectionLine());
+                        if(!Controller.connectionLineList.contains(otherModule.getConnectionLine())) {
+                            Controller.connectionLineList.add(otherModule.getConnectionLine());
                         }
 
                         otherModule.setModuleColor(this.moduleColor);
@@ -70,7 +71,7 @@ public class RotationSignalOutputModule extends ControlModule {
     @Override
     public void doAction(double animationDuration) {
 
-        for (Map.Entry<TuioCursor, FingerTouchObject> finger : getCursorList()) {
+        for (Map.Entry<TuioCursor, FingerTouchObject> finger : Controller.cursorList.entrySet()) {
 
             for(ReactButton button : getButtonList()) {
                 if (button.isEnabled() && button.intersects(finger.getValue())) {
@@ -89,7 +90,7 @@ public class RotationSignalOutputModule extends ControlModule {
 
         }
 
-        for (Map.Entry<TuioObject, TangibleObject> otherModule : getObjectList()) {
+        for (Map.Entry<TuioObject, TangibleObject> otherModule : Controller.objectList.entrySet()) {
             connect( otherModule.getValue().getModule() );
         }
 

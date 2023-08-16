@@ -12,6 +12,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import org.engine.Controller;
 import org.engine.FingerTouchObject;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
@@ -170,7 +171,7 @@ public class ChartModule extends ControllableModule {
 
     @Override
     public void doAction(double animationDuration) {
-        for (Map.Entry<TuioCursor, FingerTouchObject> finger : getCursorList()) {
+        for (Map.Entry<TuioCursor, FingerTouchObject> finger : Controller.cursorList.entrySet()) {
             for(ReactButton button : getButtonList()) {
                 if (button.isEnabled() && button.intersects(finger.getValue())) {
                     switch (button.getName()) {

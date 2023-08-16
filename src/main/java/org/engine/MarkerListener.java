@@ -2,22 +2,12 @@ package org.engine;
 
 import com.tuio.*;
 import javafx.animation.ScaleTransition;
-import org.gamereact.controller.AppController;
 import org.gamereact.gamereactcore.CoreApplication;
 import org.gamereact.module.*;
 
-import java.util.HashMap;
-
 public class MarkerListener implements TuioListener {
 
-    private final AppController controller;
-    public final HashMap<TuioCursor, FingerTouchObject> cursorList;
-    public final HashMap<TuioObject, TangibleObject> objectList;
-
-    public MarkerListener(AppController controller) {
-        this.controller = controller;
-        this.cursorList = controller.cursorList;
-        this.objectList = controller.objectList;
+    public MarkerListener() {
     }
 
     @Override
@@ -25,7 +15,7 @@ public class MarkerListener implements TuioListener {
         if (CoreApplication.verbose) {
             System.out.println("Object added!");
         }
-        this.controller.objectList.put(tobj, new TangibleObject(tobj,this.cursorList,this.objectList,this.controller.getConnectionLineList()));
+        Controller.objectList.put(tobj, new TangibleObject(tobj));
     }
 
     @Override
@@ -36,8 +26,8 @@ public class MarkerListener implements TuioListener {
     @Override
     public void removeTuioObject(TuioObject tobj) {
         if (CoreApplication.verbose) System.out.println("Object removed!");
-        TangibleObject disposedObject = this.controller.objectList.get(tobj);
-        disposedObject.getConnectionLineList().remove(disposedObject.getModule().getConnectionLine());
+        TangibleObject disposedObject = Controller.objectList.get(tobj);
+        Controller.connectionLineList.remove(disposedObject.getModule().getConnectionLine());
         if (disposedObject.getModule() instanceof MultimediaModule) {
             ((MultimediaModule) disposedObject.getModule()).getMediaPlayer().dispose();
         }
@@ -52,7 +42,7 @@ public class MarkerListener implements TuioListener {
             ((ChartModule) disposedObject.getModule()).resetData();
         }
 
-        this.controller.objectList.remove(tobj);
+        Controller.objectList.remove(tobj);
     }
 
     @Override
@@ -60,7 +50,7 @@ public class MarkerListener implements TuioListener {
         if (CoreApplication.verbose) System.out.println("Cursor added!");
         FingerTouchObject fingerTouchObject = new FingerTouchObject();
         ScaleTransition cst = Transitions.createScaleTransition(50, fingerTouchObject, .5, 1);
-        this.controller.cursorList.put(tcur, fingerTouchObject);
+        Controller.cursorList.put(tcur, fingerTouchObject);
         cst.play();
     }
 
@@ -72,7 +62,7 @@ public class MarkerListener implements TuioListener {
     @Override
     public void removeTuioCursor(TuioCursor tcur) {
         if (CoreApplication.verbose) System.out.println("Cursor removed!");
-        this.controller.cursorList.remove(tcur);
+        Controller.cursorList.remove(tcur);
     }
 
     @Override

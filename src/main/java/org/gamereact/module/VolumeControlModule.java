@@ -7,6 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
 import javafx.scene.shape.StrokeLineCap;
+import org.engine.Controller;
 import org.engine.FingerTouchObject;
 import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
@@ -76,8 +77,8 @@ public class VolumeControlModule extends ControlModule {
                     if (otherModule instanceof MultimediaModule) {
                         System.out.println("Multimedia connection scheduled!");
 
-                        if(!getTangibleObject().getConnectionLineList().contains(otherModule.getConnectionLine())) {
-                            getTangibleObject().getConnectionLineList().add(otherModule.getConnectionLine());
+                        if(!Controller.connectionLineList.contains(otherModule.getConnectionLine())) {
+                            Controller.connectionLineList.add(otherModule.getConnectionLine());
                         }
 
                         otherModule.setModuleColor(this.moduleColor);
@@ -98,7 +99,7 @@ public class VolumeControlModule extends ControlModule {
 
         TuioObject tuioObject = getTangibleObject().getMarker();
 
-        for (Map.Entry<TuioCursor, FingerTouchObject> finger : getCursorList()) {
+        for (Map.Entry<TuioCursor, FingerTouchObject> finger : Controller.cursorList.entrySet()) {
 
             for(ReactButton button : getButtonList()) {
                 if (button.isEnabled() && button.intersects(finger.getValue())) {
@@ -115,7 +116,7 @@ public class VolumeControlModule extends ControlModule {
 
         }
 
-        for (Map.Entry<TuioObject, TangibleObject> otherModule : getObjectList()) {
+        for (Map.Entry<TuioObject, TangibleObject> otherModule : Controller.objectList.entrySet()) {
             connect( otherModule.getValue().getModule() );
         }
 

@@ -1,7 +1,5 @@
 package org.gamereact.module;
 
-import com.tuio.TuioCursor;
-import com.tuio.TuioObject;
 import javafx.animation.FadeTransition;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -9,7 +7,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeLineCap;
-import org.engine.FingerTouchObject;
 import org.engine.ModuleInterface;
 import org.engine.TangibleObject;
 import org.engine.Transitions;
@@ -47,6 +44,7 @@ public abstract class Module extends Group implements ModuleInterface {
         connectionLine.setStroke(new Color(0.4, 0.6, 0.8, .2));
         connectionLine.setStrokeLineCap(StrokeLineCap.ROUND);
         connectionLine.setStrokeWidth(80);
+        connectionLine.setOpacity(0);
 
         df = new DecimalFormat("#.##");
 
@@ -124,14 +122,6 @@ public abstract class Module extends Group implements ModuleInterface {
         return this.tangibleObject.getIntersectPane();
     }
 
-    public Set<Map.Entry<TuioCursor, FingerTouchObject>> getCursorList() {
-        return this.tangibleObject.getCursorList().entrySet();
-    }
-
-    public Set<Map.Entry<TuioObject, TangibleObject>> getObjectList() {
-        return this.tangibleObject.getObjectList().entrySet();
-    }
-
     public FadeTransition getConnectIndicator() {
         return connectIndicator;
     }
@@ -179,6 +169,7 @@ public abstract class Module extends Group implements ModuleInterface {
         setConnectionScheduled(false);
         getConnectIndicator().stop();
         getIntersectPane().setOpacity(0);
+        getConnectionLine().setOpacity(0);
     }
 
     public void lock() {
@@ -186,5 +177,8 @@ public abstract class Module extends Group implements ModuleInterface {
         setConnectionScheduled(false);
         getConnectIndicator().stop();
         getIntersectPane().setOpacity(.6);
+        if(this instanceof ControllableModule) {
+            getConnectionLine().setOpacity(1);
+        }
     }
 }

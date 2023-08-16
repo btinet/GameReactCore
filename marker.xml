@@ -34,6 +34,12 @@ ROTATION_SIGNAL_OUTPUT_MODULE: Sinus-Steuersignal auf Basis des Rotationswinkels
 	<object id="3" class="IMAGE_MODULE"  file="" title="Image">
         <image name="1" file="1.jpg" />
     </object>
+    <object id="4" class="LED_COMPONENT_MODULE" title="LED1" />
+    <object id="5" class="TRANSISTOR_COMPONENT_MODULE" title="T1" />
+    <object id="6" class="RESISTOR_COMPONENT_MODULE" title="R1" />
+    <object id="7" class="CAPACITOR_COMPONENT_MODULE" title="C1" />
+    <object id="12" class="COIL_COMPONENT_MODULE" title="L1" />
+    <object id="20" class="INDUCTOR_COMPONENT_MODULE" title="L2" />
 	<object id="8" class="VOLUME_CONTROL_MODULE" file="" title="Volume" />
 	<object id="9" class="AXIS_SCROLL_CONTROL_MODULE" file="" title="X-Scroll" />
 	<object id="10" class="ROTATION_SIGNAL_OUTPUT_MODULE" file="" title="X-Scroll" />

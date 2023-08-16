@@ -19,7 +19,7 @@ public class CoreApplication extends Application {
     public static boolean resizable = false;
     public static int width = 1280;
     public static int height = 720;
-    public static String title = "GameReact";
+    public static String title = "GameReact Core";
     public static boolean verbose = false;
 
     @Override

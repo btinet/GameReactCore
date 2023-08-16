@@ -21,16 +21,10 @@ public class TangibleObject extends Group implements TangibleInterface {
     private final Circle intersectPane = new Circle(100, new Color(0.3, 0.8, 0.9, .6));
     private final Circle dashPane = new Circle(20, new Color(0.3, 0.8, 0.9, 1));
     private final Module module;
-    private final HashMap<TuioCursor, FingerTouchObject> cursorList;
-    protected HashMap<TuioObject, TangibleObject> objectList;
     private final TuioObject marker;
-    private final ArrayList<Line> connectionLineList;
 
-    public TangibleObject(TuioObject tuioObject, HashMap<TuioCursor, FingerTouchObject> cursorList,HashMap<TuioObject, TangibleObject> objectList, ArrayList<Line> connectionLineList) {
+    public TangibleObject(TuioObject tuioObject) {
         this.marker = tuioObject;
-        this.cursorList = cursorList;
-        this.objectList = objectList;
-        this.connectionLineList = connectionLineList;
         intersectPane.setOpacity(0);
         Group group = new Group();
         group.getChildren().add(intersectPane);
@@ -50,7 +44,7 @@ public class TangibleObject extends Group implements TangibleInterface {
         getChildren().add(objectPane);
         getChildren().add(dashPane);
         getChildren().add(module);
-        getConnectionLineList().add(module.getConnectionLine());
+        Controller.connectionLineList.add(module.getConnectionLine());
 
         ScaleTransition cst = Transitions.createScaleTransition(50, this, .5, 1);
         ScaleTransition cst2 = Transitions.createScaleTransition(100, dashPane, 0, 3);
@@ -77,18 +71,6 @@ public class TangibleObject extends Group implements TangibleInterface {
 
     public Module getModule() {
         return module;
-    }
-
-    public HashMap<TuioCursor, FingerTouchObject> getCursorList () {
-        return this.cursorList;
-    }
-
-    public HashMap<TuioObject, TangibleObject> getObjectList() {
-        return this.objectList;
-    }
-
-    public ArrayList<Line> getConnectionLineList() {
-        return connectionLineList;
     }
     @Override
     public void setPosition(TuioObject tuioObject, double animationDuration) {
