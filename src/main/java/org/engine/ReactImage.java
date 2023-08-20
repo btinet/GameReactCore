@@ -1,14 +1,8 @@
 package org.engine;
 
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
-import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
-import javafx.scene.media.Media;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 import java.io.File;
 

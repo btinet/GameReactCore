@@ -9,56 +9,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="update docs">
-      <change afterPath="$PROJECT_DIR$/docs/fiducials/yamarashi/yamaarashi.ai" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/fiducials/yamarashi/yamaarashi.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/fiducials/yamarashi/yamaarashi.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject_0_TangibleObject_calls.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject_0_TangibleObject_calls.tikz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ElectronicComponentModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/CapacitorModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/CoilModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/ElectronicPort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/ElectronicPortStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/InductorModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/LEDModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/ResistorModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/TransistorModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/electronics/1x/battery.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/electronics/1x/capacitor-b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/electronics/1x/capacitor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/electronics/1x/coil.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/electronics/1x/inductor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/electronics/1x/led.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/electronics/1x/light-bulb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/electronics/1x/qr-code.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/electronics/1x/resistor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/electronics/1x/switch-b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/electronics/1x/switch.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/electronics/1x/transistor-x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/electronics/1x/transistor.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="add electronic components">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/component/CalibrationGrid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ArduinoControlModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/BatteryModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/PCBLaneModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/marker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/marker.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/MarkerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/MarkerListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/ModuleInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/ModuleInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/ReactImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/ReactImage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/Resource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Transitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/Transitions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/gamereactcore/CoreApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/gamereactcore/CoreApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AudioPlayerModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AxisScrollControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/AxisScrollControlModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ChartModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ChartModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControlModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControllableModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControllableModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ElectronicComponentModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ElectronicComponentModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/EmptyModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/EmptyModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/Module.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/MultimediaModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/MultimediaModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ImageModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ImageModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/RotationSignalOutputModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/RotationSignalOutputModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gamereact/gamereactcore/index.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gamereact/gamereactcore/index.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/CapacitorModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/CapacitorModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/ElectronicPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/ElectronicPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/ElectronicPortStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/ElectronicPortStatus.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,9 +93,9 @@
       <recent name="org.gamereact.component" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.gamereact.module" />
       <recent name="org.gamereact.module.electronic" />
       <recent name="org.gamereact.component" />
-      <recent name="org.gamereact.module" />
     </key>
   </component>
   <component name="RunManager">
@@ -421,7 +396,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691476876459</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="add electronic components">
+      <created>1692216005047</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1692216005047</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -453,6 +435,7 @@
     <MESSAGE value="add connection lines" />
     <MESSAGE value="add docs" />
     <MESSAGE value="update docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="update docs" />
+    <MESSAGE value="add electronic components" />
+    <option name="LAST_COMMIT_MESSAGE" value="add electronic components" />
   </component>
 </project>

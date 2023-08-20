@@ -3,6 +3,8 @@ package org.gamereact.module;
 
 import com.tuio.TuioCursor;
 import com.tuio.TuioObject;
+import javafx.scene.paint.Color;
+import org.engine.ArduinoControl;
 import org.engine.Controller;
 import org.engine.FingerTouchObject;
 import org.engine.TangibleObject;
@@ -11,10 +13,19 @@ import org.gamereact.component.ReactButton;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class RotationSignalOutputModule extends ControlModule {
+public class ArduinoControlModule extends ControlModule {
 
-       public RotationSignalOutputModule(TangibleObject tangibleObject) {
-        super(tangibleObject, "ci-chart-line");
+    ArduinoControl arduinoControl;
+
+    public ArduinoControlModule(TangibleObject tangibleObject) {
+        super(tangibleObject, "cib-arduino");
+        // Testweise:
+            ArrayList<String> measurementTypes = new ArrayList<>();
+            measurementTypes.add("current");
+        // Testweise, ENDE
+        arduinoControl = new ArduinoControl(measurementTypes);
+        //getVolumeIndicatorBackground.setStroke(Color.TRANSPARENT);
+        volumeIndicator.setStroke(Color.TRANSPARENT);
         getVolumeIndicatorBackground.setStrokeWidth(8);
         getVolumeIndicatorBackground.getStrokeDashArray().addAll(10d,10d,10d,10d);
     }
@@ -23,10 +34,14 @@ public class RotationSignalOutputModule extends ControlModule {
         for (Module module : this.moduleList) {
             if(module instanceof ChartModule) {
                 ChartModule chartModule = (ChartModule) module;
-                chartModule.updateChart(time, Math.cos( (angle) ) );
+                chartModule.updateChart(time, arduinoControl.getData() );
             }
 
         }
+    }
+
+    public ArduinoControl getArduinoControl() {
+        return arduinoControl;
     }
 
     @Override
@@ -84,7 +99,7 @@ public class RotationSignalOutputModule extends ControlModule {
 
         setParameter( animationDuration, getTangibleObject().getMarker().getAngle() );
         getVolumeIndicatorBackground.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
-        setValueDisplayText( getDf().format(Math.cos( (getTangibleObject().getMarker().getAngle()) )) );
+        setValueDisplayText( getDf().format(arduinoControl.getData()) );
         cancelConnectionButton.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
         lockConnectionButton.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
 
@@ -93,5 +108,6 @@ public class RotationSignalOutputModule extends ControlModule {
     @Override
     public void onTuioObjectRemoved(TuioObject tobj) {
         disconnectAll();
+        getArduinoControl().closePort();
     }
 }

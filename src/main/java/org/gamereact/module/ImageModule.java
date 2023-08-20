@@ -1,5 +1,6 @@
 package org.gamereact.module;
 
+import com.tuio.TuioObject;
 import org.engine.ReactImage;
 import org.engine.TangibleObject;
 import java.util.ArrayList;
@@ -30,6 +31,11 @@ public class ImageModule extends ControllableModule {
 
     @Override
     public void doAction(double animationDuration) {
+
+    }
+
+    @Override
+    public void onTuioObjectRemoved(TuioObject tobj) {
 
     }
 

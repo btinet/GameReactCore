@@ -1,19 +1,14 @@
 package org.engine;
 
-import com.tuio.TuioCursor;
 import com.tuio.TuioObject;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import org.gamereact.module.Module;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class TangibleObject extends Group implements TangibleInterface {
 

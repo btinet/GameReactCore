@@ -6,6 +6,7 @@ import com.tuio.TuioObject;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.shape.Line;
+import org.gamereact.module.electronic.PCBLaneModule;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +18,8 @@ public abstract class Controller extends AppTimer implements Initializable {
     public static final HashMap<TuioCursor, FingerTouchObject> cursorList = new HashMap<>();
     public static final HashMap<TuioObject, TangibleObject> objectList = new HashMap<>();
     public static final ArrayList<Line> connectionLineList = new ArrayList<>();
+    public static final ArrayList<PCBLaneModule> PCB_LANE_MODULES = new ArrayList<>();
+    public static  PCBLaneModule CURRENT_PCB_LANE;
     protected final KeyPolling keys = KeyPolling.getInstance();
     protected final TuioClient client = new TuioClient();
     protected double xOffset = 0;

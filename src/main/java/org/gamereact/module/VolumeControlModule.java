@@ -125,4 +125,9 @@ public class VolumeControlModule extends ControlModule {
         cancelConnectionButton.setRotate(-tuioObject.getAngleDegrees());
         lockConnectionButton.setRotate(-tuioObject.getAngleDegrees());
     }
+
+    @Override
+    public void onTuioObjectRemoved(TuioObject tobj) {
+        disconnectAll();
+    }
 }

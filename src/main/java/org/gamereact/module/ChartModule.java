@@ -2,6 +2,7 @@ package org.gamereact.module;
 
 
 import com.tuio.TuioCursor;
+import com.tuio.TuioObject;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -218,6 +219,11 @@ public class ChartModule extends ControllableModule {
             }
 
         }
+    }
+
+    @Override
+    public void onTuioObjectRemoved(TuioObject tobj) {
+        resetData();
     }
 
 }

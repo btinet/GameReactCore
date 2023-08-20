@@ -1,7 +1,13 @@
 package org.engine;
 
+import com.tuio.TuioObject;
+
 public interface ModuleInterface {
 
-    public void doAction(double animationDuration);
+    void doAction(double animationDuration);
+
+    void onTuioObjectRemoved(TuioObject tobj);
+
+
 
 }

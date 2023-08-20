@@ -4,18 +4,18 @@ import com.tuio.*;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.transform.Transform;
 import org.engine.*;
+import org.gamereact.component.CalibrationGrid;
 import org.gamereact.component.MenuBar;
 import org.gamereact.component.ReactButton;
 import org.gamereact.gamereactcore.CoreApplication;
 import org.gamereact.module.*;
 import org.gamereact.module.Module;
+import org.gamereact.module.electronic.PCBLaneModule;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -23,14 +23,15 @@ import static org.gamereact.gamereactcore.CoreApplication.stage;
 
 public class AppController extends Controller {
 
+    @FXML
+    public BorderPane root;
     protected final Group connectionLineGroup = new Group();
     protected final Group layoutGroup = new Group();
     protected final Group objectGroup = new Group();
     protected final Group cursorGroup = new Group();
-
+    protected final Group pcbLaneGroup = new Group();
     private final MenuBar menuBar = new MenuBar();
-    @FXML
-    public BorderPane root;
+    private CalibrationGrid calibrationGrid;
 
     /**
      * Setup des Controllers, sobald die Stage vollständig verarbeitet wurde.
@@ -45,15 +46,19 @@ public class AppController extends Controller {
         client.addTuioListener(new MarkerListener());
         client.connect();
 
+        calibrationGrid = new CalibrationGrid(this);
+
         this.root.getChildren().addAll(
                 connectionLineGroup,
                 layoutGroup,
+                pcbLaneGroup,
                 objectGroup,
+                calibrationGrid,
                 menuBar,
                 cursorGroup
         );
 
-        root.setStyle("-fx-background-color: #005EAA");
+        root.setStyle("-fx-background-color: #0D0D0D");
         enableDraggable(root);
 
         this.start();
@@ -69,6 +74,22 @@ public class AppController extends Controller {
 
         getKeyboardInput();
         getTangibleInput(getAnimationDuration());
+
+        if(Controller.CURRENT_PCB_LANE != null && Controller.CURRENT_PCB_LANE.getOutPort() != null) {
+            Controller.PCB_LANE_MODULES.add(Controller.CURRENT_PCB_LANE);
+            Controller.CURRENT_PCB_LANE = null;
+        }
+
+        for (PCBLaneModule pcbLaneModule : PCB_LANE_MODULES) {
+            if(!pcbLaneGroup.getChildren().contains(pcbLaneModule)) {
+                pcbLaneGroup.getChildren().add(pcbLaneModule);
+            }
+
+            pcbLaneModule.setPosition();
+
+        }
+        pcbLaneGroup.getChildren().retainAll(PCB_LANE_MODULES);
+
     }
 
     private void getKeyboardInput() {
@@ -76,8 +97,11 @@ public class AppController extends Controller {
         // z.B. keys.isDown(KeyCode)
 
         // einmalige Tastenabfragen (innerhalb Anschlagverzögerung)
-        if (keys.isPressed(ButtonConfig.toggleFullscreen)) toggleFullscreen();
-        if (keys.isPressed(ButtonConfig.toggleCalibrationGrid)) toggleCalibrationGrid();
+        if (keys.isPressed(ButtonConfig.toggleFullscreen)) {
+            toggleFullscreen();
+            calibrationGrid.setPosition();
+        }
+        if (keys.isPressed(ButtonConfig.toggleCalibrationGrid)) calibrationGrid.toggleView();
         if (keys.isPressed(ButtonConfig.exit)) System.exit(0);
     }
 
@@ -110,9 +134,11 @@ public class AppController extends Controller {
             if (menuBarButton.localToScene(menuBarButton.getBoundsInLocal()).intersects(fingerTouch.getBoundsInParent())) {
                 switch (menuBarButton.getName()) {
                     case START:
+                        calibrationGrid.toggleView();
                         break;
                     case TOGGLE_FULLSCREEN:
                         toggleFullscreen();
+                        calibrationGrid.setPosition();
                         break;
                     case EXIT:
                         System.exit(0);

@@ -2,6 +2,7 @@ package org.gamereact.module.electronic;
 
 import com.tuio.TuioCursor;
 import javafx.animation.ScaleTransition;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -11,11 +12,16 @@ import org.engine.Fonts;
 import org.engine.Transitions;
 import org.gamereact.module.ElectronicComponentModule;
 
+import java.util.ArrayList;
+
 public class ElectronicPort extends Circle {
 
     private final ElectronicPortStatus portStatus;
     private final ElectronicComponentModule module;
     private final String label;
+    private final ArrayList<PCBLaneModule> pcbLaneModules = new ArrayList<>();
+    private final SimpleDoubleProperty voltage = new SimpleDoubleProperty(0);
+    private final SimpleDoubleProperty current = new SimpleDoubleProperty(0);
     private final ScaleTransition transition = Transitions.createScaleTransition(250,this,1,.6,-1);
     private FingerTouchObject touchObject;
 
@@ -41,6 +47,40 @@ public class ElectronicPort extends Circle {
 
     public FingerTouchObject getTouchObject() {
         return touchObject;
+    }
+
+    public ArrayList<PCBLaneModule> getPcbLaneModules() {
+        return pcbLaneModules;
+    }
+
+    public void addPCBLaneModule(PCBLaneModule pcbLaneModule) {
+        pcbLaneModule.voltageProperty().bind(voltageProperty());
+        pcbLaneModule.currentProperty().bind(currentProperty());
+        pcbLaneModules.add(pcbLaneModule);
+    }
+
+    public double getVoltage() {
+        return voltage.get();
+    }
+
+    public SimpleDoubleProperty voltageProperty() {
+        return voltage;
+    }
+
+    public void setVoltage(double voltage) {
+        this.voltage.set(voltage);
+    }
+
+    public double getCurrent() {
+        return current.get();
+    }
+
+    public SimpleDoubleProperty currentProperty() {
+        return current;
+    }
+
+    public void setCurrent(double current) {
+        this.current.set(current);
     }
 
     public void setTouchObject(FingerTouchObject touchObject) {

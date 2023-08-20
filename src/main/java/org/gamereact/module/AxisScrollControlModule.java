@@ -110,4 +110,9 @@ public class AxisScrollControlModule extends ControlModule {
         lockConnectionButton.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
 
     }
+
+    @Override
+    public void onTuioObjectRemoved(TuioObject tobj) {
+        disconnectAll();
+    }
 }

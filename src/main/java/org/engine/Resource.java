@@ -87,6 +87,8 @@ public class Resource {
                         return new AxisScrollControlModule(tangibleObject);
                     case "ROTATION_SIGNAL_OUTPUT_MODULE":
                         return new RotationSignalOutputModule(tangibleObject);
+                    case "ARDUINO_CONTROL_MODULE":
+                        return new ArduinoControlModule(tangibleObject);
                     case "LED_COMPONENT_MODULE":
                         return new LEDModule(tangibleObject);
                     case "TRANSISTOR_COMPONENT_MODULE":
@@ -99,6 +101,8 @@ public class Resource {
                         return new CoilModule(tangibleObject);
                     case "INDUCTOR_COMPONENT_MODULE":
                         return new InductorModule(tangibleObject);
+                    case "BATTERY_COMPONENT_MODULE":
+                        return new BatteryModule(tangibleObject);
                     case "CHART_MODULE":
                         return new ChartModule(tangibleObject);
                     case "IMAGE_MODULE":

@@ -11,7 +11,7 @@ public enum ElectronicPortStatus {
     IN,
     OUT,
     GND,
-    VCP,
+    DC,
     VCN,
     AC,
     NULL,
