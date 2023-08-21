@@ -36,7 +36,6 @@ public class Resource {
                 System.out.println("Root-Node 'marker' ist nicht vorhanden!");
             }
         } catch (Exception e) {
-            e.printStackTrace();
             System.out.println("Fehler beim Einlesen von marker.xml");
         }
 

@@ -7,7 +7,6 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import org.gamereact.module.Module;
 
 public class TangibleObject extends Group implements TangibleInterface {
@@ -32,9 +31,6 @@ public class TangibleObject extends Group implements TangibleInterface {
         objectPane.setArcHeight(20);
         objectPane.setTranslateX(-40);
         objectPane.setTranslateY(-40);
-        Text idText = new Text();
-        idText.setTranslateX(70);
-        idText.setText(String.valueOf(tuioObject.getSymbolID()));
         getChildren().add(group);
         getChildren().add(objectPane);
         getChildren().add(dashPane);
