@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
+      <artifact name="GameReactCore:jar" />
       <artifact name="GameReactCore:jar2" />
     </artifacts-to-build>
   </component>
@@ -9,8 +10,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="refactor module config">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/CreateModuleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/CreateModuleCommand.java" afterDir="false" />
+    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="format code">
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -394,7 +395,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692603190450</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="format code">
+      <created>1692604258854</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1692604258854</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -429,6 +437,7 @@
     <MESSAGE value="add electronic components" />
     <MESSAGE value="refactor code" />
     <MESSAGE value="refactor module config" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor module config" />
+    <MESSAGE value="format code" />
+    <option name="LAST_COMMIT_MESSAGE" value="format code" />
   </component>
 </project>
