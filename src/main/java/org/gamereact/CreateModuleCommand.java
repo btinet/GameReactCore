@@ -24,8 +24,7 @@ public class CreateModuleCommand {
     static {
 
         MODULES = Map.ofEntries(
-                Map.entry(
-                "AUDIO_PLAYER_MODULE", new Command() {
+                Map.entry("AUDIO_PLAYER_MODULE", new Command() {
                     @Override
                     public Module create(TangibleObject tangibleObject) {
                         AudioPlayerModuleBuilder moduleBuilder = new AudioPlayerModuleBuilder(tangibleObject);
@@ -46,8 +45,7 @@ public class CreateModuleCommand {
                         return moduleBuilder.createAudioPlayerModule();
                     }
                 }),
-                Map.entry(
-                "IMAGE_MODULE", new Command() {
+                Map.entry("IMAGE_MODULE", new Command() {
                     @Override
                     public Module create(TangibleObject tangibleObject) {
                         String title = ((Element) node).getAttribute("title");
@@ -65,16 +63,16 @@ public class CreateModuleCommand {
                 }),
                 Map.entry("VOLUME_CONTROL_MODULE", VolumeControlModule::new),
                 Map.entry("AXIS_SCROLL_CONTROL_MODULE", AxisScrollControlModule::new),
-                Map.entry("ROTATION_SIGNAL_OUTPUT_MODULE",RotationSignalOutputModule::new),
-                Map.entry("ARDUINO_CONTROL_MODULE",ArduinoControlModule::new),
-                Map.entry("LED_COMPONENT_MODULE",LEDModule::new),
-                Map.entry("TRANSISTOR_COMPONENT_MODULE",TransistorModule::new),
-                Map.entry( "RESISTOR_COMPONENT_MODULE",ResistorModule::new),
-                Map.entry( "CAPACITOR_COMPONENT_MODULE",CapacitorModule::new),
-                Map.entry( "COIL_COMPONENT_MODULE",CoilModule::new),
-                Map.entry( "INDUCTOR_COMPONENT_MODULE",InductorModule::new),
-                Map.entry( "BATTERY_COMPONENT_MODULE",BatteryModule::new),
-                Map.entry( "CHART_MODULE",ChartModule::new)
+                Map.entry("ROTATION_SIGNAL_OUTPUT_MODULE", RotationSignalOutputModule::new),
+                Map.entry("ARDUINO_CONTROL_MODULE", ArduinoControlModule::new),
+                Map.entry("LED_COMPONENT_MODULE", LEDModule::new),
+                Map.entry("TRANSISTOR_COMPONENT_MODULE", TransistorModule::new),
+                Map.entry("RESISTOR_COMPONENT_MODULE", ResistorModule::new),
+                Map.entry("CAPACITOR_COMPONENT_MODULE", CapacitorModule::new),
+                Map.entry("COIL_COMPONENT_MODULE", CoilModule::new),
+                Map.entry("INDUCTOR_COMPONENT_MODULE", InductorModule::new),
+                Map.entry("BATTERY_COMPONENT_MODULE", BatteryModule::new),
+                Map.entry("CHART_MODULE", ChartModule::new)
         );
     }
 
@@ -87,7 +85,7 @@ public class CreateModuleCommand {
         String moduleName = ((Element) objectNode).getAttribute("class");
         Command command = MODULES.get(moduleName);
 
-        if(command == null) {
+        if (command == null) {
             throw new IllegalArgumentException("Ungültiger Modulname: " + moduleName);
         }
 
@@ -95,4 +93,3 @@ public class CreateModuleCommand {
     }
 
 }
-

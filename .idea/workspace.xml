@@ -9,11 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="refactor code">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/CreateModuleCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/Resource.java" afterDir="false" />
+    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="refactor module config">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/CreateModuleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/CreateModuleCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -390,7 +387,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692561380405</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="refactor module config">
+      <created>1692603190450</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1692603190450</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,6 +428,7 @@
     <MESSAGE value="update docs" />
     <MESSAGE value="add electronic components" />
     <MESSAGE value="refactor code" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor code" />
+    <MESSAGE value="refactor module config" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor module config" />
   </component>
 </project>
