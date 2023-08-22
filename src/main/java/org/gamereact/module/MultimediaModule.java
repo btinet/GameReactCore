@@ -57,6 +57,12 @@ public abstract class MultimediaModule extends ControllableModule {
 
         setTime();
 
+        prevButton.setPull(false);
+        stopButton.setPull(false);
+        playButton.setPull(false);
+        nextButton.setPull(false);
+        toggleTrackViewButton.setPull(false);
+
         this.mediaPlayer.setOnEndOfMedia(this::stop);
         this.mediaPlayer.setOnStopped(this::updateButtons);
 
@@ -157,7 +163,7 @@ public abstract class MultimediaModule extends ControllableModule {
         getChildren().add(this.statusField);
         getChildren().add(this.title);
         getChildren().add(this.time);
-        getChildren().add(this.slTime);
+        //getChildren().add(this.slTime);
         getChildren().add(rotationGroup);
         getChildren().addAll(this.buttonList);
     }

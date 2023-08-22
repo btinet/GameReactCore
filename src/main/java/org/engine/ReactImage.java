@@ -3,6 +3,9 @@ package org.engine;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.gamereact.component.GenericToolBarBuilder;
+import org.gamereact.component.ReactButton;
+import org.gamereact.component.ReactButtonAction;
 
 import java.io.File;
 
@@ -21,10 +24,10 @@ public class ReactImage extends Group {
         this.name = name;
 
         imageView.setPreserveRatio(true);
-        imageView.setFitWidth(800);
+        imageView.setFitWidth(500);
 
         setTranslateX(-140);
-        setTranslateY(-590);
+        setTranslateY(-390);
 
         getChildren().add(imageView);
     }
