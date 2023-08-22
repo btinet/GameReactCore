@@ -44,6 +44,10 @@ public class ChartModule extends ControllableModule {
     public ChartModule(TangibleObject tangibleObject) {
         super(tangibleObject);
         setConnectable(true);
+
+        zoomOutButton.setPull(false);
+        zoomInButton.setPull(false);
+
         this.fill.setStrokeWidth(0);
         this.fill.setArcHeight(20);
         this.fill.setArcWidth(20);
@@ -195,6 +199,7 @@ public class ChartModule extends ControllableModule {
             }
 
             for(ReactButton button : toolBar.getButtonList()) {
+                // TODO: Buttonaktion nach Release ausführen. Aber wie?
                 if (button.isEnabled() && button.intersects(finger.getValue())) {
                     switch (button.getName()) {
                         case ARDUINO_TOGGLE:

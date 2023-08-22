@@ -63,6 +63,7 @@ public class TangibleObject extends Group implements TangibleInterface {
     public Module getModule() {
         return module;
     }
+
     @Override
     public void setPosition(TuioObject tuioObject, double animationDuration) {
 
