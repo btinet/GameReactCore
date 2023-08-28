@@ -1,6 +1,6 @@
 package org.engine;
 
-import org.gamereact.CreateModuleCommand;
+import org.gamereact.ModuleLibrary;
 import org.gamereact.module.*;
 import org.gamereact.module.Module;
 import org.w3c.dom.Document;
@@ -12,18 +12,38 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
+/**
+ * Loads and processes the marker configuration file
+ */
 public class Resource {
 
     public static final String slash = System.getProperty("file.separator");
     public static final String resources = "." + slash;
+
+    /**
+     * file name of the marker config file
+     */
     private final String config_file = resources + "marker.xml";
 
+    /**
+     * the TangibleObject reference to be passed to the ModuleLibrary
+     */
     private final TangibleObject tangibleObject;
 
+    /**
+     * Constructor
+     * @param tangibleObject TangibleObject reference
+     */
     public Resource(TangibleObject tangibleObject) {
         this.tangibleObject = tangibleObject;
     }
 
+    /**
+     * parses the marker config file and tries to find an object node matching the TuioObject id
+     * @param id current TuioObject id reference
+     * @return returns a ModuleObject set up in ModuleLibrary. If no Module has been configured, an empty Module will
+     * be returned.
+     */
     public Module readConfig(int id) {
         Document doc = null;
         try {
@@ -45,7 +65,7 @@ public class Resource {
             Node objectNode = objectNodes.item(i);
             int markerId = Integer.parseInt(((Element) objectNode).getAttribute("id"));
             if (id == markerId) {
-                CreateModuleCommand command = new CreateModuleCommand(tangibleObject);
+                ModuleLibrary command = new ModuleLibrary(tangibleObject);
                 return command.createModule(objectNode);
             }
         }

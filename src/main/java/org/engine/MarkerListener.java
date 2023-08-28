@@ -2,29 +2,38 @@ package org.engine;
 
 import com.tuio.*;
 import javafx.animation.ScaleTransition;
+import org.gamereact.module.Module;
 
+/**
+ * Listens to Tangible Markers to add, modify and remove Stage-Objects.
+ */
 public class MarkerListener implements TuioListener {
 
-    public MarkerListener() {
-    }
-
-    @Override
+    /**
+     *
+     * @param tobj  the TuioObject reference associated to the addTuioObject event
+     */
+     @Override
     public void addTuioObject(TuioObject tobj) {
         Controller.objectList.put(tobj, new TangibleObject(tobj));
     }
 
-    @Override
-    public void updateTuioObject(TuioObject tobj) {
-
-    }
-
+    /**
+     *
+     * @param tobj  the TuioObject reference associated to the removeTuioObject event
+     */
     @Override
     public void removeTuioObject(TuioObject tobj) {
-        Controller.objectList.get(tobj).getModule().onTuioObjectRemoved(tobj);
-        Controller.connectionLineList.remove(Controller.objectList.get(tobj).getModule().getConnectionLine());
+        Module module = Controller.objectList.get(tobj).getModule();
+        module.onTuioObjectRemoved(tobj);
+        Controller.connectionLineList.remove(module.getConnectionLine());
         Controller.objectList.remove(tobj);
     }
 
+    /**
+     *
+     * @param tcur  the TuioCursor reference associated to the addTuioCursor event
+     */
     @Override
     public void addTuioCursor(TuioCursor tcur) {
         FingerTouchObject fingerTouchObject = new FingerTouchObject();
@@ -33,33 +42,26 @@ public class MarkerListener implements TuioListener {
         cst.play();
     }
 
-    @Override
-    public void updateTuioCursor(TuioCursor tcur) {
-
-    }
-
+    /**
+     *
+     * @param tcur  the TuioCursor reference associated to the removeTuioCursor event
+     */
     @Override
     public void removeTuioCursor(TuioCursor tcur) {
         Controller.cursorList.remove(tcur);
     }
 
     @Override
-    public void addTuioBlob(TuioBlob tblb) {
-
-    }
-
+    public void updateTuioObject(TuioObject tobj) {}
     @Override
-    public void updateTuioBlob(TuioBlob tblb) {
-
-    }
-
+    public void updateTuioCursor(TuioCursor tcur) {}
     @Override
-    public void removeTuioBlob(TuioBlob tblb) {
-
-    }
-
+    public void addTuioBlob(TuioBlob tblb) {}
     @Override
-    public void refresh(TuioTime ftime) {
-    }
+    public void updateTuioBlob(TuioBlob tblb) {}
+    @Override
+    public void removeTuioBlob(TuioBlob tblb) {}
+    @Override
+    public void refresh(TuioTime ftime) {}
 
 }

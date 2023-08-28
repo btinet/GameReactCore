@@ -1,0 +1,126 @@
+@startuml
+class MarkerListener {
++ <<Create>> MarkerListener()
++ void addTuioObject(TuioObject)
++ void updateTuioObject(TuioObject)
++ void removeTuioObject(TuioObject)
++ void addTuioCursor(TuioCursor)
++ void updateTuioCursor(TuioCursor)
++ void removeTuioCursor(TuioCursor)
++ void addTuioBlob(TuioBlob)
++ void updateTuioBlob(TuioBlob)
++ void removeTuioBlob(TuioBlob)
++ void refresh(TuioTime)
+}
+abstract class ControlModule {
+# ReactButton lockConnectionButton
+# ReactIcon icon
+# Text valueDisplayText
+# ReactIcon valueDisplayIcon
+~ Rectangle fillRight
+~ Arc getVolumeIndicatorBackground
+~ Arc volumeIndicator
++ <<Create>> ControlModule(TangibleObject,String)
++ void setValueDisplayText(Number)
++ void setValueDisplayText(String)
++ void setValueDisplayText(ReactIcon)
++ void setValueDisplayIcon(String)
++ void connect(Module)
++ void disconnectAll()
++ void lockAll()
++ void setPosition(double)
+}
+class Resource {
++ {static} String slash
++ {static} String resources
+- String config_file
+- TangibleObject tangibleObject
++ <<Create>> Resource(TangibleObject)
++ Module readConfig(int)
+}
+abstract class Module {
++ {static} String slash
++ {static} String resources
+# TangibleObject tangibleObject
+# Group rotationGroup
+# ArrayList<ReactButton> buttonList
+- FadeTransition connectIndicator
+# Color moduleColor
+- Boolean connectable
+- Boolean connectionScheduled
+- Boolean connected
+- Module controlModule
+# ArrayList<Module> moduleList
+- Line connectionLine
+# ReactButton cancelConnectionButton
+# DecimalFormat df
+~ Rectangle fillLeft
++ <<Create>> Module(TangibleObject)
++ Line getConnectionLine()
++ Rectangle getFillLeft()
++ DecimalFormat getDf()
++ Group getRotationGroup()
+# Color createRandomColor()
++ ArrayList<Module> getModuleList()
++ void setModuleColor(Color)
++ void addCancelConnectionButton()
++ TangibleObject getTangibleObject()
++ Boolean isConnectionScheduled()
++ void setConnectionScheduled(Boolean)
++ void scheduleConnection(Module)
++ Circle getIntersectPane()
++ FadeTransition getConnectIndicator()
++ ArrayList<ReactButton> getButtonList()
++ void setControlModule(Module)
++ Module getControlModule()
++ void unsetControlModule()
++ Boolean isConnectable()
++ void setConnectable(Boolean)
++ Boolean isConnected()
++ void setConnected(Boolean)
++ ReactButton getCancelConnectionButton()
++ void disconnect()
++ void lock()
+}
+class TangibleObject {
+- Rectangle objectPane
+- Circle intersectPane
+- Circle dashPane
+- Module module
+- TuioObject marker
++ <<Create>> TangibleObject(TuioObject)
++ Circle getIntersectPane()
++ Rectangle getObjectPane()
++ TuioObject getMarker()
++ Module getModule()
++ void setPosition(TuioObject,double)
+}
+abstract class ControllableModule {
++ <<Create>> ControllableModule(TangibleObject)
++ void disconnect()
++ void setPosition(double)
+}
+abstract class Controller {
++ {static} HashMap<TuioCursor,FingerTouchObject> cursorList
++ {static} HashMap<TuioObject,TangibleObject> objectList
++ {static} ArrayList<Line> connectionLineList
++ {static} ArrayList<PCBLaneModule> PCB_LANE_MODULES
++ {static} PCBLaneModule CURRENT_PCB_LANE
+# KeyPolling keys
+# TuioClient client
+# double xOffset
+# double yOffset
+# void enableDraggable(Node)
+}
+
+
+TuioListener <|.. MarkerListener
+Module <|-- ControlModule
+ModuleInterface <|.. Module
+Group <|-- Module
+TangibleInterface <|.. TangibleObject
+Group <|-- TangibleObject
+Module <|-- ControllableModule
+Initializable <|.. Controller
+AppTimer <|-- Controller
+@enduml

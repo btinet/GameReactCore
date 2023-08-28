@@ -11,10 +11,21 @@ import org.gamereact.module.Module;
 
 public class TangibleObject extends Group implements TangibleInterface {
 
+    /**
+     * Untergrund des Markers
+     */
     private final Rectangle objectPane = new Rectangle(80, 80, new Color(0.894, 0.007, 0.454, 1));
     private final Circle intersectPane = new Circle(100, new Color(0.3, 0.8, 0.9, .6));
     private final Circle dashPane = new Circle(20, new Color(0.3, 0.8, 0.9, 1));
+
+    /**
+     * Modul, das dem TangibleObject zugeordnete ist;
+     */
     private final Module module;
+
+    /**
+     * Marker, der dem TangibleObject zugeordnete ist;
+     */
     private final TuioObject marker;
 
     public TangibleObject(TuioObject tuioObject) {
@@ -22,7 +33,6 @@ public class TangibleObject extends Group implements TangibleInterface {
         intersectPane.setOpacity(0);
         Group group = new Group();
         group.getChildren().add(intersectPane);
-
 
         Resource resource = new Resource(this);
         module = resource.readConfig(tuioObject.getSymbolID());

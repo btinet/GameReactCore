@@ -15,10 +15,20 @@ import org.w3c.dom.NodeList;
 
 import java.util.Map;
 
-public class CreateModuleCommand {
+/**
+ * holds the GameReact Module configuration
+ */
+public class ModuleLibrary {
 
+    /**
+     * TangibleObject reference that holds both, the TuioObject and the corresponding Module
+     */
     private static TangibleObject tangibleObject;
     private static Node node;
+
+    /**
+     * Map containing the primary keys provided by the marker.xml config file and the module instance config
+     */
     private static final Map<String, Command> MODULES;
 
     static {
@@ -76,10 +86,19 @@ public class CreateModuleCommand {
         );
     }
 
-    public CreateModuleCommand(TangibleObject tanObj) {
+    /**
+     * Constructor
+     * @param tanObj the TangibleObject reference that will be aggregated to the desired module
+     */
+    public ModuleLibrary(TangibleObject tanObj) {
         tangibleObject = tanObj;
     }
 
+    /**
+     * creates a new Module object by using the instance configuration of the MODULES map
+     * @param objectNode current object node found in marker.xml config file
+     * @return returns a new Module instance
+     */
     public Module createModule(Node objectNode) {
         node = objectNode;
         String moduleName = ((Element) objectNode).getAttribute("class");
