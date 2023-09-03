@@ -65,8 +65,8 @@ public class Resource {
             Node objectNode = objectNodes.item(i);
             int markerId = Integer.parseInt(((Element) objectNode).getAttribute("id"));
             if (id == markerId) {
-                ModuleLibrary command = new ModuleLibrary(tangibleObject);
-                return command.createModule(objectNode);
+                ModuleLibrary moduleLibrary = new ModuleLibrary(tangibleObject);
+                return moduleLibrary.createModule(objectNode);
             }
         }
         return new EmptyModule(tangibleObject);
