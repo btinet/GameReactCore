@@ -33,11 +33,8 @@ den Förderverein des Treptow-Kollegs.*
 ### To do
 
 - 🚧 Responsive Content Layout (RCL)
-- 🚧 Menüführung per Touch-Eingaben
-- 🚧 Feedback-Indikator (Präsentationsfolien)
 - 🚧 Feedback-Beamer Output
 - 🚧 Videointegration
-- 🚧 Audioplayer
 - ❌ Reactable-Mode (Max MSP)
 
 ### Ready
@@ -48,6 +45,9 @@ den Förderverein des Treptow-Kollegs.*
 - ✅ Keyboard User Input
 - ✅ ReacTIVision User Input
 - ✅ Finger-Touch-Eingaben
+- ✅ Menüführung per Touch-Eingaben
+- ✅ Audioplayer
+- ✅ Feedback-Indikator (Präsentationsfolien)
 
 ### Games
 
