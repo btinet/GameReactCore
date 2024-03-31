@@ -33,6 +33,10 @@ public class AppController extends Controller {
     private final MenuBar menuBar = new MenuBar();
     private CalibrationGrid calibrationGrid;
 
+    public Group getObjectGroup() {
+        return objectGroup;
+    }
+
     /**
      * Setup des Controllers, sobald die Stage vollständig verarbeitet wurde.
      *
@@ -58,7 +62,7 @@ public class AppController extends Controller {
                 cursorGroup
         );
 
-        root.setStyle("-fx-background-color: #0D0D0D");
+        root.setStyle("-fx-background-color: #2b53a7");
         enableDraggable(root);
 
         this.start();

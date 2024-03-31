@@ -34,7 +34,12 @@ ROTATION_SIGNAL_OUTPUT_MODULE: Sinus-Steuersignal auf Basis des Rotationswinkels
 	<object id="3" class="IMAGE_MODULE"  file="" title="Image">
         <image name="1" file="1.jpg" />
     </object>
-    <object id="4" class="LED_COMPONENT_MODULE" title="LED1" />
+	<object id="4" class="IMAGE_MODULE"  file="" title="Image">
+        <image name="Color" file="thermoprint_color_640_480pix.jpg" />
+        <image name="IR" file="thermoprint_IR_640_480pix.jpg" />
+        <image name="Geld Color" file="1_geld_color_640_480.jpg" />
+        <image name="Geld IR" file="3_geld_ir_640_480.jpg" />
+    </object>
     <object id="5" class="TRANSISTOR_COMPONENT_MODULE" title="T1" />
     <object id="6" class="RESISTOR_COMPONENT_MODULE" title="R1" />
     <object id="7" class="CAPACITOR_COMPONENT_MODULE" title="C1" />

@@ -14,7 +14,7 @@ public class TangibleObject extends Group implements TangibleInterface {
     /**
      * Untergrund des Markers
      */
-    private final Rectangle objectPane = new Rectangle(80, 80, new Color(0.894, 0.007, 0.454, 1));
+    private final Circle objectPane = new Circle(50, new Color(0.76, 0.78, 0.19, 1));
     private final Circle intersectPane = new Circle(100, new Color(0.3, 0.8, 0.9, .6));
     private final Circle dashPane = new Circle(20, new Color(0.3, 0.8, 0.9, 1));
 
@@ -37,10 +37,6 @@ public class TangibleObject extends Group implements TangibleInterface {
         Resource resource = new Resource(this);
         module = resource.readConfig(tuioObject.getSymbolID());
         module.setTranslateX(100);
-        objectPane.setArcWidth(20);
-        objectPane.setArcHeight(20);
-        objectPane.setTranslateX(-40);
-        objectPane.setTranslateY(-40);
         getChildren().add(group);
         getChildren().add(objectPane);
         getChildren().add(dashPane);
@@ -62,7 +58,7 @@ public class TangibleObject extends Group implements TangibleInterface {
         return intersectPane;
     }
 
-    public Rectangle getObjectPane() {
+    public Circle getObjectPane() {
         return objectPane;
     }
 

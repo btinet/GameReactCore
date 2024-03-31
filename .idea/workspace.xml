@@ -10,7 +10,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="update">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/Resource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/test.smcat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/1_geld_color_640_480.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/3_geld_ir_640_480.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Oberflaeche_UV_IR.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/thermoprint_IR_640_480pix.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/thermoprint_color_640_480pix.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/marker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/marker.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/MarkerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/MarkerListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/ReactImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/ReactImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ImageModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ImageModule.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +49,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: -1
+  &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2SayK28RfHIv05G9qrXV7gEZ0bv" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -55,7 +67,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/BenjaminWagner/IdeaProjects/GameReactCore&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.41149426&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;

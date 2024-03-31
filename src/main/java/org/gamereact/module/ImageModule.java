@@ -24,14 +24,14 @@ public class ImageModule extends ControllableModule {
         this.imageList = images;
 
         GenericToolBarBuilder toolBarBuilder = new GenericToolBarBuilder();
-        toolBarBuilder.addReactButton(new ReactButton(ReactButtonAction.AVERAGE, "ci-chart-average"));
-        toolBarBuilder.addReactButton(new ReactButton(ReactButtonAction.MAXIMUM, "ci-chart-maximum"));
+        toolBarBuilder.addReactButton(new ReactButton(ReactButtonAction.PREVIOUS, "jam-set-backward-square"));
+        toolBarBuilder.addReactButton(new ReactButton(ReactButtonAction.NEXT, "jam-set-forward-square"));
 
         GenericToolBar toolBar = toolBarBuilder.createGenericToolBar();
         buttonList.addAll(toolBar.getButtonList());
 
         addCancelConnectionButton();
-        getRotationGroup().getChildren().add(imageList.get(0));
+        getRotationGroup().getChildren().add(0,imageList.get(0));
         getChildren().add(rotationGroup);
         getChildren().add(toolBar);
         getChildren().addAll(buttonList);
@@ -51,13 +51,30 @@ public class ImageModule extends ControllableModule {
         for (Map.Entry<TuioCursor, FingerTouchObject> finger : Controller.cursorList.entrySet()) {
             for (ReactButton button : getButtonList()) {
                 if (button.isEnabled() && button.intersects(finger.getValue())) {
+                    ReactImage current;
+                    int currentIndex;
                     switch (button.getName()) {
-                        case AVERAGE:
-                            System.out.println("Durchschnitt");
+
+                        case PREVIOUS:
+                            current = (ReactImage) getRotationGroup().getChildren().get(0);
+                            currentIndex = imageList.lastIndexOf(current);
+                            if(currentIndex > 0) {
+                                int nextIndex = currentIndex - 1;
+                                getRotationGroup().getChildren().set(0,imageList.get(nextIndex));
+                                System.out.println("Previous");
+                            }
                             break;
-                        case MAXIMUM:
-                            System.out.println("Maximum");
+
+                        case NEXT:
+                            current = (ReactImage) getRotationGroup().getChildren().get(0);
+                            currentIndex = imageList.lastIndexOf(current);
+                            if(currentIndex < (imageList.size()-1)) {
+                                int nextIndex = currentIndex + 1;
+                                getRotationGroup().getChildren().set(0,imageList.get(nextIndex));
+                                System.out.println("Next");
+                            }
                             break;
+
                         default:
                             break;
                     }

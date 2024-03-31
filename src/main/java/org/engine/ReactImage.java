@@ -27,7 +27,7 @@ public class ReactImage extends Group {
         imageView.setFitWidth(500);
 
         setTranslateX(-140);
-        setTranslateY(-390);
+        setTranslateY(-440);
 
         getChildren().add(imageView);
     }
