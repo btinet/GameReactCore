@@ -10,7 +10,7 @@ import org.gamereact.controller.AppController;
 public class CalibrationGrid extends Group {
 
     protected final AppController controller;
-    private final Color strokeColor = Color.GREEN;
+    private final Color strokeColor = Color.WHITE;
     private final int strokeWidth = 4;
     private final Line horizontalLine = new Line();
     private final Rectangle r1 = new Rectangle(100,100);

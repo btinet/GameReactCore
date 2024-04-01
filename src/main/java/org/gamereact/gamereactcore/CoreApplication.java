@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.engine.KeyPolling;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 import java.io.IOException;
 import java.util.Objects;
 
@@ -47,7 +49,13 @@ public class CoreApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        try {
+            showMessageDialog(null, "Denken Sie daran, die ReacTIVision-Engine zu starten.");
+            launch();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
 

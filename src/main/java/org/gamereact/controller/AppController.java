@@ -31,7 +31,7 @@ public class AppController extends Controller {
     protected final Group cursorGroup = new Group();
     protected final Group pcbLaneGroup = new Group();
     private final MenuBar menuBar = new MenuBar();
-    private CalibrationGrid calibrationGrid;
+    public static CalibrationGrid calibrationGrid;
 
     public Group getObjectGroup() {
         return objectGroup;
@@ -63,7 +63,7 @@ public class AppController extends Controller {
         );
 
         root.setStyle("-fx-background-color: #2b53a7");
-        enableDraggable(root);
+        mouseAction(root);
 
         this.start();
     }

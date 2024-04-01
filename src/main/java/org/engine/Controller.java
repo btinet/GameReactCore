@@ -3,14 +3,19 @@ package org.engine;
 import com.tuio.TuioClient;
 import com.tuio.TuioCursor;
 import com.tuio.TuioObject;
+import javafx.application.Platform;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Line;
 import org.gamereact.module.electronic.PCBLaneModule;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static javax.swing.JOptionPane.showConfirmDialog;
+import static org.gamereact.controller.AppController.calibrationGrid;
 import static org.gamereact.gamereactcore.CoreApplication.stage;
 
 public abstract class Controller extends AppTimer implements Initializable {
@@ -25,14 +30,38 @@ public abstract class Controller extends AppTimer implements Initializable {
     protected double xOffset = 0;
     protected double yOffset = 0;
 
-    protected void enableDraggable(Node node) {
+    protected void mouseAction(Node node) {
+        node.setOnMouseClicked(event -> {
+            if(event.getClickCount() == 2 && event.getButton() == MouseButton.PRIMARY) {
+                stage.setFullScreen(!stage.isFullScreen());
+                calibrationGrid.setPosition();
+            }
+            if(event.isControlDown() && event.getButton() == MouseButton.PRIMARY) {
+                calibrationGrid.toggleView();
+            }
+            if(event.getButton() == MouseButton.SECONDARY) {
+                JFrame jf=new JFrame();
+                jf.setLocationRelativeTo(null);
+                jf.setAlwaysOnTop(true);
+                int input = showConfirmDialog(jf,"Soll GameReact Core wirklich beendet werden?","Anwendung beenden", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                if(input == 0) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+            }
+        });
+
         node.setOnMousePressed(event -> {
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
+            if(event.isPrimaryButtonDown()) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
         });
         node.setOnMouseDragged(event -> {
-            stage.setX(event.getScreenX() - xOffset);
-            stage.setY(event.getScreenY() - yOffset);
+            if(event.isPrimaryButtonDown()) {
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+            }
         });
     }
 

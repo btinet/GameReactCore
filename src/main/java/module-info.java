@@ -9,6 +9,7 @@ module org.gamereact.gamereactcore {
     requires java.xml;
     requires jSerialComm;
     requires org.knowhowlab.comm.rxtx.patched;
+    requires java.desktop;
 
     opens org.gamereact.gamereactcore to javafx.fxml;
     exports org.gamereact.gamereactcore;
