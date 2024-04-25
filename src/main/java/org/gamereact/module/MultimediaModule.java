@@ -84,7 +84,7 @@ public abstract class MultimediaModule extends ControllableModule {
         });
 
         this.trackGroup.getChildren().addAll(this.tracks);
-        this.trackGroup.setTranslateX(-140);
+        this.trackGroup.setTranslateX(40);
         this.trackGroup.setTranslateY(-80);
         this.trackGroup.setOpacity(0);
 
@@ -105,27 +105,27 @@ public abstract class MultimediaModule extends ControllableModule {
         this.time.setFill(new Color(1, 1, 1, .9));
         this.time.setTextAlignment(TextAlignment.RIGHT);
         this.time.setTranslateY(-74);
-        this.time.setTranslateX(135);
+        this.time.setTranslateX(300);
         this.time.setFont(Fonts.REGULAR_14.getFont());
 
         this.title.setFill(new Color(1, 1, 1, .9));
         this.title.setTranslateY(-74);
-        this.title.setTranslateX(-130);
+        this.title.setTranslateX(60);
         this.title.setFont(Fonts.BOLD_16.getFont());
 
         this.statusField.setStroke(new Color(0.4, 0.6, 0.8, 1));
 
         this.statusField.setTranslateY(-100);
         this.statusField.setStrokeWidth(2);
-        this.statusField.setTranslateX(-140);
+        this.statusField.setTranslateX(40);
         this.statusField.setArcHeight(20);
         this.statusField.setArcWidth(20);
 
-        this.toggleTrackViewButton.setTranslateX(300);
+        this.toggleTrackViewButton.setTranslateX(480);
         this.toggleTrackViewButton.setTranslateY(-80);
 
         this.statusFillField.setTranslateY(-100);
-        this.statusFillField.setTranslateX(-140);
+        this.statusFillField.setTranslateX(40);
         this.statusFillField.setArcHeight(20);
         this.statusFillField.setArcWidth(20);
 
@@ -139,7 +139,7 @@ public abstract class MultimediaModule extends ControllableModule {
 
         this.fill.setTranslateY(-40);
         this.fill.setStrokeWidth(0);
-        this.fill.setTranslateX(-40);
+        this.fill.setTranslateX(40);
         this.fill.setArcHeight(20);
         this.fill.setArcWidth(20);
 
@@ -147,9 +147,10 @@ public abstract class MultimediaModule extends ControllableModule {
         prevButton.setEnabled(false);
         stopButton.setEnabled(false);
 
-        stopButton.setTranslateX(75);
-        playButton.setTranslateX(150);
-        nextButton.setTranslateX(225);
+        prevButton.setTranslateX(80);
+        stopButton.setTranslateX(155);
+        playButton.setTranslateX(230);
+        nextButton.setTranslateX(305);
 
         this.buttonList.add(prevButton);
         this.buttonList.add(stopButton);

@@ -9,15 +9,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/LICENSE.txt" afterDir="false" />
+    <list default="true" id="4ccc6238-d5c1-4ccf-89e0-41146215c18a" name="Changes" comment="update mouse action">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/component/CalibrationGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/component/CalibrationGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/component/MenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/component/MenuBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/controller/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/ArduinoControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/ArduinoControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/ReactImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/ReactImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/TangibleObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/component/GenericToolBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/component/GenericToolBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/gamereactcore/CoreApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/gamereactcore/CoreApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ArduinoControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ArduinoControlModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ChartModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ChartModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ControlModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ImageModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/ImageModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/Module.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/MultimediaModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/MultimediaModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/RotationSignalOutputModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/RotationSignalOutputModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/VolumeControlModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/BatteryModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gamereact/module/electronic/BatteryModule.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -419,14 +426,6 @@
       <option name="project" value="LOCAL" />
       <updated>1692604518193</updated>
     </task>
-    <task id="LOCAL-00050" summary="update">
-      <option name="closed" value="true" />
-      <created>1693717531861</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1693717531861</updated>
-    </task>
     <task id="LOCAL-00051" summary="update">
       <option name="closed" value="true" />
       <created>1711865584417</created>
@@ -451,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711865751444</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="update mouse action">
+      <option name="closed" value="true" />
+      <created>1711947674126</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1711947674127</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -487,6 +494,7 @@
     <MESSAGE value="refactor module config" />
     <MESSAGE value="format code" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="update mouse action" />
+    <option name="LAST_COMMIT_MESSAGE" value="update mouse action" />
   </component>
 </project>

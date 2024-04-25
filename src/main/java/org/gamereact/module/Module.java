@@ -50,12 +50,12 @@ public abstract class Module extends Group implements ModuleInterface {
 
         this.fillLeft.setTranslateY(-40);
         this.fillLeft.setStrokeWidth(0);
-        this.fillLeft.setTranslateX(-240);
+        this.fillLeft.setTranslateX(-320);
         this.fillLeft.setArcHeight(20);
         this.fillLeft.setArcWidth(20);
 
         cancelConnectionButton.setBackground(new Color(0.9, 0.2, 0.5, .4));
-        cancelConnectionButton.setTranslateX(-200);
+        cancelConnectionButton.setTranslateX(-280);
         cancelConnectionButton.setEnabled(false);
 
     }

@@ -35,16 +35,17 @@ public abstract class ControlModule extends Module {
         this.icon = new ReactIcon(iconName);
         this.setConnectable(true);
 
+        icon.setTranslateX(40);
         icon.setTranslateY(80);
         valueDisplayText.setFont(Fonts.BOLD_18.getFont());
         valueDisplayText.setFill(Color.WHITE);
         valueDisplayText.setTextAlignment(TextAlignment.LEFT);
         getVolumeIndicatorBackground.setStartAngle(0);
         getVolumeIndicatorBackground.setLength(360);
-        getVolumeIndicatorBackground.setRadiusX(80);
-        getVolumeIndicatorBackground.setRadiusY(80);
+        getVolumeIndicatorBackground.setRadiusX(130);
+        getVolumeIndicatorBackground.setRadiusY(130);
         getVolumeIndicatorBackground.setStroke(new Color(1,1,1,.2));
-        getVolumeIndicatorBackground.setStrokeWidth(25);
+        getVolumeIndicatorBackground.setStrokeWidth(15);
         getVolumeIndicatorBackground.setFill(Color.TRANSPARENT);
         getVolumeIndicatorBackground.setTranslateX(-100);
 
@@ -52,10 +53,10 @@ public abstract class ControlModule extends Module {
         volumeIndicator.setStrokeLineCap(StrokeLineCap.BUTT);
         volumeIndicator.setStartAngle(85);
         volumeIndicator.setLength(10);
-        volumeIndicator.setRadiusX(80);
-        volumeIndicator.setRadiusY(80);
+        volumeIndicator.setRadiusX(130);
+        volumeIndicator.setRadiusY(130);
         volumeIndicator.setStroke(new Color(1,1,1,1));
-        volumeIndicator.setStrokeWidth(25);
+        volumeIndicator.setStrokeWidth(15);
         volumeIndicator.setFill(Color.TRANSPARENT);
         volumeIndicator.setTranslateX(-100);
         moduleColor = createRandomColor();
@@ -63,16 +64,16 @@ public abstract class ControlModule extends Module {
 
         this.fillRight.setTranslateY(-40);
         this.fillRight.setStrokeWidth(0);
-        this.fillRight.setTranslateX(-40);
+        this.fillRight.setTranslateX(40);
         this.fillRight.setArcHeight(20);
         this.fillRight.setArcWidth(20);
 
         lockConnectionButton.setBackground(new Color(0.4, 0.9, 0.5, .4));
-        lockConnectionButton.setTranslateX(0);
+        lockConnectionButton.setTranslateX(80);
         lockConnectionButton.setEnabled(false);
 
         valueDisplayText.setWrappingWidth(100);
-        valueDisplayText.setTranslateX(40);
+        valueDisplayText.setTranslateX(80);
         valueDisplayText.setTranslateY(87);
 
         buttonList.add(lockConnectionButton);

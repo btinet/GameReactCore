@@ -50,7 +50,7 @@ public class CoreApplication extends Application {
 
     public static void main(String[] args) {
         try {
-            showMessageDialog(null, "Denken Sie daran, die ReacTIVision-Engine zu starten.");
+            //showMessageDialog(null, "Denken Sie daran, die ReacTIVision-Engine zu starten.");
             launch();
         } catch (Exception e) {
             System.out.println(e.getMessage());

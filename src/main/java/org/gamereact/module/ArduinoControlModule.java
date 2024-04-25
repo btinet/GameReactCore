@@ -21,7 +21,7 @@ public class ArduinoControlModule extends ControlModule {
         super(tangibleObject, "cib-arduino");
         // Testweise:
             ArrayList<String> measurementTypes = new ArrayList<>();
-            measurementTypes.add("current");
+            measurementTypes.add("voltage");
         // Testweise, ENDE
         arduinoControl = new ArduinoControl(measurementTypes);
         //getVolumeIndicatorBackground.setStroke(Color.TRANSPARENT);
@@ -99,7 +99,8 @@ public class ArduinoControlModule extends ControlModule {
 
         setParameter( animationDuration, getTangibleObject().getMarker().getAngle() );
         getVolumeIndicatorBackground.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
-        setValueDisplayText( getDf().format(arduinoControl.getData()) );
+        //setValueDisplayText( getDf().format(arduinoControl.getData()) );
+        setValueDisplayText( getDf().format(0) );
         cancelConnectionButton.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
         lockConnectionButton.setRotate(-getTangibleObject().getMarker().getAngleDegrees());
 

@@ -10,8 +10,8 @@ public class BatteryModule extends ElectronicComponentModule {
 
 
 
-    protected ElectronicPort anodePort = new ElectronicPort(this,0,-100,ElectronicPortStatus.DC,"A");
-    protected ElectronicPort kathodePort = new ElectronicPort(this,0,100,ElectronicPortStatus.GND,"K");
+    protected ElectronicPort anodePort = new ElectronicPort(this,0,-150,ElectronicPortStatus.DC,"A");
+    protected ElectronicPort kathodePort = new ElectronicPort(this,0,150,ElectronicPortStatus.GND,"K");
     public BatteryModule(TangibleObject tangibleObject) {
         super(tangibleObject,2,"battery");
         setVoltage(9);

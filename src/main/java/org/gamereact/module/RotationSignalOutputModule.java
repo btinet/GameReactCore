@@ -9,6 +9,7 @@ import org.engine.TangibleObject;
 import org.gamereact.component.ReactButton;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class RotationSignalOutputModule extends ControlModule {
@@ -23,7 +24,9 @@ public class RotationSignalOutputModule extends ControlModule {
         for (Module module : this.moduleList) {
             if(module instanceof ChartModule) {
                 ChartModule chartModule = (ChartModule) module;
-                chartModule.updateChart(time, Math.cos( (angle) ) );
+                HashMap<String, Double> set = new HashMap<>();
+                set.put("Winkel",Math.cos( (angle)));
+                chartModule.updateChart(time, set);
             }
 
         }

@@ -14,8 +14,8 @@ public class TangibleObject extends Group implements TangibleInterface {
     /**
      * Untergrund des Markers
      */
-    private final Circle objectPane = new Circle(50, new Color(0.76, 0.78, 0.19, 1));
-    private final Circle intersectPane = new Circle(100, new Color(0.3, 0.8, 0.9, .6));
+    private final Circle objectPane = new Circle(100, new Color(0.76, 0.78, 0.19, 1));
+    private final Circle intersectPane = new Circle(120, new Color(0.3, 0.8, 0.9, .6));
     private final Circle dashPane = new Circle(20, new Color(0.3, 0.8, 0.9, 1));
 
     /**

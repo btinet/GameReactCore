@@ -2,6 +2,7 @@ package org.gamereact.module;
 
 import com.tuio.TuioCursor;
 import com.tuio.TuioObject;
+import javafx.scene.Node;
 import org.engine.Controller;
 import org.engine.FingerTouchObject;
 import org.engine.ReactImage;
@@ -18,6 +19,7 @@ public class ImageModule extends ControllableModule {
 
     private final String title;
     private final ArrayList<ReactImage> imageList;
+
     public ImageModule(TangibleObject tangibleObject, String title, ArrayList<ReactImage> images) {
         super(tangibleObject);
         this.title = title;
@@ -28,6 +30,7 @@ public class ImageModule extends ControllableModule {
         toolBarBuilder.addReactButton(new ReactButton(ReactButtonAction.NEXT, "jam-set-forward-square"));
 
         GenericToolBar toolBar = toolBarBuilder.createGenericToolBar();
+        toolBar.translateX(100);
         buttonList.addAll(toolBar.getButtonList());
 
         addCancelConnectionButton();

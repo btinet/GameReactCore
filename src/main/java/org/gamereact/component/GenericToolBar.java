@@ -34,6 +34,14 @@ public class GenericToolBar extends Group {
 
     }
 
+    public void translateX(int x) {
+        this.setTranslateX(x);
+        for (ReactButton button:
+             this.buttonList) {
+            button.setTranslateX(button.getTranslateX()+x);
+        }
+    }
+
     public ArrayList<ReactButton> getButtonList() {
         return buttonList;
     }

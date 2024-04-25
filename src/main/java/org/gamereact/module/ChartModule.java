@@ -20,6 +20,7 @@ import org.gamereact.component.ReactButton;
 import org.gamereact.component.ReactButtonAction;
 import org.gamereact.component.ToolBar;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class ChartModule extends ControllableModule {
@@ -54,11 +55,11 @@ public class ChartModule extends ControllableModule {
 
         this.buttonFill.setTranslateY(-40);
         this.buttonFill.setStrokeWidth(0);
-        this.buttonFill.setTranslateX(-40);
+        this.buttonFill.setTranslateX(50);
         this.buttonFill.setArcHeight(20);
         this.buttonFill.setArcWidth(20);
 
-        fill.setTranslateX(-140);
+        fill.setTranslateX(50);
         fill.setTranslateY(-360);
 
         LineChart<Number, Number> chart = this.createChart();
@@ -70,9 +71,10 @@ public class ChartModule extends ControllableModule {
         Group chartGroup = new Group();
         chartGroup.getChildren().add(chart);
         chartGroup.setTranslateY(-360);
-        chartGroup.setTranslateX(-140);
+        chartGroup.setTranslateX(50);
 
-        zoomInButton.setTranslateX(75);
+        zoomOutButton.setTranslateX(85);
+        zoomInButton.setTranslateX(160);
         playButton.setTranslateX(225);
         playButton.setBackground(new Color(0.9, 0.2, 0.5, .4));
         this.buttonList.add(zoomOutButton);
@@ -80,7 +82,7 @@ public class ChartModule extends ControllableModule {
         this.buttonList.add(playButton);
 
         toolBar = new ToolBar();
-        toolBar.setTranslateX(320);
+        toolBar.setTranslateX(420);
 
         addCancelConnectionButton();
         getChildren().add(buttonFill);
@@ -155,12 +157,19 @@ public class ChartModule extends ControllableModule {
 
     }
 
-    public void updateChart(double time, Double s) {
-        if(!pause && s != null) {
-            double mTime = time - initialTime;
-            XYChart.Data<Number, Number> data = new XYChart.Data<>(mTime, s);
-            series.getData().add(data);
+    public void updateChart(double time, HashMap<String,Double> s) {
+        for (Map.Entry<String,Double> set :
+             s.entrySet()) {
+
+            // TODO: Für jedes EntrySet eine eigene chart series
+
+            if(!pause && set.getValue() != null) {
+                double mTime = time - initialTime;
+                XYChart.Data<Number, Number> data = new XYChart.Data<>(mTime, set.getValue());
+                series.getData().add(data);
+            }
         }
+
     }
 
     public void moveOnXAxis(double sin) {

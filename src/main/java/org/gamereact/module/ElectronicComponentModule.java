@@ -43,6 +43,7 @@ public abstract class ElectronicComponentModule extends Module {
 
 
         iconImageView.setTranslateY(-32);
+        iconImageView.setTranslateX(50);
         getChildren().add(iconImageView);
     }
 

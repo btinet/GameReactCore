@@ -4,11 +4,13 @@ package org.engine;
 import com.fazecast.jSerialComm.SerialPort;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ArduinoControl {
 
     SerialPort sp;
     Double x = (double) 0;
+    HashMap<String,Double> measurementSets = new HashMap<>();
     StringBuilder text = new StringBuilder();
     ArrayList<String> measurementTypes;
 
@@ -32,7 +34,7 @@ public class ArduinoControl {
 
     }
 
-    public Double getData() {
+    public HashMap<String, Double> getData() {
         try {
             if (sp != null && sp.bytesAvailable() > 0) {
 
@@ -49,13 +51,15 @@ public class ArduinoControl {
                         text.append(serialInput);
                     }
                     // E kennzeichnet Ende eines Datensatzes
-                    if (serialInput.equals('E'))
+                    //if (serialInput.equals('E'))
+                    if (!String.valueOf(serialInput).matches("."))
                     {
                         parseData(text.toString());
                         // parseData sollte besser eine HashMap zurückgeben.
                         text.setLength(0);
                         break;
                     }
+
                 }
 
             }
@@ -64,7 +68,7 @@ public class ArduinoControl {
 
         }
         // besser HashMap zurückgeben (HashMap<String,Double>) String = Schlüssel des Datums / Double = Wert des Datums
-        return x;
+        return measurementSets;
     }
 
     /**
@@ -74,8 +78,14 @@ public class ArduinoControl {
     private void parseData(String serialData)
     {
         for (String measurementType : measurementTypes) {
+
             if(serialData.contains(measurementType)) {
-                x = Double.parseDouble(serialData.replaceAll("[^0-9]", ""));
+                Double value = Double.parseDouble(serialData.replaceAll("[^0-9]", ""));
+                if(measurementSets.containsKey(measurementType)) {
+                    measurementSets.replace(measurementType,value);
+                } else {
+                    measurementSets.put(measurementType,value);
+                }
                 break;
             }
         }
